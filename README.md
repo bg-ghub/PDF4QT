@@ -1,5 +1,19 @@
 [![CI](https://github.com/JakubMelka/PDF4QT/actions/workflows/ci.yml/badge.svg)](https://github.com/JakubMelka/PDF4QT/actions/workflows/ci.yml)
 
+# PDF4QT - Opus Optimized Fork
+
+> **🚀 This is an optimized fork of PDF4QT, improved by [Opus](https://www.anthropic.com/claude) (Claude AI)**
+>
+> This fork focuses on **PDF merging performance improvements** including:
+> - ⚡ Parallel document loading
+> - 🔧 Optimized object reference handling
+> - 💾 Reduced memory usage during merge operations
+> - 🐛 Bug fixes for form field conflicts and reference collisions
+>
+> **Original project**: [JakubMelka/PDF4QT](https://github.com/JakubMelka/PDF4QT)
+
+---
+
 # PDF4QT
 
 **(c) Jakub Melka 2018-2025**
