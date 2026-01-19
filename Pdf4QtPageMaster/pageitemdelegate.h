@@ -9,8 +9,8 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -23,46 +23,61 @@
 #ifndef PDFPAGEMASTER_PAGEITEMDELEGATE_H
 #define PDFPAGEMASTER_PAGEITEMDELEGATE_H
 
-#include "pdfrenderer.h"
 #include "pdfcms.h"
+#include "pdfrenderer.h"
 
 #include <QAbstractItemDelegate>
+#include <QSet>
 
-namespace pdfpagemaster
-{
+namespace pdfpagemaster {
 
 class PageItemModel;
 struct PageGroupItem;
 
-class PageItemDelegate : public QAbstractItemDelegate
-{
-    Q_OBJECT
+/// PDF4QT-Opus: Enhanced delegate with background thumbnail rendering
+/// to prevent UI freezing when loading large PDF collections
+class PageItemDelegate : public QAbstractItemDelegate {
+  Q_OBJECT
 
 private:
-    using BaseClass = QAbstractItemDelegate;
+  using BaseClass = QAbstractItemDelegate;
 
 public:
-    explicit PageItemDelegate(PageItemModel* model, QObject* parent);
-    virtual ~PageItemDelegate() override;
+  explicit PageItemDelegate(PageItemModel *model, QObject *parent);
+  virtual ~PageItemDelegate() override;
 
-    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
-    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
+  virtual void paint(QPainter *painter, const QStyleOptionViewItem &option,
+                     const QModelIndex &index) const override;
+  virtual QSize sizeHint(const QStyleOptionViewItem &option,
+                         const QModelIndex &index) const override;
 
-    QSize getPageImageSize() const;
-    void setPageImageSize(QSize pageImageSize);
+  QSize getPageImageSize() const;
+  void setPageImageSize(QSize pageImageSize);
+
+signals:
+  /// Emitted when a thumbnail has been rendered in the background
+  void thumbnailReady(const QString &key) const;
+
+private slots:
+  void onThumbnailReady(const QString &key);
 
 private:
-    static constexpr int getVerticalSpacing() { return 5; }
-    static constexpr int getHorizontalSpacing() { return 5; }
+  static constexpr int getVerticalSpacing() { return 5; }
+  static constexpr int getHorizontalSpacing() { return 5; }
 
-    QPixmap getPageImagePixmap(const PageGroupItem* item, QRect rect) const;
+  QPixmap getPageImagePixmap(const PageGroupItem *item, QRect rect) const;
+  void renderThumbnailDeferred(const QString &key, const PageGroupItem *item,
+                               QRect rect) const;
 
-    PageItemModel* m_model;
-    QSize m_pageImageSize;
-    pdf::PDFRasterizer* m_rasterizer;
-    mutable double m_dpiScaleRatio = 1.0;
+  PageItemModel *m_model;
+  QSize m_pageImageSize;
+  pdf::PDFRasterizer *m_rasterizer;
+  mutable double m_dpiScaleRatio = 1.0;
+
+  // PDF4QT-Opus: Track pending background renders to avoid duplicate work
+  mutable QSet<QString> m_pendingRenders;
 };
 
-}   // namespace pdfpagemaster
+} // namespace pdfpagemaster
 
 #endif // PDFPAGEMASTER_PAGEITEMDELEGATE_H
