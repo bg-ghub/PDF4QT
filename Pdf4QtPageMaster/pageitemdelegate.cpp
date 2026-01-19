@@ -24,6 +24,7 @@
 #include "pageitemmodel.h"
 #include "pdfcompiler.h"
 #include "pdfconstants.h"
+#include "pdfimage.h"
 #include "pdfpainterutils.h"
 #include "pdfrenderer.h"
 #include "pdfwidgetutils.h"
@@ -295,6 +296,37 @@ PageItemDelegate::renderInBackground(const RenderRequest &request) const {
       if (!page)
         return result;
 
+      // PDF4QT-Opus: FAST PATH - Try embedded thumbnail first (instant)
+      // Many PDFs contain pre-rendered thumbnails, extracting these is much
+      // faster than rendering the full page
+      QSize targetSize = request.rect.size() * request.dpiScaleRatio;
+      pdf::PDFObject thumbnailObj = page->getThumbnail(&document.getStorage());
+      if (thumbnailObj.isStream()) {
+        try {
+          // Create minimal resources for thumbnail decoding
+          pdf::PDFCMSManager cmsManager(nullptr);
+          cmsManager.setDocument(&document);
+          pdf::PDFCMSPointer cms = cmsManager.getCurrentCMS();
+
+          // Decode embedded thumbnail image
+          pdf::PDFImage thumbnailImage = pdf::PDFImage::createImage(
+              &document, thumbnailObj.getStream(), nullptr, false,
+              pdf::RenderingIntent::Perceptual, nullptr);
+
+          QImage thumbResult =
+              thumbnailImage.getImage(cms.data(), nullptr, nullptr);
+          if (!thumbResult.isNull()) {
+            // Scale to target size and return (VERY fast)
+            result = thumbResult.scaled(targetSize, Qt::KeepAspectRatio,
+                                        Qt::SmoothTransformation);
+            return result;
+          }
+        } catch (...) {
+          // Thumbnail extraction failed, fall through to full rendering
+        }
+      }
+
+      // SLOW PATH: Full page rendering (fallback when no embedded thumbnail)
       // Create per-thread rendering resources
       pdf::PDFPrecompiledPage compiledPage;
       pdf::PDFFontCache fontCache(pdf::DEFAULT_FONT_CACHE_LIMIT,
