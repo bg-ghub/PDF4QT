@@ -109,6 +109,7 @@ MainWindow::MainWindow(QWidget *parent)
       int(Operation::RegroupAlternatingPages));
   ui->actionRegroup_by_Alternating_Pages_Reversed_Order->setData(
       int(Operation::RegroupAlternatingPagesReversed));
+  ui->actionInterleave_Halves->setData(int(Operation::InterleaveHalves));
   ui->actionPrepare_Icon_Theme->setData(int(Operation::PrepareIconTheme));
   ui->actionShow_Document_Title_in_Items->setData(
       int(Operation::ShowDocumentTitle));
@@ -711,6 +712,10 @@ bool MainWindow::canPerformOperation(Operation operation) const {
     return info.isTwoDocuments();
   }
 
+  // PDF4QT-Opus: Interleave halves requires at least 2 selected items
+  case Operation::InterleaveHalves:
+    return !isModelEmpty && selection.size() >= 2;
+
   default:
     Q_ASSERT(false);
     break;
@@ -1200,6 +1205,14 @@ void MainWindow::performOperation(Operation operation) {
     QModelIndexList indexes =
         ui->documentItemsView->selectionModel()->selection().indexes();
     m_model->regroupAlternatingPages(indexes, true);
+    break;
+  }
+
+  // PDF4QT-Opus: Interleave first half with second half
+  case Operation::InterleaveHalves: {
+    QModelIndexList indexes =
+        ui->documentItemsView->selectionModel()->selection().indexes();
+    m_model->interleaveHalves(indexes);
     break;
   }
 

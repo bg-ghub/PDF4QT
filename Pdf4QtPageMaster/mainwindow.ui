@@ -144,6 +144,7 @@
     <addaction name="actionRegroup_by_Alternating_Pages"/>
     <addaction name="actionRegroup_by_Alternating_Pages_Reversed_Order"/>
     <addaction name="actionRegroup_Reverse"/>
+    <addaction name="actionInterleave_Halves"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -570,6 +571,14 @@
    </property>
    <property name="text">
     <string>Regroup by Alternating Pages (&amp;Reversed Order)</string>
+   </property>
+  </action>
+  <action name="actionInterleave_Halves">
+   <property name="text">
+    <string>&amp;Interleave Halves (Scan Fix)</string>
+   </property>
+   <property name="toolTip">
+    <string>Interleave first half with second half (for scanned odd/even pages)</string>
    </property>
   </action>
   <action name="actionInvert_Selection">
