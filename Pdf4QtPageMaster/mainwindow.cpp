@@ -46,6 +46,8 @@
 #include <QDropEvent>
 #include <QSettings>
 #include <QMimeData>
+#include <QtConcurrent>
+#include <QProgressDialog>
 
 namespace pdfpagemaster
 {
@@ -407,6 +409,163 @@ bool MainWindow::insertDocument(const QString& fileName, const QModelIndex& inse
 
     updateActions();
     return isDocumentInserted;
+}
+
+// Structure for parallel document loading results
+struct LoadedDocumentResult
+{
+    QString fileName;
+    pdf::PDFDocument document;
+    pdf::PDFDocumentReader::Result result = pdf::PDFDocumentReader::Result::OK;
+    QString errorMessage;
+    bool permissionOk = true;
+};
+
+void MainWindow::insertDocumentsBatch(const QStringList& fileNames, const QModelIndex& insertIndex)
+{
+    if (fileNames.isEmpty())
+    {
+        return;
+    }
+
+    // For password-protected documents, fall back to sequential loading
+    // since we need UI interaction for password entry
+    if (fileNames.size() == 1)
+    {
+        insertDocument(fileNames.first(), insertIndex);
+        return;
+    }
+
+    // Show progress dialog
+    QProgressDialog progressDialog(tr("Loading documents..."), tr("Cancel"), 0, fileNames.size(), this);
+    progressDialog.setWindowModality(Qt::WindowModal);
+    progressDialog.setMinimumDuration(500); // Only show if it takes more than 500ms
+    progressDialog.setValue(0);
+
+    // First, try to load all documents in parallel (without password)
+    auto loadDocument = [](const QString& fileName) -> LoadedDocumentResult
+    {
+        LoadedDocumentResult loaded;
+        loaded.fileName = fileName;
+
+        // Use a no-password callback for parallel loading
+        pdf::PDFDocumentReader reader(nullptr, [](bool* ok) { *ok = false; return QString(); }, true, false);
+        loaded.document = reader.readFromFile(fileName);
+        loaded.result = reader.getReadingResult();
+        loaded.errorMessage = reader.getErrorMessage();
+
+        if (loaded.result == pdf::PDFDocumentReader::Result::OK)
+        {
+            const pdf::PDFSecurityHandler* securityHandler = loaded.document.getStorage().getSecurityHandler();
+            loaded.permissionOk = securityHandler->isAllowed(pdf::PDFSecurityHandler::Permission::Assemble) ||
+                                  securityHandler->isAllowed(pdf::PDFSecurityHandler::Permission::Modify);
+        }
+
+        return loaded;
+    };
+
+    // Load documents in parallel
+    QFuture<LoadedDocumentResult> future = QtConcurrent::mapped(fileNames, loadDocument);
+
+    // Wait for completion while updating progress
+    QFutureWatcher<LoadedDocumentResult> watcher;
+    watcher.setFuture(future);
+
+    connect(&watcher, &QFutureWatcher<LoadedDocumentResult>::progressValueChanged, &progressDialog, &QProgressDialog::setValue);
+    connect(&progressDialog, &QProgressDialog::canceled, &watcher, &QFutureWatcher<LoadedDocumentResult>::cancel);
+
+    // Process events while waiting
+    while (!watcher.isFinished())
+    {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        if (progressDialog.wasCanceled())
+        {
+            watcher.cancel();
+            break;
+        }
+    }
+
+    if (progressDialog.wasCanceled())
+    {
+        updateActions();
+        return;
+    }
+
+    progressDialog.close();
+
+    // Process results
+    QList<LoadedDocumentResult> results = future.results();
+    QStringList passwordProtectedFiles;
+    QStringList errorFiles;
+    QStringList permissionErrorFiles;
+
+    QModelIndex currentInsertIndex = insertIndex;
+
+    for (const LoadedDocumentResult& loaded : results)
+    {
+        if (loaded.result == pdf::PDFDocumentReader::Result::OK)
+        {
+            if (loaded.permissionOk)
+            {
+                // Successfully loaded - insert into model
+                m_model->insertDocument(loaded.fileName, pdf::PDFDocument(loaded.document), currentInsertIndex);
+                if (currentInsertIndex.isValid())
+                {
+                    currentInsertIndex = currentInsertIndex.sibling(currentInsertIndex.row() + 1, currentInsertIndex.column());
+                }
+            }
+            else
+            {
+                permissionErrorFiles << QFileInfo(loaded.fileName).fileName();
+            }
+        }
+        else if (loaded.result == pdf::PDFDocumentReader::Result::Cancelled)
+        {
+            // Likely password-protected - try interactive loading
+            passwordProtectedFiles << loaded.fileName;
+        }
+        else
+        {
+            errorFiles << QString("%1: %2").arg(QFileInfo(loaded.fileName).fileName(), loaded.errorMessage);
+        }
+    }
+
+    // Handle password-protected files interactively (one at a time)
+    for (const QString& fileName : passwordProtectedFiles)
+    {
+        if (!insertDocument(fileName, currentInsertIndex))
+        {
+            // User cancelled or error - stop processing
+            break;
+        }
+        if (currentInsertIndex.isValid())
+        {
+            currentInsertIndex = currentInsertIndex.sibling(currentInsertIndex.row() + 1, currentInsertIndex.column());
+        }
+    }
+
+    // Show error summary if there were issues
+    if (!errorFiles.isEmpty() || !permissionErrorFiles.isEmpty())
+    {
+        QString errorMessage;
+        if (!errorFiles.isEmpty())
+        {
+            errorMessage += tr("Failed to load:\n%1\n\n").arg(errorFiles.join("\n"));
+        }
+        if (!permissionErrorFiles.isEmpty())
+        {
+            errorMessage += tr("Insufficient permissions:\n%1").arg(permissionErrorFiles.join(", "));
+        }
+        QMessageBox::warning(this, tr("Some documents could not be loaded"), errorMessage);
+    }
+
+    // Update directory from last file
+    if (!fileNames.isEmpty())
+    {
+        m_settings.directory = QFileInfo(fileNames.last()).dir().absolutePath();
+    }
+
+    updateActions();
 }
 
 bool MainWindow::canPerformOperation(Operation operation) const
@@ -878,14 +1037,8 @@ void MainWindow::performOperation(Operation operation)
                 QModelIndexList indexes = ui->documentItemsView->selectionModel()->selection().indexes();
                 QModelIndex insertIndex = !indexes.isEmpty() ? indexes.front() : QModelIndex();
 
-                for (const QString& fileName : fileNames)
-                {
-                    if (!insertDocument(fileName, insertIndex))
-                    {
-                        break;
-                    }
-                    insertIndex = insertIndex.sibling(insertIndex.row() + 1, insertIndex.column());
-                }
+                // Use parallel batch loading for multiple files
+                insertDocumentsBatch(fileNames, insertIndex);
             }
             break;
         }
@@ -1060,10 +1213,12 @@ void MainWindow::dropEvent(QDropEvent* event)
         std::reverse(urls.begin(), urls.end());
         QList<QByteArray> supportedImageFormats = QImageReader::supportedImageFormats();
 
-        for (QUrl url : urls)
-        {
-            event->accept();
+        // Separate PDFs and images for optimized handling
+        QStringList pdfFiles;
+        QStringList imageFiles;
 
+        for (const QUrl& url : urls)
+        {
             if (url.isLocalFile())
             {
                 QString fileName = url.toLocalFile();
@@ -1072,29 +1227,34 @@ void MainWindow::dropEvent(QDropEvent* event)
 
                 if (supportedImageFormats.contains(suffix.toUtf8()))
                 {
-                    if (m_model->insertImage(fileName, insertIndex) == -1)
-                    {
-                        // Exit the loop if the image was not inserted.
-                        event->ignore();
-                        break;
-                    }
+                    imageFiles << fileName;
                 }
                 else if (suffix == "pdf")
                 {
-                    if (!insertDocument(url.toLocalFile(), insertIndex))
-                    {
-                        // Exit the loop if the document was not inserted. This could be because
-                        // the document requires a password and the user might have provided an incorrect one,
-                        // or the file couldn't be opened. We don't want to proceed with the next file.
-                        event->ignore();
-                        break;
-                    }
-                }
-                else
-                {
-                    // We ignore other file extensions.
+                    pdfFiles << fileName;
                 }
             }
+        }
+
+        event->accept();
+
+        // Insert images first (sequential - typically fast)
+        for (const QString& fileName : imageFiles)
+        {
+            if (m_model->insertImage(fileName, insertIndex) == -1)
+            {
+                break;
+            }
+            if (insertIndex.isValid())
+            {
+                insertIndex = insertIndex.sibling(insertIndex.row() + 1, insertIndex.column());
+            }
+        }
+
+        // Then batch load PDFs (parallel - significant speedup)
+        if (!pdfFiles.isEmpty())
+        {
+            insertDocumentsBatch(pdfFiles, insertIndex);
         }
     }
 }

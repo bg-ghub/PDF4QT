@@ -122,6 +122,7 @@ private:
     void loadSettings();
     void saveSettings();
     bool insertDocument(const QString& fileName, const QModelIndex& insertIndex);
+    void insertDocumentsBatch(const QStringList& fileNames, const QModelIndex& insertIndex);
 
     bool canPerformOperation(Operation operation) const;
     void performOperation(Operation operation);

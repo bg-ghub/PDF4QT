@@ -43,7 +43,7 @@ add_executable(Pdf4QtPageMaster
     app.qrc
 )
 
-target_link_libraries(Pdf4QtPageMaster PRIVATE Pdf4QtLibCore Pdf4QtLibWidgets Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(Pdf4QtPageMaster PRIVATE Pdf4QtLibCore Pdf4QtLibWidgets Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Concurrent)
 
 set_target_properties(Pdf4QtPageMaster PROPERTIES
     WIN32_EXECUTABLE ON
