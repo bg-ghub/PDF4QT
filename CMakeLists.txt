@@ -1,6 +1,7 @@
 # MIT License
 #
 # Copyright (c) 2018-2025 Jakub Melka and Contributors
+# PDF4QT-Opus optimizations (c) 2026 Opus (Claude AI) Contributors
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +24,11 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(PDF4QT_VERSION 1.5.3.0)
+set(PDF4QT_OPUS_VERSION "Opus-1.0")  # PDF4QT-Opus fork version
+message(STATUS "PDF4QT-Opus version: ${PDF4QT_VERSION}-${PDF4QT_OPUS_VERSION}")
 message(STATUS "Build type - CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
-project(PDF4QT VERSION ${PDF4QT_VERSION} LANGUAGES CXX)
+project(PDF4QT-Opus VERSION ${PDF4QT_VERSION} LANGUAGES CXX)
 
 message("VCPKG Enabled: " ${VCPKG_TOOLCHAIN})
 

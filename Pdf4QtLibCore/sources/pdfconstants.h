@@ -33,7 +33,7 @@ namespace pdf
 #endif
 
 // Name of the library, together with version
-static constexpr const char* PDF_LIBRARY_NAME = "PDF4QT " PDF4QT_PROJECT_VERSION;
+static constexpr const char* PDF_LIBRARY_NAME = "PDF4QT-Opus " PDF4QT_PROJECT_VERSION;
 static constexpr const char* PDF_LIBRARY_VERSION = PDF4QT_PROJECT_VERSION;
 
 // Structure file constants
