@@ -23,19 +23,35 @@
 #ifndef PDFPAGEMASTER_PAGEITEMDELEGATE_H
 #define PDFPAGEMASTER_PAGEITEMDELEGATE_H
 
+#include "pageitemmodel.h"
 #include "pdfcms.h"
 #include "pdfrenderer.h"
 
+
 #include <QAbstractItemDelegate>
+#include <QImage>
 #include <QSet>
+
 
 namespace pdfpagemaster {
 
 class PageItemModel;
 struct PageGroupItem;
 
-/// PDF4QT-Opus: Enhanced delegate with background thumbnail rendering
-/// to prevent UI freezing when loading large PDF collections
+/// PDF4QT-Opus: Request structure for background thumbnail rendering
+struct RenderRequest {
+  QString key;
+  QRect rect;
+  double dpiScaleRatio = 1.0;
+  PageGroupItem::GroupItem groupItem;
+  bool hasDocument = false;
+  bool hasImage = false;
+  const pdf::PDFDocument *documentPtr = nullptr;
+  QImage image;
+};
+
+/// PDF4QT-Opus: Enhanced delegate with true background thumbnail rendering
+/// using QtConcurrent to prevent UI freezing when loading large PDF collections
 class PageItemDelegate : public QAbstractItemDelegate {
   Q_OBJECT
 
@@ -54,20 +70,15 @@ public:
   QSize getPageImageSize() const;
   void setPageImageSize(QSize pageImageSize);
 
-signals:
-  /// Emitted when a thumbnail has been rendered in the background
-  void thumbnailReady(const QString &key) const;
-
-private slots:
-  void onThumbnailReady(const QString &key);
-
 private:
   static constexpr int getVerticalSpacing() { return 5; }
   static constexpr int getHorizontalSpacing() { return 5; }
 
   QPixmap getPageImagePixmap(const PageGroupItem *item, QRect rect) const;
-  void renderThumbnailDeferred(const QString &key, const PageGroupItem *item,
-                               QRect rect) const;
+
+  /// PDF4QT-Opus: Render thumbnail in background thread (returns QImage,
+  /// thread-safe)
+  QImage renderInBackground(const RenderRequest &request) const;
 
   PageItemModel *m_model;
   QSize m_pageImageSize;

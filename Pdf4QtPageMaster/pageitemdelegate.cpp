@@ -29,9 +29,10 @@
 #include "pdfwidgetutils.h"
 
 #include <QAbstractItemView>
+#include <QFutureWatcher>
 #include <QPainter>
 #include <QPixmapCache>
-#include <QTimer>
+#include <QtConcurrent>
 
 namespace pdfpagemaster {
 
@@ -39,19 +40,9 @@ PageItemDelegate::PageItemDelegate(PageItemModel *model, QObject *parent)
     : BaseClass(parent), m_model(model), m_rasterizer(nullptr) {
   m_rasterizer = new pdf::PDFRasterizer(this);
   m_rasterizer->reset(pdf::RendererEngine::Blend2D_SingleThread);
-
-  // PDF4QT-Opus: Connect thumbnail ready signal to trigger view update
-  connect(this, &PageItemDelegate::thumbnailReady, this,
-          &PageItemDelegate::onThumbnailReady);
 }
 
 PageItemDelegate::~PageItemDelegate() {}
-
-void PageItemDelegate::onThumbnailReady(const QString &key) {
-  Q_UNUSED(key);
-  // Trigger a repaint of the view
-  Q_EMIT sizeHintChanged(QModelIndex());
-}
 
 void PageItemDelegate::paint(QPainter *painter,
                              const QStyleOptionViewItem &option,
@@ -180,7 +171,7 @@ QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
     return pixmap;
   }
 
-  // Jakub Melka: generate key and see, if pixmap is not cached
+  // Generate cache key
   QString key = QString("%1#%2#%3#%4#%5@%6x%7")
                     .arg(groupItem.documentIndex)
                     .arg(groupItem.imageIndex)
@@ -193,17 +184,65 @@ QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
   if (!QPixmapCache::find(key, &pixmap)) {
     // PDF4QT-Opus: Check if we're already rendering this thumbnail
     if (m_pendingRenders.contains(key)) {
-      // Return empty pixmap - will show placeholder, render in progress
+      // Return empty pixmap - placeholder shown, render in progress
       return pixmap;
     }
 
-    // Mark as pending and schedule background render
+    // Mark as pending
     m_pendingRenders.insert(key);
 
-    // Schedule the actual render for later (deferred to avoid blocking paint)
-    QTimer::singleShot(0, this, [this, key, item, rect]() {
-      renderThumbnailDeferred(key, item, rect);
-    });
+    // PDF4QT-Opus: Launch background render using QtConcurrent
+    // Capture necessary data for thread-safe rendering
+    RenderRequest request;
+    request.key = key;
+    request.rect = rect;
+    request.dpiScaleRatio = m_dpiScaleRatio;
+    request.groupItem = groupItem;
+
+    // Get document/image data needed for rendering
+    if (groupItem.pageType == PT_DocumentPage) {
+      const auto &documents = m_model->getDocuments();
+      auto it = documents.find(groupItem.documentIndex);
+      if (it != documents.cend()) {
+        request.hasDocument = true;
+        // Store a copy of document pointer for thread-safe access
+        request.documentPtr = &it->second.document;
+      }
+    } else if (groupItem.pageType == PT_Image) {
+      const auto &images = m_model->getImages();
+      auto it = images.find(groupItem.imageIndex);
+      if (it != images.cend()) {
+        request.hasImage = true;
+        request.image = it->second.image; // Copy the image
+      }
+    }
+
+    // Launch in background thread
+    QFuture<QImage> future = QtConcurrent::run(
+        [this, request]() { return renderInBackground(request); });
+
+    // Create watcher to handle result on main thread
+    auto *watcher =
+        new QFutureWatcher<QImage>(const_cast<PageItemDelegate *>(this));
+    connect(
+        watcher, &QFutureWatcher<QImage>::finished,
+        const_cast<PageItemDelegate *>(this), [this, watcher, key]() {
+          QImage image = watcher->result();
+          if (!image.isNull()) {
+            QPixmapCache::insert(key, QPixmap::fromImage(image));
+          }
+          const_cast<PageItemDelegate *>(this)->m_pendingRenders.remove(key);
+          // Trigger repaint via non-const invocation
+          QMetaObject::invokeMethod(
+              const_cast<PageItemDelegate *>(this),
+              [this]() {
+                Q_EMIT const_cast<PageItemDelegate *>(this)->sizeHintChanged(
+                    QModelIndex());
+              },
+              Qt::QueuedConnection);
+          watcher->deleteLater();
+        });
+    watcher->setFuture(future);
 
     // Return empty for now - placeholder will be shown
     return pixmap;
@@ -212,106 +251,85 @@ QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
   return pixmap;
 }
 
-void PageItemDelegate::renderThumbnailDeferred(const QString &key,
-                                               const PageGroupItem *item,
-                                               QRect rect) const {
-  if (!item || item->groups.empty()) {
-    m_pendingRenders.remove(key);
-    return;
-  }
+QImage
+PageItemDelegate::renderInBackground(const RenderRequest &request) const {
+  QImage result;
 
-  const PageGroupItem::GroupItem &groupItem = item->groups.front();
-  QPixmap pixmap(rect.width(), rect.height());
-  pixmap.fill(Qt::transparent);
+  if (request.groupItem.pageType == PT_DocumentPage && request.hasDocument &&
+      request.documentPtr) {
+    const pdf::PDFDocument &document = *request.documentPtr;
+    const pdf::PDFInteger pageIndex = request.groupItem.pageIndex - 1;
 
-  switch (groupItem.pageType) {
-  case pdfpagemaster::PT_DocumentPage: {
-    const auto &documents = m_model->getDocuments();
-    auto it = documents.find(groupItem.documentIndex);
-    if (it != documents.cend()) {
-      const pdf::PDFDocument &document = it->second.document;
-      const pdf::PDFInteger pageIndex = groupItem.pageIndex - 1;
-      if (pageIndex >= 0 &&
-          pageIndex < pdf::PDFInteger(document.getCatalog()->getPageCount())) {
-        const pdf::PDFPage *page = document.getCatalog()->getPage(pageIndex);
-        Q_ASSERT(page);
+    if (pageIndex >= 0 &&
+        pageIndex < pdf::PDFInteger(document.getCatalog()->getPageCount())) {
+      const pdf::PDFPage *page = document.getCatalog()->getPage(pageIndex);
+      if (!page)
+        return result;
 
-        pdf::PDFPrecompiledPage compiledPage;
-        pdf::PDFFontCache fontCache(pdf::DEFAULT_FONT_CACHE_LIMIT,
-                                    pdf::DEFAULT_REALIZED_FONT_CACHE_LIMIT);
-        pdf::PDFCMSManager cmsManager(nullptr);
-        pdf::PDFOptionalContentActivity optionalContentActivity(
-            &document, pdf::OCUsage::View, nullptr);
+      // Create per-thread rendering resources
+      pdf::PDFPrecompiledPage compiledPage;
+      pdf::PDFFontCache fontCache(pdf::DEFAULT_FONT_CACHE_LIMIT,
+                                  pdf::DEFAULT_REALIZED_FONT_CACHE_LIMIT);
+      pdf::PDFCMSManager cmsManager(nullptr);
+      pdf::PDFOptionalContentActivity optionalContentActivity(
+          &document, pdf::OCUsage::View, nullptr);
 
-        fontCache.setDocument(
-            pdf::PDFModifiedDocument(const_cast<pdf::PDFDocument *>(&document),
-                                     &optionalContentActivity));
-        cmsManager.setDocument(&document);
+      fontCache.setDocument(pdf::PDFModifiedDocument(
+          const_cast<pdf::PDFDocument *>(&document), &optionalContentActivity));
+      cmsManager.setDocument(&document);
 
-        pdf::PDFCMSPointer cms = cmsManager.getCurrentCMS();
-        pdf::PDFRenderer renderer(&document, &fontCache, cms.data(),
-                                  &optionalContentActivity,
-                                  pdf::PDFRenderer::getDefaultFeatures(),
-                                  pdf::PDFMeshQualitySettings());
-        renderer.compile(&compiledPage, pageIndex);
+      pdf::PDFCMSPointer cms = cmsManager.getCurrentCMS();
+      pdf::PDFRenderer renderer(&document, &fontCache, cms.data(),
+                                &optionalContentActivity,
+                                pdf::PDFRenderer::getDefaultFeatures(),
+                                pdf::PDFMeshQualitySettings());
+      renderer.compile(&compiledPage, pageIndex);
 
-        // PDF4QT-Opus: Use reduced resolution for faster rendering
-        QSize imageSize = rect.size() * m_dpiScaleRatio;
-        QSize previewSize = imageSize / 2; // Half resolution for speed
-        previewSize = previewSize.expandedTo(QSize(100, 100));
+      // Use reduced resolution for faster rendering
+      QSize imageSize = request.rect.size() * request.dpiScaleRatio;
+      QSize previewSize = imageSize / 2; // Half resolution for speed
+      previewSize = previewSize.expandedTo(QSize(100, 100));
 
-        QImage pageImage = m_rasterizer->render(
-            pageIndex, page, &compiledPage, previewSize,
-            pdf::PDFRenderer::getDefaultFeatures(), nullptr, cms.data(),
-            groupItem.pageAdditionalRotation);
+      // Create thread-local rasterizer
+      pdf::PDFRasterizer rasterizer(nullptr);
+      rasterizer.reset(pdf::RendererEngine::Blend2D_SingleThread);
 
-        // Scale up to target size
-        if (!pageImage.isNull() && pageImage.size() != imageSize) {
-          pageImage = pageImage.scaled(imageSize, Qt::IgnoreAspectRatio,
-                                       Qt::SmoothTransformation);
-        }
-        pixmap = QPixmap::fromImage(qMove(pageImage));
+      result = rasterizer.render(pageIndex, page, &compiledPage, previewSize,
+                                 pdf::PDFRenderer::getDefaultFeatures(),
+                                 nullptr, cms.data(),
+                                 request.groupItem.pageAdditionalRotation);
+
+      // Scale up to target size
+      if (!result.isNull() && result.size() != imageSize) {
+        result = result.scaled(imageSize, Qt::IgnoreAspectRatio,
+                               Qt::SmoothTransformation);
       }
     }
-    break;
-  }
+  } else if (request.groupItem.pageType == PT_Image && request.hasImage) {
+    const QImage &image = request.image;
+    if (!image.isNull()) {
+      QSize targetSize = request.rect.size();
+      QImage pixmap(targetSize, QImage::Format_ARGB32_Premultiplied);
+      pixmap.fill(Qt::transparent);
 
-  case pdfpagemaster::PT_Image: {
-    const auto &images = m_model->getImages();
-    auto it = images.find(groupItem.imageIndex);
-    if (it != images.cend()) {
-      const QImage &image = it->second.image;
-      if (!image.isNull()) {
-        QRect drawRect(QPoint(0, 0), rect.size());
-        QRect mediaBox(QPoint(0, 0), image.size());
-        QRectF rotatedMediaBox = pdf::PDFPage::getRotatedBox(
-            mediaBox, groupItem.pageAdditionalRotation);
-        QTransform matrix = pdf::PDFRenderer::createMediaBoxToDevicePointMatrix(
-            rotatedMediaBox, drawRect, groupItem.pageAdditionalRotation);
+      QRect drawRect(QPoint(0, 0), targetSize);
+      QRect mediaBox(QPoint(0, 0), image.size());
+      QRectF rotatedMediaBox = pdf::PDFPage::getRotatedBox(
+          mediaBox, request.groupItem.pageAdditionalRotation);
+      QTransform matrix = pdf::PDFRenderer::createMediaBoxToDevicePointMatrix(
+          rotatedMediaBox, drawRect, request.groupItem.pageAdditionalRotation);
 
-        QPainter painter(&pixmap);
-        painter.setWorldTransform(QTransform(matrix));
-        painter.translate(0, image.height());
-        painter.scale(1.0, -1.0);
-        painter.drawImage(0, 0, image);
-      }
+      QPainter painter(&pixmap);
+      painter.setWorldTransform(QTransform(matrix));
+      painter.translate(0, image.height());
+      painter.scale(1.0, -1.0);
+      painter.drawImage(0, 0, image);
+
+      result = pixmap;
     }
-    break;
   }
 
-  case pdfpagemaster::PT_Empty:
-    break;
-
-  default:
-    break;
-  }
-
-  // Cache the rendered pixmap
-  QPixmapCache::insert(key, pixmap);
-  m_pendingRenders.remove(key);
-
-  // Signal that thumbnail is ready - will trigger view update
-  Q_EMIT thumbnailReady(key);
+  return result;
 }
 
 } // namespace pdfpagemaster
