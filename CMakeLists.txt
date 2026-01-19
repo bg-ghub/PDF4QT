@@ -243,7 +243,7 @@ endif()
 
 if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
     install(DIRECTORY ${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/
-        RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
+        DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
         FILES_MATCHING
         PATTERN "*.dll"
         PATTERN "*.so"
@@ -256,7 +256,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
 
     if(PDF4QT_INSTALL_QT_DEPENDENCIES)
         install(DIRECTORY ${PDF4QT_QT_ROOT}/bin/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
             FILES_MATCHING
             REGEX "(Qt6Core|Qt6Gui|Qt6PrintSupport|Qt6Svg|Qt6TextToSpeech|Qt6Widgets|Qt6Xml|Qt6Multimedia|Qt6Network)\\..*"
             PATTERN "Debug" EXCLUDE
@@ -264,7 +264,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         )
 
         install(DIRECTORY ${PDF4QT_QT_ROOT}/plugins/platforms/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/platforms/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/platforms/
             FILES_MATCHING
             PATTERN "qwindows.dll"
             PATTERN "*.so"
@@ -273,14 +273,14 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         )
 
         install(DIRECTORY ${PDF4QT_QT_ROOT}/plugins/iconengines/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/iconengines/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/iconengines/
             FILES_MATCHING
             REGEX "qsvgicon\\..*"
             PATTERN "*.pdb" EXCLUDE
         )
 
         install(DIRECTORY ${PDF4QT_QT_ROOT}/plugins/imageformats/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/imageformats/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/imageformats/
             FILES_MATCHING
             PATTERN "*.dll"
             PATTERN "*.so"
@@ -290,7 +290,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         )
 
         install(DIRECTORY ${PDF4QT_QT_ROOT}/plugins/styles/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/styles/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/styles/
             FILES_MATCHING
             PATTERN "*.dll"
             PATTERN "*.so"
@@ -300,7 +300,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         )
 
         install(DIRECTORY ${PDF4QT_QT_ROOT}/plugins/texttospeech/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/texttospeech/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/texttospeech/
             FILES_MATCHING
             PATTERN "*.dll"
             PATTERN "*.so"
@@ -320,7 +320,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         endif()
 
         install(DIRECTORY ${MSVC_REDISTRIBUTABLES_PATH}/
-            RUNTIME DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
+            DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
             FILES_MATCHING
             PATTERN "*.dll"
         )
