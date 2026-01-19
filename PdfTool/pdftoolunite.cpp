@@ -254,36 +254,45 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
         PDFConsole::writeText(PDFToolTranslationContext::tr("Merged documents in %1 ms").arg(mergeTimeMs), options.outputCodec);
 
         // ============================================================
-        // PHASE 3: Optimize document
+        // PHASE 3: Optimize document (skipped if --fast is set)
         // ============================================================
-        QElapsedTimer optimizeTimer;
-        optimizeTimer.start();
-
-        pdf::PDFOptimizer optimizer(pdf::PDFOptimizer::RemoveUnusedObjects | pdf::PDFOptimizer::ShrinkObjectStorage | pdf::PDFOptimizer::DereferenceSimpleObjects | pdf::PDFOptimizer::MergeIdenticalObjects, nullptr);
-        optimizer.setDocument(&mergedDocument);
-        optimizer.optimize();
-        mergedDocument = optimizer.takeOptimizedDocument();
-
-        // We must adjust some objects - they can be merged
-        pdf::PDFDocumentBuilder finalBuilder(&mergedDocument);
-        if (const pdf::PDFDictionary* dictionary = finalBuilder.getDictionaryFromObject(finalBuilder.getObjectByReference(finalBuilder.getCatalogReference())))
+        qint64 optimizeTimeMs = 0;
+        
+        if (!options.fastMerge)
         {
-            pdf::PDFDocumentDataLoaderDecorator loader(finalBuilder.getStorage());
-            pdf::PDFObjectReference ocPropertiesReference = loader.readReferenceFromDictionary(dictionary, "OCProperties");
-            if (ocPropertiesReference.isValid())
-            {
-                finalBuilder.setObject(ocPropertiesReference, pdf::PDFObjectManipulator::removeDuplicitReferencesInArrays(finalBuilder.getObjectByReference(ocPropertiesReference)));
-            }
-            pdf::PDFObjectReference acroFormReference = loader.readReferenceFromDictionary(dictionary, "AcroForm");
-            if (acroFormReference.isValid())
-            {
-                finalBuilder.setObject(acroFormReference, pdf::PDFObjectManipulator::removeDuplicitReferencesInArrays(finalBuilder.getObjectByReference(acroFormReference)));
-            }
-        }
-        mergedDocument = finalBuilder.build();
+            QElapsedTimer optimizeTimer;
+            optimizeTimer.start();
 
-        qint64 optimizeTimeMs = optimizeTimer.elapsed();
-        PDFConsole::writeText(PDFToolTranslationContext::tr("Optimized document in %1 ms").arg(optimizeTimeMs), options.outputCodec);
+            pdf::PDFOptimizer optimizer(pdf::PDFOptimizer::RemoveUnusedObjects | pdf::PDFOptimizer::ShrinkObjectStorage | pdf::PDFOptimizer::DereferenceSimpleObjects | pdf::PDFOptimizer::MergeIdenticalObjects, nullptr);
+            optimizer.setDocument(&mergedDocument);
+            optimizer.optimize();
+            mergedDocument = optimizer.takeOptimizedDocument();
+
+            // We must adjust some objects - they can be merged
+            pdf::PDFDocumentBuilder finalBuilder(&mergedDocument);
+            if (const pdf::PDFDictionary* dictionary = finalBuilder.getDictionaryFromObject(finalBuilder.getObjectByReference(finalBuilder.getCatalogReference())))
+            {
+                pdf::PDFDocumentDataLoaderDecorator loader(finalBuilder.getStorage());
+                pdf::PDFObjectReference ocPropertiesReference = loader.readReferenceFromDictionary(dictionary, "OCProperties");
+                if (ocPropertiesReference.isValid())
+                {
+                    finalBuilder.setObject(ocPropertiesReference, pdf::PDFObjectManipulator::removeDuplicitReferencesInArrays(finalBuilder.getObjectByReference(ocPropertiesReference)));
+                }
+                pdf::PDFObjectReference acroFormReference = loader.readReferenceFromDictionary(dictionary, "AcroForm");
+                if (acroFormReference.isValid())
+                {
+                    finalBuilder.setObject(acroFormReference, pdf::PDFObjectManipulator::removeDuplicitReferencesInArrays(finalBuilder.getObjectByReference(acroFormReference)));
+                }
+            }
+            mergedDocument = finalBuilder.build();
+
+            optimizeTimeMs = optimizeTimer.elapsed();
+            PDFConsole::writeText(PDFToolTranslationContext::tr("Optimized document in %1 ms").arg(optimizeTimeMs), options.outputCodec);
+        }
+        else
+        {
+            PDFConsole::writeText(PDFToolTranslationContext::tr("Skipping optimization (--fast mode)"), options.outputCodec);
+        }
 
         // ============================================================
         // PHASE 4: Write output

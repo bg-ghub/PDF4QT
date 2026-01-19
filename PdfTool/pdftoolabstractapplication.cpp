@@ -179,6 +179,7 @@ void PDFToolAbstractApplication::initializeCommandLineParser(QCommandLineParser*
     {
         parser->addPositionalArgument("source", "Documents to be merged into single document.", "file1.pdf [file2.pdf, ...]");
         parser->addPositionalArgument("target", "Merged document filename.");
+        parser->addOption(QCommandLineOption("fast", "Fast merge mode: skip post-merge optimization (faster but larger output file)."));
     }
 
     if (optionFlags.testFlag(Diff))
@@ -922,6 +923,7 @@ PDFToolOptions PDFToolAbstractApplication::getOptions(QCommandLineParser* parser
     if (optionFlags.testFlag(Unite))
     {
         options.uniteFiles = positionalArguments;
+        options.fastMerge = parser->isSet("fast");
     }
 
     if (optionFlags.testFlag(Diff))

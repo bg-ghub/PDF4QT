@@ -151,6 +151,7 @@ struct PDFToolOptions
 
     // For option 'Unite'
     QStringList uniteFiles;
+    bool fastMerge = false;  // Skip optimization for faster merge
 
     // For option 'Diff'
     QStringList diffFiles;
