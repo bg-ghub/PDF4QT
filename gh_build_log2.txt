@@ -1,0 +1,42 @@
+build_windows	Set up job	´╗┐2026-01-19T16:13:30.2204211Z Current runner version: '2.331.0'
+build_windows	Set up job	2026-01-19T16:13:30.2254956Z ##[group]Runner Image Provisioner
+build_windows	Set up job	2026-01-19T16:13:30.2256295Z Hosted Compute Agent
+build_windows	Set up job	2026-01-19T16:13:30.2257151Z Version: 20251211.462
+build_windows	Set up job	2026-01-19T16:13:30.2258037Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+build_windows	Set up job	2026-01-19T16:13:30.2259197Z Build Date: 2025-12-11T16:28:49Z
+build_windows	Set up job	2026-01-19T16:13:30.2260292Z Worker ID: {2f024d58-3feb-48d7-8300-057b147d5c51}
+build_windows	Set up job	2026-01-19T16:13:30.2261665Z ##[endgroup]
+build_windows	Set up job	2026-01-19T16:13:30.2262390Z ##[group]Operating System
+build_windows	Set up job	2026-01-19T16:13:30.2263309Z Microsoft Windows Server 2025
+build_windows	Set up job	2026-01-19T16:13:30.2264684Z 10.0.26100
+build_windows	Set up job	2026-01-19T16:13:30.2265458Z Datacenter
+build_windows	Set up job	2026-01-19T16:13:30.2266535Z ##[endgroup]
+build_windows	Set up job	2026-01-19T16:13:30.2267270Z ##[group]Runner Image
+build_windows	Set up job	2026-01-19T16:13:30.2268145Z Image: windows-2025
+build_windows	Set up job	2026-01-19T16:13:30.2268931Z Version: 20260111.179.1
+build_windows	Set up job	2026-01-19T16:13:30.2270729Z Included Software: https://github.com/actions/runner-images/blob/win25/20260111.179/images/windows/Windows2025-Readme.md
+build_windows	Set up job	2026-01-19T16:13:30.2274000Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260111.179
+build_windows	Set up job	2026-01-19T16:13:30.2275615Z ##[endgroup]
+build_windows	Set up job	2026-01-19T16:13:30.2280305Z ##[group]GITHUB_TOKEN Permissions
+build_windows	Set up job	2026-01-19T16:13:30.2283586Z Actions: write
+build_windows	Set up job	2026-01-19T16:13:30.2284439Z ArtifactMetadata: write
+build_windows	Set up job	2026-01-19T16:13:30.2285217Z Attestations: write
+build_windows	Set up job	2026-01-19T16:13:30.2285922Z Checks: write
+build_windows	Set up job	2026-01-19T16:13:30.2286976Z Contents: write
+build_windows	Set up job	2026-01-19T16:13:30.2287609Z Deployments: write
+build_windows	Set up job	2026-01-19T16:13:30.2288300Z Discussions: write
+build_windows	Set up job	2026-01-19T16:13:30.2289071Z Issues: write
+build_windows	Set up job	2026-01-19T16:13:30.2289970Z Metadata: read
+build_windows	Set up job	2026-01-19T16:13:30.2290619Z Models: read
+build_windows	Set up job	2026-01-19T16:13:30.2291343Z Packages: write
+build_windows	Set up job	2026-01-19T16:13:30.2292067Z Pages: write
+build_windows	Set up job	2026-01-19T16:13:30.2292796Z PullRequests: write
+build_windows	Set up job	2026-01-19T16:13:30.2293827Z RepositoryProjects: write
+build_windows	Set up job	2026-01-19T16:13:30.2294779Z SecurityEvents: write
+build_windows	Set up job	2026-01-19T16:13:30.2295922Z Statuses: write
+build_windows	Set up job	2026-01-19T16:13:30.2296820Z ##[endgroup]
+build_windows	Set up job	2026-01-19T16:13:30.2300028Z Secret source: Actions
+build_windows	Set up job	2026-01-19T16:13:30.2301018Z Prepare workflow directory
+build_windows	Set up job	2026-01-19T16:13:30.2673036Z Prepare all required actions
+build_windows	Set up job	2026-01-19T16:13:30.2711499Z Getting action download info
+build_windows	Set up job	2026-01-19T16:13:30.5369175Z ##[error]This request has been automatically failed because it uses a deprecated version of `actions/cache: 0c45773b623bea8c8e75f6c82b208c3cf94ea4f9`. Please update your workflow to use v3/v4 of actions/cache to avoid interruptions. Learn more: https://github.blog/changelog/2024-12-05-notice-of-upcoming-releases-and-breaking-changes-for-github-actions/#actions-cache-v1-v2-and-actions-toolkit-cache-package-closing-down

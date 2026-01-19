@@ -1,0 +1,450 @@
+build_windows	Build project	´╗┐2026-01-19T15:54:18.8627241Z ##[group]Run cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_VCPKG_BUILD_TYPE=Release -DPDF4QT_INSTALL_QT_DEPENDENCIES=ON -DPDF4QT_INSTALL_DEPENDENCIES=ON -DCMAKE_TOOLCHAIN_FILE="${env:GITHUB_WORKSPACE}\vcpkg\scripts\buildsystems\vcpkg.cmake" -DPDF4QT_QT_ROOT="${env:Qt6_DIR}" -DPDF4QT_INSTALL_MSVC_REDISTRIBUTABLE=ON -DPDF4QT_INSTALL_PREPARE_WIX_INSTALLER=ON -DPDF4QT_INSTALL_TO_USR=ON 
+build_windows	Build project	2026-01-19T15:54:18.8631843Z [36;1mcmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_VCPKG_BUILD_TYPE=Release -DPDF4QT_INSTALL_QT_DEPENDENCIES=ON -DPDF4QT_INSTALL_DEPENDENCIES=ON -DCMAKE_TOOLCHAIN_FILE="${env:GITHUB_WORKSPACE}\vcpkg\scripts\buildsystems\vcpkg.cmake" -DPDF4QT_QT_ROOT="${env:Qt6_DIR}" -DPDF4QT_INSTALL_MSVC_REDISTRIBUTABLE=ON -DPDF4QT_INSTALL_PREPARE_WIX_INSTALLER=ON -DPDF4QT_INSTALL_TO_USR=ON [0m
+build_windows	Build project	2026-01-19T15:54:18.8634552Z [36;1mcmake --build build --target release_translations --config Release -j6[0m
+build_windows	Build project	2026-01-19T15:54:18.8635285Z [36;1mcmake --build build --config Release -j6[0m
+build_windows	Build project	2026-01-19T15:54:18.8635894Z [36;1mcmake --install build --config Release[0m
+build_windows	Build project	2026-01-19T15:54:18.8733900Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+build_windows	Build project	2026-01-19T15:54:18.8734500Z env:
+build_windows	Build project	2026-01-19T15:54:18.8750013Z   PATH: C:\Program Files\PowerShell\7;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.9.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\R\R-4.5.2\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.24.11\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.10\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.17-10\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.12\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64
+build_windows	Build project	2026-01-19T15:54:18.8766816Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+build_windows	Build project	2026-01-19T15:54:18.8767608Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+build_windows	Build project	2026-01-19T15:54:18.8770581Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+build_windows	Build project	2026-01-19T15:54:18.8771298Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+build_windows	Build project	2026-01-19T15:54:18.8771978Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+build_windows	Build project	2026-01-19T15:54:18.8772600Z   Qt6_DIR: D:\a\PDF4QT\PDF4QT\qt\Qt\6.9.0\msvc2022_64
+build_windows	Build project	2026-01-19T15:54:18.8773244Z   QT_PLUGIN_PATH: D:\a\PDF4QT\PDF4QT\qt\Qt\6.9.0\msvc2022_64\plugins
+build_windows	Build project	2026-01-19T15:54:18.8773908Z   QML2_IMPORT_PATH: D:\a\PDF4QT\PDF4QT\qt\Qt\6.9.0\msvc2022_64\qml
+build_windows	Build project	2026-01-19T15:54:18.8774472Z   MSVC_TOOLSET_VERSION: 142
+build_windows	Build project	2026-01-19T15:54:18.8775109Z   VCToolsRedistDir: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Redist\MSVC
+build_windows	Build project	2026-01-19T15:54:18.8775863Z   VSCMD_ARG_TGT_ARCH: x64
+build_windows	Build project	2026-01-19T15:54:18.8776825Z   MSVC_REDISTRIBUTABLES_PATH: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Redist\MSVC\14.29.30133\x64\Microsoft.VC142.CRT
+build_windows	Build project	2026-01-19T15:54:18.8777809Z ##[endgroup]
+build_windows	Build project	2026-01-19T15:54:19.2354476Z -- Building for: Visual Studio 17 2022
+build_windows	Build project	2026-01-19T15:54:19.2630709Z -- PDF4QT-Opus version: 1.5.3.0-Opus-1.0
+build_windows	Build project	2026-01-19T15:54:19.2631305Z -- Build type - CMAKE_BUILD_TYPE: Release
+build_windows	Build project	2026-01-19T15:54:19.3036450Z -- Running vcpkg install
+build_windows	Build project	2026-01-19T15:54:19.9103346Z Detecting compiler hash for triplet x64-windows...
+build_windows	Build project	2026-01-19T15:54:22.8403507Z Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+build_windows	Build project	2026-01-19T15:54:22.8835212Z The following packages will be built and installed:
+build_windows	Build project	2026-01-19T15:54:22.8836391Z   * asmjit:x64-windows@2025-12-13 -- D:\a\PDF4QT\PDF4QT\pdf4qt\vcpkg/overlays/general\asmjit
+build_windows	Build project	2026-01-19T15:54:22.8837662Z     blend2d[core,jit]:x64-windows@2025-11-29 -- D:\a\PDF4QT\PDF4QT\pdf4qt\vcpkg/overlays/general\blend2d
+build_windows	Build project	2026-01-19T15:54:22.8838449Z   * brotli:x64-windows@1.2.0
+build_windows	Build project	2026-01-19T15:54:22.8838903Z   * bzip2[core,tool]:x64-windows@1.0.8#6
+build_windows	Build project	2026-01-19T15:54:22.8839513Z     freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3
+build_windows	Build project	2026-01-19T15:54:22.8840109Z   * hwloc:x64-windows@2.11.2
+build_windows	Build project	2026-01-19T15:54:22.8840534Z     lcms:x64-windows@2.18
+build_windows	Build project	2026-01-19T15:54:22.8840932Z     libjpeg-turbo:x64-windows@3.1.3
+build_windows	Build project	2026-01-19T15:54:22.8841400Z     libpng:x64-windows@1.6.53
+build_windows	Build project	2026-01-19T15:54:22.8841802Z     openjpeg:x64-windows@2.5.4
+build_windows	Build project	2026-01-19T15:54:22.8842227Z     openssl:x64-windows@3.6.0#3
+build_windows	Build project	2026-01-19T15:54:22.8842637Z     tbb[core,hwloc]:x64-windows@2022.3.0
+build_windows	Build project	2026-01-19T15:54:22.8843097Z   * vcpkg-cmake:x64-windows@2024-04-23
+build_windows	Build project	2026-01-19T15:54:22.8843525Z   * vcpkg-cmake-config:x64-windows@2024-05-23
+build_windows	Build project	2026-01-19T15:54:22.8844086Z   * vcpkg-cmake-get-vars:x64-windows@2025-05-29
+build_windows	Build project	2026-01-19T15:54:22.8844597Z   * vcpkg-tool-meson:x64-windows@1.9.0#3
+build_windows	Build project	2026-01-19T15:54:22.8845018Z     zlib:x64-windows@1.3.1
+build_windows	Build project	2026-01-19T15:54:22.8845574Z Additional packages (*) will be modified to complete this operation.
+build_windows	Build project	2026-01-19T15:54:24.0369620Z Restored 15 package(s) from C:\Users\runneradmin\AppData\Local\vcpkg\archives in 1 s. Use --debug to see more details.
+build_windows	Build project	2026-01-19T15:54:24.0370787Z Installing 1/17 vcpkg-cmake-config:x64-windows@2024-05-23...
+build_windows	Build project	2026-01-19T15:54:24.0390998Z Elapsed time to handle vcpkg-cmake-config:x64-windows: 2.18 ms
+build_windows	Build project	2026-01-19T15:54:24.0392072Z vcpkg-cmake-config:x64-windows package ABI: 80b139a16db9586821822493e1e2c117ce59f6a4def1a9780e1db8b1651a6af3
+build_windows	Build project	2026-01-19T15:54:24.0393017Z Installing 2/17 vcpkg-cmake:x64-windows@2024-04-23...
+build_windows	Build project	2026-01-19T15:54:24.0418336Z Elapsed time to handle vcpkg-cmake:x64-windows: 2.74 ms
+build_windows	Build project	2026-01-19T15:54:24.0419620Z vcpkg-cmake:x64-windows package ABI: 3bd510eceea8a3d0b3fbfceee813237350df6d1459b992833bbdf80b082a856f
+build_windows	Build project	2026-01-19T15:54:24.0420526Z Installing 3/17 asmjit:x64-windows@2025-12-13...
+build_windows	Build project	2026-01-19T15:54:24.0421005Z Building asmjit:x64-windows@2025-12-13...
+build_windows	Build project	2026-01-19T15:54:24.0421730Z D:\a\PDF4QT\PDF4QT\pdf4qt\vcpkg/overlays/general\asmjit: info: installing overlay port from here
+build_windows	Build project	2026-01-19T15:54:24.0949281Z Downloading https://github.com/asmjit/asmjit/archive/c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz -> asmjit-asmjit-c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz
+build_windows	Build project	2026-01-19T15:54:24.6705411Z Successfully downloaded asmjit-asmjit-c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz
+build_windows	Build project	2026-01-19T15:54:24.6797800Z -- Extracting source D:/a/PDF4QT/PDF4QT/vcpkg/downloads/asmjit-asmjit-c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz
+build_windows	Build project	2026-01-19T15:54:24.8707918Z -- Using source at D:/a/PDF4QT/PDF4QT/vcpkg/buildtrees/asmjit/src/f6a55b9963-dc6f9a90e5.clean
+build_windows	Build project	2026-01-19T15:54:24.9284154Z -- Configuring x64-windows
+build_windows	Build project	2026-01-19T15:54:25.9230565Z -- Building x64-windows-dbg
+build_windows	Build project	2026-01-19T15:54:46.5890369Z -- Building x64-windows-rel
+build_windows	Build project	2026-01-19T15:55:15.5540993Z -- Installing: D:/a/PDF4QT/PDF4QT/vcpkg/packages/asmjit_x64-windows/share/asmjit/copyright
+build_windows	Build project	2026-01-19T15:55:15.5604421Z -- Performing post-build validation
+build_windows	Build project	2026-01-19T15:55:15.5991405Z Starting submission of asmjit:x64-windows@2025-12-13 to 1 binary cache(s) in the background
+build_windows	Build project	2026-01-19T15:55:15.5992648Z Elapsed time to handle asmjit:x64-windows: 52 s
+build_windows	Build project	2026-01-19T15:55:15.5993710Z asmjit:x64-windows package ABI: 482621e8293140651968fe47bad2f048e79624f434c6e0d1c407e1b060c534ea
+build_windows	Build project	2026-01-19T15:55:15.5994783Z Installing 4/17 blend2d[core,jit]:x64-windows@2025-11-29...
+build_windows	Build project	2026-01-19T15:55:15.5995524Z Building blend2d[core,jit]:x64-windows@2025-11-29...
+build_windows	Build project	2026-01-19T15:55:15.5996570Z D:\a\PDF4QT\PDF4QT\pdf4qt\vcpkg/overlays/general\blend2d: info: installing overlay port from here
+build_windows	Build project	2026-01-19T15:55:15.6646019Z Downloading https://github.com/blend2d/blend2d/archive/6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz -> blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+build_windows	Build project	2026-01-19T15:55:16.3112486Z Successfully downloaded blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+build_windows	Build project	2026-01-19T15:55:16.3225417Z -- Extracting source D:/a/PDF4QT/PDF4QT/vcpkg/downloads/blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+build_windows	Build project	2026-01-19T15:55:16.5506783Z -- Using source at D:/a/PDF4QT/PDF4QT/vcpkg/buildtrees/blend2d/src/40b49b15d7-f6e425c598.clean
+build_windows	Build project	2026-01-19T15:55:16.6314366Z -- Configuring x64-windows
+build_windows	Build project	2026-01-19T15:55:19.0000213Z -- Building x64-windows-dbg
+build_windows	Build project	2026-01-19T15:56:06.4075555Z -- Building x64-windows-rel
+build_windows	Build project	2026-01-19T15:58:15.0301559Z -- Installing: D:/a/PDF4QT/PDF4QT/vcpkg/packages/blend2d_x64-windows/share/blend2d/usage
+build_windows	Build project	2026-01-19T15:58:15.0310260Z -- Installing: D:/a/PDF4QT/PDF4QT/vcpkg/packages/blend2d_x64-windows/share/blend2d/copyright
+build_windows	Build project	2026-01-19T15:58:15.0376477Z -- Performing post-build validation
+build_windows	Build project	2026-01-19T15:58:15.0971194Z Starting submission of blend2d[core,jit]:x64-windows@2025-11-29 to 1 binary cache(s) in the background
+build_windows	Build project	2026-01-19T15:58:15.0972076Z Elapsed time to handle blend2d:x64-windows: 3 min
+build_windows	Build project	2026-01-19T15:58:15.0972852Z blend2d:x64-windows package ABI: b3515122b7644b31dedc1ecb01eeb7c0b64996d6006d44ea7a03212b90fc3b7a
+build_windows	Build project	2026-01-19T15:58:15.0973743Z Completed submission of asmjit:x64-windows@2025-12-13 to 1 binary cache(s) in 995 ms
+build_windows	Build project	2026-01-19T15:58:15.0974593Z Installing 5/17 zlib:x64-windows@1.3.1...
+build_windows	Build project	2026-01-19T15:58:15.1018503Z Elapsed time to handle zlib:x64-windows: 4.66 ms
+build_windows	Build project	2026-01-19T15:58:15.1019362Z zlib:x64-windows package ABI: 4f100ba36d06ddbd48587fba4a49c5690728b1692866789f3677f4954903ad0e
+build_windows	Build project	2026-01-19T15:58:15.1020150Z Installing 6/17 libpng:x64-windows@1.6.53...
+build_windows	Build project	2026-01-19T15:58:15.1091644Z Elapsed time to handle libpng:x64-windows: 7.32 ms
+build_windows	Build project	2026-01-19T15:58:15.1092662Z libpng:x64-windows package ABI: f5cad162c9f834d6e0cfc8ee23751f57e77e962fdee51f3465b5f91d455f4067
+build_windows	Build project	2026-01-19T15:58:15.1093534Z Installing 7/17 bzip2[core,tool]:x64-windows@1.0.8#6...
+build_windows	Build project	2026-01-19T15:58:15.1139764Z Elapsed time to handle bzip2:x64-windows: 4.79 ms
+build_windows	Build project	2026-01-19T15:58:15.1140708Z bzip2:x64-windows package ABI: a5d0561b42ceec6593b59eb28185816bcfcc2484f7f587b959e848cd9bfd6e74
+build_windows	Build project	2026-01-19T15:58:15.1141566Z Installing 8/17 brotli:x64-windows@1.2.0...
+build_windows	Build project	2026-01-19T15:58:15.1212781Z Elapsed time to handle brotli:x64-windows: 7.27 ms
+build_windows	Build project	2026-01-19T15:58:15.1214026Z brotli:x64-windows package ABI: 404445dc947a02ddfb1ea70afb8a916f353453283f5129e8a8d888bfd6c22ca5
+build_windows	Build project	2026-01-19T15:58:15.1214963Z Installing 9/17 freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3...
+build_windows	Build project	2026-01-19T15:58:15.1326738Z Elapsed time to handle freetype:x64-windows: 11.4 ms
+build_windows	Build project	2026-01-19T15:58:15.1327637Z freetype:x64-windows package ABI: d531180c79592511f0b816a2a5aa0cf43828093705ce4a468d4c364278f02e1a
+build_windows	Build project	2026-01-19T15:58:15.1328380Z Installing 10/17 vcpkg-cmake-get-vars:x64-windows@2025-05-29...
+build_windows	Build project	2026-01-19T15:58:15.1366983Z Elapsed time to handle vcpkg-cmake-get-vars:x64-windows: 3.92 ms
+build_windows	Build project	2026-01-19T15:58:15.1367975Z vcpkg-cmake-get-vars:x64-windows package ABI: 943119da877c76fecbcb8783888b565ce31d4ab7909e1048a3b0372f63daaef4
+build_windows	Build project	2026-01-19T15:58:15.1368853Z Installing 11/17 vcpkg-tool-meson:x64-windows@1.9.0#3...
+build_windows	Build project	2026-01-19T15:58:15.1402004Z Elapsed time to handle vcpkg-tool-meson:x64-windows: 3.55 ms
+build_windows	Build project	2026-01-19T15:58:15.1403001Z vcpkg-tool-meson:x64-windows package ABI: 8ddffece0afc9054801439b8b6676bd0c4c0e7e48f330e2f39be828c2fee8b88
+build_windows	Build project	2026-01-19T15:58:15.1403864Z Installing 12/17 lcms:x64-windows@2.18...
+build_windows	Build project	2026-01-19T15:58:15.1448730Z Elapsed time to handle lcms:x64-windows: 4.66 ms
+build_windows	Build project	2026-01-19T15:58:15.1449573Z lcms:x64-windows package ABI: d1e4d04232d7a93f43fda2db8e48bd5f8b980bfa8c40925964e1a17f6c7c7d50
+build_windows	Build project	2026-01-19T15:58:15.1450388Z Installing 13/17 libjpeg-turbo:x64-windows@3.1.3...
+build_windows	Build project	2026-01-19T15:58:15.1517330Z Elapsed time to handle libjpeg-turbo:x64-windows: 6.79 ms
+build_windows	Build project	2026-01-19T15:58:15.1518626Z libjpeg-turbo:x64-windows package ABI: 6424e90c619c1b6e9f770e820667190b8e5435d1eb3018031e03abe1073b7408
+build_windows	Build project	2026-01-19T15:58:15.1519493Z Installing 14/17 openjpeg:x64-windows@2.5.4...
+build_windows	Build project	2026-01-19T15:58:15.1588701Z Elapsed time to handle openjpeg:x64-windows: 7.14 ms
+build_windows	Build project	2026-01-19T15:58:15.1589722Z openjpeg:x64-windows package ABI: 9e6da162f18429f3bc7d13c8a4e7c5190ce015c3d20ecace515d0061853932d4
+build_windows	Build project	2026-01-19T15:58:15.1590653Z Installing 15/17 openssl:x64-windows@3.6.0#3...
+build_windows	Build project	2026-01-19T15:58:15.1849342Z Elapsed time to handle openssl:x64-windows: 26 ms
+build_windows	Build project	2026-01-19T15:58:15.1850266Z openssl:x64-windows package ABI: c68399cd35c32524fca0d3fa85fc75eba7999778a549669c0e0864f160d454aa
+build_windows	Build project	2026-01-19T15:58:15.1851121Z Installing 16/17 hwloc:x64-windows@2.11.2...
+build_windows	Build project	2026-01-19T15:58:15.2021609Z Elapsed time to handle hwloc:x64-windows: 17.2 ms
+build_windows	Build project	2026-01-19T15:58:15.2022548Z hwloc:x64-windows package ABI: 31783640af020f07dd25786413dde0ef6c6fc1ca250e68822c6f0f2f2b50870f
+build_windows	Build project	2026-01-19T15:58:15.2023720Z Installing 17/17 tbb[core,hwloc]:x64-windows@2022.3.0...
+build_windows	Build project	2026-01-19T15:58:15.2350708Z Elapsed time to handle tbb:x64-windows: 32.8 ms
+build_windows	Build project	2026-01-19T15:58:15.2351701Z tbb:x64-windows package ABI: 18a88a951a5e6a7d60620eb64db3192d11da087751a8e5ec6a60ee00307f0134
+build_windows	Build project	2026-01-19T15:58:15.2421540Z Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+build_windows	Build project	2026-01-19T15:58:15.2423450Z Packages installed in this vcpkg installation declare the following licenses:
+build_windows	Build project	2026-01-19T15:58:15.2424413Z (FTL OR GPL-2.0-or-later)
+build_windows	Build project	2026-01-19T15:58:15.2424837Z Apache-2.0
+build_windows	Build project	2026-01-19T15:58:15.2425120Z BSD-2-Clause
+build_windows	Build project	2026-01-19T15:58:15.2425421Z BSD-3-Clause
+build_windows	Build project	2026-01-19T15:58:15.2425682Z MIT
+build_windows	Build project	2026-01-19T15:58:15.2426221Z Zlib
+build_windows	Build project	2026-01-19T15:58:15.2426532Z bzip2-1.0.6
+build_windows	Build project	2026-01-19T15:58:15.2426863Z libpng-2.0
+build_windows	Build project	2026-01-19T15:58:15.2427178Z blend2d provides CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2427493Z 
+build_windows	Build project	2026-01-19T15:58:15.2427691Z     find_package(blend2d CONFIG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2428263Z     target_link_libraries(main PRIVATE blend2d::blend2d)
+build_windows	Build project	2026-01-19T15:58:15.2428654Z 
+build_windows	Build project	2026-01-19T15:58:15.2428910Z The package zlib is compatible with built-in CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2429268Z 
+build_windows	Build project	2026-01-19T15:58:15.2429444Z     find_package(ZLIB REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2429886Z     target_link_libraries(main PRIVATE ZLIB::ZLIB)
+build_windows	Build project	2026-01-19T15:58:15.2430671Z 
+build_windows	Build project	2026-01-19T15:58:15.2430871Z libpng provides CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2431149Z 
+build_windows	Build project	2026-01-19T15:58:15.2431619Z   find_package(PNG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2432129Z   target_link_libraries(main PRIVATE PNG::PNG)
+build_windows	Build project	2026-01-19T15:58:15.2432476Z 
+build_windows	Build project	2026-01-19T15:58:15.2432732Z freetype is compatible with built-in CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2433109Z 
+build_windows	Build project	2026-01-19T15:58:15.2433265Z     find_package(Freetype REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2433936Z     target_link_libraries(main PRIVATE Freetype::Freetype) # since CMake 3.10
+build_windows	Build project	2026-01-19T15:58:15.2434484Z 
+build_windows	Build project	2026-01-19T15:58:15.2434753Z The package lcms provides CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2435083Z 
+build_windows	Build project	2026-01-19T15:58:15.2435253Z     find_package(lcms2 CONFIG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2435801Z     target_link_libraries(main PRIVATE lcms2::lcms2)
+build_windows	Build project	2026-01-19T15:58:15.2436194Z 
+build_windows	Build project	2026-01-19T15:58:15.2436593Z libjpeg-turbo is compatible with built-in implementation-agnostic CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2437204Z 
+build_windows	Build project	2026-01-19T15:58:15.2437350Z     find_package(JPEG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2437856Z     target_link_libraries(main PRIVATE JPEG::JPEG)
+build_windows	Build project	2026-01-19T15:58:15.2438436Z 
+build_windows	Build project	2026-01-19T15:58:15.2438714Z libjpeg-turbo provides CMake targets for the TurboJPEG C API:
+build_windows	Build project	2026-01-19T15:58:15.2439182Z 
+build_windows	Build project	2026-01-19T15:58:15.2439386Z     find_package(libjpeg-turbo CONFIG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2440496Z     target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:libjpeg-turbo::turbojpeg>,libjpeg-turbo::turbojpeg,libjpeg-turbo::turbojpeg-static>)
+build_windows	Build project	2026-01-19T15:58:15.2441713Z 
+build_windows	Build project	2026-01-19T15:58:15.2441883Z openjpeg provides CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2442167Z 
+build_windows	Build project	2026-01-19T15:58:15.2442380Z   find_package(OpenJPEG CONFIG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2442894Z   target_link_libraries(main PRIVATE openjp2)
+build_windows	Build project	2026-01-19T15:58:15.2443279Z 
+build_windows	Build project	2026-01-19T15:58:15.2443454Z openjpeg provides pkg-config modules:
+build_windows	Build project	2026-01-19T15:58:15.2443765Z 
+build_windows	Build project	2026-01-19T15:58:15.2443904Z   # JPEG2000 library
+build_windows	Build project	2026-01-19T15:58:15.2444260Z   libopenjp2
+build_windows	Build project	2026-01-19T15:58:15.2444446Z 
+build_windows	Build project	2026-01-19T15:58:15.2444687Z openssl is compatible with built-in CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2445069Z 
+build_windows	Build project	2026-01-19T15:58:15.2445227Z   find_package(OpenSSL REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2445742Z   target_link_libraries(main PRIVATE OpenSSL::SSL)
+build_windows	Build project	2026-01-19T15:58:15.2446326Z   target_link_libraries(main PRIVATE OpenSSL::Crypto)
+build_windows	Build project	2026-01-19T15:58:15.2446738Z 
+build_windows	Build project	2026-01-19T15:58:15.2446867Z tbb provides CMake targets:
+build_windows	Build project	2026-01-19T15:58:15.2447144Z 
+build_windows	Build project	2026-01-19T15:58:15.2447396Z   # this is heuristically generated, and may not be correct
+build_windows	Build project	2026-01-19T15:58:15.2448021Z   find_package(TBB CONFIG REQUIRED)
+build_windows	Build project	2026-01-19T15:58:15.2448695Z   target_link_libraries(main PRIVATE TBB::tbb TBB::tbbmalloc TBB::tbbmalloc_proxy)
+build_windows	Build project	2026-01-19T15:58:15.2449262Z 
+build_windows	Build project	2026-01-19T15:58:15.2449428Z tbb provides pkg-config modules:
+build_windows	Build project	2026-01-19T15:58:15.2449712Z 
+build_windows	Build project	2026-01-19T15:58:15.2450034Z   # C++ library for parallel programming on multi-core processors.
+build_windows	Build project	2026-01-19T15:58:15.2450601Z   tbb
+build_windows	Build project	2026-01-19T15:58:15.2450753Z 
+build_windows	Build project	2026-01-19T15:58:15.2451001Z Waiting for 1 remaining binary cache submissions...
+build_windows	Build project	2026-01-19T15:58:16.9305927Z Completed submission of blend2d[core,jit]:x64-windows@2025-11-29 to 1 binary cache(s) in 1.8 s (1/1)
+build_windows	Build project	2026-01-19T15:58:16.9306947Z All requested installations completed successfully in: 3.9 min
+build_windows	Build project	2026-01-19T15:58:16.9453108Z -- Running vcpkg install - done
+build_windows	Build project	2026-01-19T15:58:19.7538316Z -- The CXX compiler identification is MSVC 19.44.35222.0
+build_windows	Build project	2026-01-19T15:58:19.9599463Z -- Detecting CXX compiler ABI info
+build_windows	Build project	2026-01-19T15:58:20.8590982Z -- Detecting CXX compiler ABI info - done
+build_windows	Build project	2026-01-19T15:58:20.8764707Z -- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+build_windows	Build project	2026-01-19T15:58:20.8775540Z -- Detecting CXX compile features
+build_windows	Build project	2026-01-19T15:58:20.8789049Z -- Detecting CXX compile features - done
+build_windows	Build project	2026-01-19T15:58:20.8814633Z VCPKG Enabled: ON
+build_windows	Build project	2026-01-19T15:58:20.9314806Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+build_windows	Build project	2026-01-19T15:58:22.2405695Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+build_windows	Build project	2026-01-19T15:58:22.2407609Z -- Looking for pthread_create in pthreads
+build_windows	Build project	2026-01-19T15:58:22.9673301Z -- Looking for pthread_create in pthreads - not found
+build_windows	Build project	2026-01-19T15:58:22.9674277Z -- Looking for pthread_create in pthread
+build_windows	Build project	2026-01-19T15:58:23.6601500Z -- Looking for pthread_create in pthread - not found
+build_windows	Build project	2026-01-19T15:58:23.6675506Z -- Found Threads: TRUE
+build_windows	Build project	2026-01-19T15:58:23.6713562Z -- Performing Test HAVE_STDATOMIC
+build_windows	Build project	2026-01-19T15:58:24.6570748Z -- Performing Test HAVE_STDATOMIC - Success
+build_windows	Build project	2026-01-19T15:58:24.6584771Z -- Found WrapAtomic: TRUE
+build_windows	Build project	2026-01-19T15:58:25.3191160Z -- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+build_windows	Build project	2026-01-19T15:58:25.4981592Z -- Found OpenSSL: optimized;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/lib/libcrypto.lib;debug;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/debug/lib/libcrypto.lib (found version "3.6.0")
+build_windows	Build project	2026-01-19T15:58:25.5097339Z -- Found ZLIB: optimized;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/lib/zlib.lib;debug;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/debug/lib/zlibd.lib (found version "1.3.1")
+build_windows	Build project	2026-01-19T15:58:25.5330606Z -- Found JPEG: optimized;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/lib/jpeg.lib;debug;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/debug/lib/jpeg.lib (found version "62")
+build_windows	Build project	2026-01-19T15:58:25.5545635Z -- Found PNG: optimized;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/lib/libpng16.lib;debug;D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/debug/lib/libpng16d.lib (found version "1.6.53")
+build_windows	Build project	2026-01-19T15:58:25.6042165Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+build_windows	Build project	2026-01-19T15:58:26.2300702Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Failed
+build_windows	Build project	2026-01-19T15:58:26.2302159Z -- Performing Test COMPILER_HAS_DEPRECATED
+build_windows	Build project	2026-01-19T15:58:27.0431982Z -- Performing Test COMPILER_HAS_DEPRECATED - Success
+build_windows	Build project	2026-01-19T15:58:27.1330918Z CMAKE_TRANSLATION_TARGETS = Pdf4QtLibCorePdf4QtLibWidgetsCodeGeneratorJBIG2_VIEWERPdfExampleGeneratorPdfToolUnitTestsPdf4QtLibGuiAudioBookPluginDimensionsPluginObjectInspectorPluginOutputPreviewPluginRedactPluginSignaturePluginSoftProofingPluginEditorPluginPdf4QtEditorPdf4QtViewerPdf4QtPageMasterPdf4QtDiffPdf4QtLaunchPad
+build_windows	Build project	2026-01-19T15:58:27.1333373Z PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORYD:/a/PDF4QT/PDF4QT/pdf4qt/translations
+build_windows	Build project	2026-01-19T15:58:27.1333913Z PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORYD:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations
+build_windows	Build project	2026-01-19T15:58:27.1476529Z CMAKE_PREFIX_PATH = D:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windowsD:/a/PDF4QT/PDF4QT/pdf4qt/build/vcpkg_installed/x64-windows/debug
+build_windows	Build project	2026-01-19T15:58:27.1477247Z CMAKE_TOOLCHAIN_FILE = D:/a/PDF4QT/PDF4QT/vcpkg/scripts/buildsystems/vcpkg.cmake
+build_windows	Build project	2026-01-19T15:58:27.1505854Z -- Using existing MSVC Redistributable Package Path = C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Redist\MSVC\14.29.30133\x64\Microsoft.VC142.CRT
+build_windows	Build project	2026-01-19T15:58:27.1536593Z -- Configuring done (247.9s)
+build_windows	Build project	2026-01-19T15:58:29.5559552Z CMake Error at PdfTool/CMakeLists.txt:58 (target_link_libraries):
+build_windows	Build project	2026-01-19T15:58:29.5560129Z   Target "PdfTool" links to:
+build_windows	Build project	2026-01-19T15:58:29.5560281Z 
+build_windows	Build project	2026-01-19T15:58:29.5560404Z     Qt6::Concurrent
+build_windows	Build project	2026-01-19T15:58:29.5560518Z 
+build_windows	Build project	2026-01-19T15:58:29.5560651Z   but the target was not found.  Possible reasons include:
+build_windows	Build project	2026-01-19T15:58:29.5561012Z 
+build_windows	Build project	2026-01-19T15:58:29.5561115Z     * There is a typo in the target name.
+build_windows	Build project	2026-01-19T15:58:29.5561476Z     * A find_package call is missing for an IMPORTED target.
+build_windows	Build project	2026-01-19T15:58:29.5561773Z     * An ALIAS target is missing.
+build_windows	Build project	2026-01-19T15:58:29.5561926Z 
+build_windows	Build project	2026-01-19T15:58:29.5561931Z 
+build_windows	Build project	2026-01-19T15:58:29.5561963Z 
+build_windows	Build project	2026-01-19T15:58:29.5562159Z CMake Error at Pdf4QtPageMaster/CMakeLists.txt:46 (target_link_libraries):
+build_windows	Build project	2026-01-19T15:58:29.5562524Z   Target "Pdf4QtPageMaster" links to:
+build_windows	Build project	2026-01-19T15:58:29.5562701Z 
+build_windows	Build project	2026-01-19T15:58:29.5562776Z     Qt6::Concurrent
+build_windows	Build project	2026-01-19T15:58:29.5562897Z 
+build_windows	Build project	2026-01-19T15:58:29.5563345Z   but the target was not found.  Possible reasons include:
+build_windows	Build project	2026-01-19T15:58:29.5563567Z 
+build_windows	Build project	2026-01-19T15:58:29.5563669Z     * There is a typo in the target name.
+build_windows	Build project	2026-01-19T15:58:29.5564008Z     * A find_package call is missing for an IMPORTED target.
+build_windows	Build project	2026-01-19T15:58:29.5564514Z     * An ALIAS target is missing.
+build_windows	Build project	2026-01-19T15:58:29.5564700Z 
+build_windows	Build project	2026-01-19T15:58:29.5564705Z 
+build_windows	Build project	2026-01-19T15:58:29.5564709Z 
+build_windows	Build project	2026-01-19T15:58:29.5593142Z -- Generating done (2.4s)
+build_windows	Build project	2026-01-19T15:58:29.5593547Z CMake Warning:
+build_windows	Build project	2026-01-19T15:58:29.5593898Z   Manually-specified variables were not used by the project:
+build_windows	Build project	2026-01-19T15:58:29.5594178Z 
+build_windows	Build project	2026-01-19T15:58:29.5594316Z     CMAKE_VCPKG_BUILD_TYPE
+build_windows	Build project	2026-01-19T15:58:29.5594481Z 
+build_windows	Build project	2026-01-19T15:58:29.5594486Z 
+build_windows	Build project	2026-01-19T15:58:29.5594715Z CMake Generate step failed.  Build files cannot be regenerated correctly.
+build_windows	Build project	2026-01-19T15:58:29.7250129Z MSBuild version 17.14.23+b0019275e for .NET Framework
+build_windows	Build project	2026-01-19T15:58:29.7577711Z 
+build_windows	Build project	2026-01-19T15:58:30.1164407Z   1>Checking Build System
+build_windows	Build project	2026-01-19T15:58:30.4009295Z   Generating usr/bin/translations/PDF4QT-Opus_cs.qm
+build_windows	Build project	2026-01-19T15:58:30.4455435Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_cs.qm'...
+build_windows	Build project	2026-01-19T15:58:30.4498277Z       Generated 1761 translation(s) (1761 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.4576408Z   Generating usr/bin/translations/PDF4QT-Opus_de.qm
+build_windows	Build project	2026-01-19T15:58:30.4955796Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_de.qm'...
+build_windows	Build project	2026-01-19T15:58:30.5001030Z       Generated 1917 translation(s) (1917 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.5075645Z   Generating usr/bin/translations/PDF4QT-Opus_en.qm
+build_windows	Build project	2026-01-19T15:58:30.5411211Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_en.qm'...
+build_windows	Build project	2026-01-19T15:58:30.5412150Z       Generated 0 translation(s) (0 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.5478100Z   Generating usr/bin/translations/PDF4QT-Opus_es.qm
+build_windows	Build project	2026-01-19T15:58:30.5844763Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_es.qm'...
+build_windows	Build project	2026-01-19T15:58:30.5882685Z       Generated 1647 translation(s) (1647 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.5956005Z   Generating usr/bin/translations/PDF4QT-Opus_fr.qm
+build_windows	Build project	2026-01-19T15:58:30.6322902Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_fr.qm'...
+build_windows	Build project	2026-01-19T15:58:30.6360235Z       Generated 1598 translation(s) (1598 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.6432318Z   Generating usr/bin/translations/PDF4QT-Opus_ko.qm
+build_windows	Build project	2026-01-19T15:58:30.6807889Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_ko.qm'...
+build_windows	Build project	2026-01-19T15:58:30.6855260Z       Generated 1884 translation(s) (1884 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.6929154Z   Generating usr/bin/translations/PDF4QT-Opus_ru.qm
+build_windows	Build project	2026-01-19T15:58:30.7296415Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_ru.qm'...
+build_windows	Build project	2026-01-19T15:58:30.7339501Z       Generated 1885 translation(s) (1885 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.7409151Z   Generating usr/bin/translations/PDF4QT-Opus_tr.qm
+build_windows	Build project	2026-01-19T15:58:30.7784811Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_tr.qm'...
+build_windows	Build project	2026-01-19T15:58:30.7829711Z       Generated 1846 translation(s) (1846 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.7908515Z   Generating usr/bin/translations/PDF4QT-Opus_zh_CN.qm
+build_windows	Build project	2026-01-19T15:58:30.8286518Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_zh_CN.qm'...
+build_windows	Build project	2026-01-19T15:58:30.8327360Z       Generated 1795 translation(s) (1795 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.8399996Z   Generating usr/bin/translations/PDF4QT-Opus_zh_TW.qm
+build_windows	Build project	2026-01-19T15:58:30.8772395Z   Updating 'D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/translations/PDF4QT-Opus_zh_TW.qm'...
+build_windows	Build project	2026-01-19T15:58:30.8813312Z       Generated 1723 translation(s) (1723 finished and 0 unfinished)
+build_windows	Build project	2026-01-19T15:58:30.8884889Z   Building Custom Rule D:/a/PDF4QT/PDF4QT/pdf4qt/CMakeLists.txt
+build_windows	Build project	2026-01-19T15:58:31.0321652Z   Building Custom Rule D:/a/PDF4QT/PDF4QT/pdf4qt/CMakeLists.txt
+build_windows	Build project	2026-01-19T15:58:31.2391318Z MSBuild version 17.14.23+b0019275e for .NET Framework
+build_windows	Build project	2026-01-19T15:58:31.2714526Z 
+build_windows	Build project	2026-01-19T15:58:31.8832846Z   Automatic MOC and UIC for target Pdf4QtLibCore
+build_windows	Build project	2026-01-19T15:58:34.3614812Z   2>Automatic RCC for fonts.qrc
+build_windows	Build project	2026-01-19T15:58:34.3617316Z   1>Automatic RCC for aatl.qrc
+build_windows	Build project	2026-01-19T15:58:34.4553696Z   3>Automatic RCC for cmaps.qrc
+build_windows	Build project	2026-01-19T15:58:36.3740909Z   Building Custom Rule D:/a/PDF4QT/PDF4QT/pdf4qt/Pdf4QtLibCore/CMakeLists.txt
+build_windows	Build project	2026-01-19T15:58:36.5268598Z   pdfaction.cpp
+build_windows	Build project	2026-01-19T15:58:41.0066853Z   pdfalgorithmlcs.cpp
+build_windows	Build project	2026-01-19T15:58:43.3762670Z   pdfannotation.cpp
+build_windows	Build project	2026-01-19T15:58:49.6241679Z   pdfblendfunction.cpp
+build_windows	Build project	2026-01-19T15:58:52.1951193Z   pdfccittfaxdecoder.cpp
+build_windows	Build project	2026-01-19T15:58:55.1795456Z   pdfcertificatemanager.cpp
+build_windows	Build project	2026-01-19T15:58:58.8090083Z   pdfcms.cpp
+build_windows	Build project	2026-01-19T15:59:02.9915988Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfcms.cpp(1773,9): warning C4996: 'GetColorDirectoryW': GetColorDirectoryA is deprecated and might not work on all platforms. For more info, see MSDN. [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T15:59:04.9429189Z   pdfdiff.cpp
+build_windows	Build project	2026-01-19T15:59:12.9007586Z   pdfdocumentbuilder.cpp
+build_windows	Build project	2026-01-19T15:59:18.5470946Z   pdfdocumentmanipulator.cpp
+build_windows	Build project	2026-01-19T15:59:24.3395688Z   pdfdocumenttextflow.cpp
+build_windows	Build project	2026-01-19T15:59:30.6657177Z   pdfdocumenttextfloweditormodel.cpp
+build_windows	Build project	2026-01-19T15:59:33.5816189Z   pdfdocumentwriter.cpp
+build_windows	Build project	2026-01-19T15:59:38.2112810Z   pdfexecutionpolicy.cpp
+build_windows	Build project	2026-01-19T15:59:40.9529261Z   pdffile.cpp
+build_windows	Build project	2026-01-19T15:59:45.0848805Z   pdfform.cpp
+build_windows	Build project	2026-01-19T15:59:50.5807044Z   pdficontheme.cpp
+build_windows	Build project	2026-01-19T15:59:53.7195612Z   pdfjavascriptscanner.cpp
+build_windows	Build project	2026-01-19T15:59:59.0853031Z   pdfjbig2decoder.cpp
+build_windows	Build project	2026-01-19T16:00:02.4742848Z   pdfmultimedia.cpp
+build_windows	Build project	2026-01-19T16:00:07.0005349Z   Generating Code...
+build_windows	Build project	2026-01-19T16:01:03.7681500Z   Compiling...
+build_windows	Build project	2026-01-19T16:01:03.7682075Z   pdfobject.cpp
+build_windows	Build project	2026-01-19T16:01:07.9181749Z   pdfobjecteditormodel.cpp
+build_windows	Build project	2026-01-19T16:01:12.9068626Z   pdfobjectutils.cpp
+build_windows	Build project	2026-01-19T16:01:17.6263709Z   pdfoptimizer.cpp
+build_windows	Build project	2026-01-19T16:01:23.1105824Z   pdfoptionalcontent.cpp
+build_windows	Build project	2026-01-19T16:01:27.2121440Z   pdfoutline.cpp
+build_windows	Build project	2026-01-19T16:01:31.2447091Z   pdfpagenavigation.cpp
+build_windows	Build project	2026-01-19T16:01:35.2291775Z   pdfpagetransition.cpp
+build_windows	Build project	2026-01-19T16:01:39.3359038Z   pdfpainterutils.cpp
+build_windows	Build project	2026-01-19T16:01:43.5860951Z   pdfparser.cpp
+build_windows	Build project	2026-01-19T16:01:47.2780601Z   pdfdocument.cpp
+build_windows	Build project	2026-01-19T16:01:51.6139633Z   pdfdocumentreader.cpp
+build_windows	Build project	2026-01-19T16:01:58.0907300Z   pdfpattern.cpp
+build_windows	Build project	2026-01-19T16:02:04.4739680Z   pdfplugin.cpp
+build_windows	Build project	2026-01-19T16:02:09.7588397Z   pdfprogress.cpp
+build_windows	Build project	2026-01-19T16:02:12.6022475Z   pdfredact.cpp
+build_windows	Build project	2026-01-19T16:02:19.3030926Z   pdfsecurityhandler.cpp
+build_windows	Build project	2026-01-19T16:02:26.0481359Z   pdfsignaturehandler.cpp
+build_windows	Build project	2026-01-19T16:02:33.3317957Z   pdfsnapper.cpp
+build_windows	Build project	2026-01-19T16:02:37.7590818Z   pdfstructuretree.cpp
+build_windows	Build project	2026-01-19T16:02:43.8323593Z   Generating Code...
+build_windows	Build project	2026-01-19T16:03:33.8116847Z   Compiling...
+build_windows	Build project	2026-01-19T16:03:33.8117295Z   pdftextlayout.cpp
+build_windows	Build project	2026-01-19T16:03:37.8826874Z   pdftransparencyrenderer.cpp
+build_windows	Build project	2026-01-19T16:03:43.7736024Z   pdfutils.cpp
+build_windows	Build project	2026-01-19T16:03:46.6054645Z   pdfxfaengine.cpp
+build_windows	Build project	2026-01-19T16:03:56.8901294Z   pdfxreftable.cpp
+build_windows	Build project	2026-01-19T16:03:59.8104952Z   pdfvisitor.cpp
+build_windows	Build project	2026-01-19T16:04:03.9293022Z   pdfencoding.cpp
+build_windows	Build project	2026-01-19T16:04:06.8147555Z   pdfcatalog.cpp
+build_windows	Build project	2026-01-19T16:04:17.3103440Z   pdfpage.cpp
+build_windows	Build project	2026-01-19T16:04:23.2072225Z   pdfstreamfilters.cpp
+build_windows	Build project	2026-01-19T16:04:27.1802403Z   pdfcolorspaces.cpp
+build_windows	Build project	2026-01-19T16:04:32.5091550Z   pdfrenderer.cpp
+build_windows	Build project	2026-01-19T16:04:38.8833575Z   pdfpagecontentprocessor.cpp
+build_windows	Build project	2026-01-19T16:04:44.7260927Z   pdfpainter.cpp
+build_windows	Build project	2026-01-19T16:04:49.6722232Z   pdffunction.cpp
+build_windows	Build project	2026-01-19T16:04:54.1624982Z   pdfnametounicode.cpp
+build_windows	Build project	2026-01-19T16:04:57.8752977Z   pdffont.cpp
+build_windows	Build project	2026-01-19T16:05:03.3876052Z   pdfimage.cpp
+build_windows	Build project	2026-01-19T16:05:07.7929817Z   pdfdocumentsanitizer.cpp
+build_windows	Build project	2026-01-19T16:05:13.2008679Z   pdfimageconversion.cpp
+build_windows	Build project	2026-01-19T16:05:15.6598493Z   Generating Code...
+build_windows	Build project	2026-01-19T16:06:22.0700365Z   Compiling...
+build_windows	Build project	2026-01-19T16:06:22.0700841Z   pdfcolorconvertor.cpp
+build_windows	Build project	2026-01-19T16:06:24.6954058Z   pdftextlayoutgenerator.cpp
+build_windows	Build project	2026-01-19T16:06:28.7859518Z   pdfwidgetsnapshot.cpp
+build_windows	Build project	2026-01-19T16:06:31.2271033Z   pdfcertificatestore.cpp
+build_windows	Build project	2026-01-19T16:06:34.9261489Z   pdfblpainter.cpp
+build_windows	Build project	2026-01-19T16:06:38.8591806Z   pdfpagecontenteditorprocessor.cpp
+build_windows	Build project	2026-01-19T16:06:43.1525068Z   pdfpagecontenteditorcontentstreambuilder.cpp
+build_windows	Build project	2026-01-19T16:06:48.7921252Z   pdfapplicationtranslator.cpp
+build_windows	Build project	2026-01-19T16:06:51.7432727Z   pdfstreamingdocumentwriter.cpp
+build_windows	Build project	2026-01-19T16:06:55.3408604Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,35): error C2440: '<function-style-cast>': cannot convert from 'const pdf::PDFInplaceOrMemoryString' to 'pdf::PDFStringRef' [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T16:06:55.3419914Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,35):
+build_windows	Build project	2026-01-19T16:06:55.3421191Z       'pdf::PDFStringRef::PDFStringRef': no overloaded function could convert all the argument types
+build_windows	Build project	2026-01-19T16:06:55.3424952Z           D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfobject.h(125,1):
+build_windows	Build project	2026-01-19T16:06:55.3425848Z           could be 'pdf::PDFStringRef::PDFStringRef(pdf::PDFStringRef &&)'
+build_windows	Build project	2026-01-19T16:06:55.3427090Z               D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,35):
+build_windows	Build project	2026-01-19T16:06:55.3428103Z               'pdf::PDFStringRef::PDFStringRef(pdf::PDFStringRef &&)': cannot convert argument 1 from 'const pdf::PDFInplaceOrMemoryString' to 'pdf::PDFStringRef &&'
+build_windows	Build project	2026-01-19T16:06:55.3429144Z                   D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,54):
+build_windows	Build project	2026-01-19T16:06:55.3429936Z                   Reason: cannot convert from 'const pdf::PDFInplaceOrMemoryString' to 'pdf::PDFStringRef'
+build_windows	Build project	2026-01-19T16:06:55.3430702Z                   D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,54):
+build_windows	Build project	2026-01-19T16:06:55.3431610Z                   No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+build_windows	Build project	2026-01-19T16:06:55.3432367Z           D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfobject.h(125,1):
+build_windows	Build project	2026-01-19T16:06:55.3432840Z           or       'pdf::PDFStringRef::PDFStringRef(const pdf::PDFStringRef &)'
+build_windows	Build project	2026-01-19T16:06:55.3433372Z               D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,35):
+build_windows	Build project	2026-01-19T16:06:55.3434165Z               'pdf::PDFStringRef::PDFStringRef(const pdf::PDFStringRef &)': cannot convert argument 1 from 'const pdf::PDFInplaceOrMemoryString' to 'const pdf::PDFStringRef &'
+build_windows	Build project	2026-01-19T16:06:55.3435180Z                   D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,54):
+build_windows	Build project	2026-01-19T16:06:55.3435825Z                   Reason: cannot convert from 'const pdf::PDFInplaceOrMemoryString' to 'const pdf::PDFStringRef'
+build_windows	Build project	2026-01-19T16:06:55.3436860Z                   D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,54):
+build_windows	Build project	2026-01-19T16:06:55.3437565Z                   No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+build_windows	Build project	2026-01-19T16:06:55.3438228Z           D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(102,35):
+build_windows	Build project	2026-01-19T16:06:55.3438820Z           while trying to match the argument list '(const pdf::PDFInplaceOrMemoryString)'
+build_windows	Build project	2026-01-19T16:06:55.3439279Z   
+build_windows	Build project	2026-01-19T16:06:55.3440149Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(194,5): error C2668: 'pdf::PDFStreamingDocumentWriter::writeObject': ambiguous call to overloaded function [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T16:06:55.3441260Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.h(121,10):
+build_windows	Build project	2026-01-19T16:06:55.3442964Z       could be 'void pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &)'
+build_windows	Build project	2026-01-19T16:06:55.3443521Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(175,48):
+build_windows	Build project	2026-01-19T16:06:55.3444208Z       or       'pdf::PDFObjectReference pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &,pdf::PDFInteger)'
+build_windows	Build project	2026-01-19T16:06:55.3444874Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(194,5):
+build_windows	Build project	2026-01-19T16:06:55.3445395Z       while trying to match the argument list '(const pdf::PDFObject)'
+build_windows	Build project	2026-01-19T16:06:55.3445744Z   
+build_windows	Build project	2026-01-19T16:06:55.3446604Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(232,5): error C2668: 'pdf::PDFStreamingDocumentWriter::writeObject': ambiguous call to overloaded function [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T16:06:55.3447704Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.h(121,10):
+build_windows	Build project	2026-01-19T16:06:55.3448245Z       could be 'void pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &)'
+build_windows	Build project	2026-01-19T16:06:55.3448823Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(175,48):
+build_windows	Build project	2026-01-19T16:06:55.3449505Z       or       'pdf::PDFObjectReference pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &,pdf::PDFInteger)'
+build_windows	Build project	2026-01-19T16:06:55.3450283Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(232,5):
+build_windows	Build project	2026-01-19T16:06:55.3451981Z       while trying to match the argument list '(const pdf::PDFObject)'
+build_windows	Build project	2026-01-19T16:06:55.3452554Z   
+build_windows	Build project	2026-01-19T16:06:55.3453867Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(278,12): error C2668: 'pdf::PDFStreamingDocumentWriter::writeObject': ambiguous call to overloaded function [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T16:06:55.3455616Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.h(121,10):
+build_windows	Build project	2026-01-19T16:06:55.3456606Z       could be 'void pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &)'
+build_windows	Build project	2026-01-19T16:06:55.3457477Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(175,48):
+build_windows	Build project	2026-01-19T16:06:55.3459320Z       or       'pdf::PDFObjectReference pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &,pdf::PDFInteger)'
+build_windows	Build project	2026-01-19T16:06:55.3460787Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(278,12):
+build_windows	Build project	2026-01-19T16:06:55.3461822Z       while trying to match the argument list '(pdf::PDFObject)'
+build_windows	Build project	2026-01-19T16:06:55.3462414Z   
+build_windows	Build project	2026-01-19T16:06:55.3464298Z D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(296,12): error C2668: 'pdf::PDFStreamingDocumentWriter::writeObject': ambiguous call to overloaded function [D:\a\PDF4QT\PDF4QT\pdf4qt\build\Pdf4QtLibCore\Pdf4QtLibCore.vcxproj]
+build_windows	Build project	2026-01-19T16:06:55.3467285Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.h(121,10):
+build_windows	Build project	2026-01-19T16:06:55.3468711Z       could be 'void pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &)'
+build_windows	Build project	2026-01-19T16:06:55.3469714Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(175,48):
+build_windows	Build project	2026-01-19T16:06:55.3470879Z       or       'pdf::PDFObjectReference pdf::PDFStreamingDocumentWriter::writeObject(const pdf::PDFObject &,pdf::PDFInteger)'
+build_windows	Build project	2026-01-19T16:06:55.3471949Z       D:\a\PDF4QT\PDF4QT\pdf4qt\Pdf4QtLibCore\sources\pdfstreamingdocumentwriter.cpp(296,12):
+build_windows	Build project	2026-01-19T16:06:55.3472727Z       while trying to match the argument list '(pdf::PDFObject)'
+build_windows	Build project	2026-01-19T16:06:55.3473178Z   
+build_windows	Build project	2026-01-19T16:06:55.3786154Z   mocs_compilation_Release.cpp
+build_windows	Build project	2026-01-19T16:07:02.0820982Z   Generating Code...
+build_windows	Build project	2026-01-19T16:07:17.7629079Z CMake Error at build/Pdf4QtLibCore/cmake_install.cmake:39 (file):
+build_windows	Build project	2026-01-19T16:07:17.7630081Z   file INSTALL cannot find
+build_windows	Build project	2026-01-19T16:07:17.7630798Z   "D:/a/PDF4QT/PDF4QT/pdf4qt/build/usr/bin/Release/Pdf4QtLibCore.dll": File
+build_windows	Build project	2026-01-19T16:07:17.7631398Z   exists.
+build_windows	Build project	2026-01-19T16:07:17.7631735Z Call Stack (most recent call first):
+build_windows	Build project	2026-01-19T16:07:17.7632151Z   build/cmake_install.cmake:37 (include)
+build_windows	Build project	2026-01-19T16:07:17.7632767Z 
+build_windows	Build project	2026-01-19T16:07:17.7632779Z 
+build_windows	Build project	2026-01-19T16:07:17.8745307Z ##[error]Process completed with exit code 1.

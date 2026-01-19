@@ -1,0 +1,26 @@
+16:33:11.308682 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/bin
+16:33:11.322301 git.c:479               trace: built-in: git push origin master
+16:33:11.324321 run-command.c:667       trace: run_command: GIT_DIR=.git git remote-https origin https://github.com/bg-ghub/PDF4QT.git
+16:33:11.324321 run-command.c:928       trace: start_command: git remote-https origin https://github.com/bg-ghub/PDF4QT.git
+16:33:11.338493 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+16:33:11.349278 git.c:783               trace: exec: git-remote-https origin https://github.com/bg-ghub/PDF4QT.git
+16:33:11.349278 run-command.c:667       trace: run_command: git-remote-https origin https://github.com/bg-ghub/PDF4QT.git
+16:33:11.349278 run-command.c:928       trace: start_command: git-remote-https origin https://github.com/bg-ghub/PDF4QT.git
+16:33:11.363786 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+16:33:11.810177 run-command.c:667       trace: run_command: ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential get'
+16:33:11.810177 run-command.c:928       trace: start_command: 'C:/Program Files/Git/usr/bin/sh.exe' -c ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential get' ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential get'
+16:33:12.096802 run-command.c:667       trace: run_command: ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential store'
+16:33:12.096802 run-command.c:928       trace: start_command: 'C:/Program Files/Git/usr/bin/sh.exe' -c ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential store' ''\''C:\Program Files\GitHub CLI\gh.exe'\'' auth git-credential store'
+16:33:12.223090 run-command.c:667       trace: run_command: 'gh auth git-credential store'
+16:33:12.223608 run-command.c:928       trace: start_command: 'C:/Program Files/Git/usr/bin/sh.exe' -c 'gh auth git-credential store' 'gh auth git-credential store'
+16:33:12.355437 run-command.c:667       trace: run_command: git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/bg-ghub/PDF4QT.git/ --stdin
+16:33:12.355437 run-command.c:928       trace: start_command: git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/bg-ghub/PDF4QT.git/ --stdin
+16:33:12.369104 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+16:33:12.379839 git.c:479               trace: built-in: git send-pack --stateless-rpc --helper-status --thin --no-progress https://github.com/bg-ghub/PDF4QT.git/ --stdin
+16:33:12.383510 run-command.c:667       trace: run_command: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+16:33:12.383510 run-command.c:928       trace: start_command: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+16:33:12.394155 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+16:33:12.406473 git.c:479               trace: built-in: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+To https://github.com/bg-ghub/PDF4QT.git
+ ! [remote rejected] master -> master (refusing to allow an OAuth App to create or update workflow `.github/workflows/WindowsInstall.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/bg-ghub/PDF4QT.git'

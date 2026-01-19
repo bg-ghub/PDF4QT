@@ -1,0 +1,86 @@
+-- PDF4QT-Opus version: 1.5.3.0-Opus-1.0
+-- Build type - CMAKE_BUILD_TYPE: Release
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe
+The following packages will be built and installed:
+  * asmjit:x64-windows@2025-12-13 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\asmjit
+    blend2d[core,jit]:x64-windows@2025-11-29 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\blend2d
+  * brotli:x64-windows@1.2.0
+  * bzip2[core,tool]:x64-windows@1.0.8#6
+    freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3
+  * hwloc:x64-windows@2.11.2
+    lcms:x64-windows@2.18
+    libjpeg-turbo:x64-windows@3.1.3
+    libpng:x64-windows@1.6.53
+    openjpeg:x64-windows@2.5.4
+    openssl:x64-windows@3.6.0#3
+    tbb[core,hwloc]:x64-windows@2022.3.0
+  * vcpkg-cmake:x64-windows@2024-04-23
+  * vcpkg-cmake-config:x64-windows@2024-05-23
+  * vcpkg-cmake-get-vars:x64-windows@2025-05-29
+  * vcpkg-tool-meson:x64-windows@1.9.0#3
+    zlib:x64-windows@1.3.1
+Additional packages (*) will be modified to complete this operation.
+Restored 3 package(s) from C:\Users\Nobody\AppData\Local\vcpkg\archives in 316 ms. Use --debug to see more details.
+Installing 1/17 vcpkg-cmake-config:x64-windows@2024-05-23...
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 16.8 ms
+vcpkg-cmake-config:x64-windows package ABI: d70f6bd8beff8eeacb42b3c53ebf465f32ed0b04213104f18bae345b2866a065
+Installing 2/17 vcpkg-cmake:x64-windows@2024-04-23...
+Elapsed time to handle vcpkg-cmake:x64-windows: 41.5 ms
+vcpkg-cmake:x64-windows package ABI: d473c1c63e306dc563f7c7f9086617a9a4b98b7d503706d85aaea900f2247590
+Installing 3/17 asmjit:x64-windows@2025-12-13...
+Elapsed time to handle asmjit:x64-windows: 141 ms
+asmjit:x64-windows package ABI: b6c55be1dad45ccfd8440e5246e5ef822c88929d235b327d5acfcd21a5c341a6
+Installing 4/17 blend2d[core,jit]:x64-windows@2025-11-29...
+Building blend2d[core,jit]:x64-windows@2025-11-29...
+C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\blend2d: info: installing overlay port from here
+-- Using cached blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+-- Extracting source C:/vcpkg/downloads/blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+-- Using source at C:/vcpkg/buildtrees/blend2d/src/40b49b15d7-f6e425c598.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+CMake Error at scripts/cmake/vcpkg_execute_build_process.cmake:134 (message):
+    Command failed: "C:/Program Files/CMake/bin/cmake.exe" --build . --config Release --target install -- -v -j17
+    Working Directory: C:/vcpkg/buildtrees/blend2d/x64-windows-rel
+    See logs for more information:
+      C:\vcpkg\buildtrees\blend2d\install-x64-windows-rel-out.log
+      C:\vcpkg\buildtrees\blend2d\install-x64-windows-rel-err.log
+
+Call Stack (most recent call first):
+  C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/share/vcpkg-cmake/vcpkg_cmake_build.cmake:74 (vcpkg_execute_build_process)
+  C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/share/vcpkg-cmake/vcpkg_cmake_install.cmake:16 (vcpkg_cmake_build)
+  C:/Users/Nobody/Documents/PDF4QT-Opus/vcpkg/overlays/general/blend2d/portfile.cmake:26 (vcpkg_cmake_install)
+  scripts/ports.cmake:206 (include)
+
+
+error: building blend2d:x64-windows failed with: BUILD_FAILED
+See https://learn.microsoft.com/vcpkg/troubleshoot/build-failures?WT.mc_id=vcpkg_inproduct_cli for more information.
+Elapsed time to handle blend2d:x64-windows: 1.1 min
+Please ensure you're using the latest port files with `git pull` and `vcpkg update`.
+Then check for known issues at:
+  https://github.com/microsoft/vcpkg/issues?q=is%3Aissue+is%3Aopen+in%3Atitle+blend2d
+You can submit a new issue at:
+  https://github.com/microsoft/vcpkg/issues/new?title=%5Bblend2d%5D%20build%20error%20on%20x64-windows&body=Copy%20issue%20body%20from%20C%3A%2FUsers%2FNobody%2FDocuments%2FPDF4QT-Opus%2Fbuild%2Fvcpkg_installed%2Fvcpkg%2Fissue_body.md
+You can also submit an issue by running (GitHub CLI must be installed):
+  "C:\Program Files\GitHub CLI\gh.exe" issue create -R microsoft/vcpkg --title "[blend2d] Build failure on x64-windows" --body-file C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/vcpkg/issue_body.md
+-- Running vcpkg install - failed
+CMake Error at C:/vcpkg/scripts/buildsystems/vcpkg.cmake:953 (message):
+  vcpkg install failed.  See logs for more information:
+  C:\Users\Nobody\Documents\PDF4QT-Opus\build\vcpkg-manifest-install.log
+Call Stack (most recent call first):
+  C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:146 (include)
+  CMakeLists.txt:31 (project)
+
+
+CMake Error at CMakeLists.txt:31 (project):
+  Generator
+
+    Visual Studio 17 2022
+
+  could not find any instance of Visual Studio.
+
+
+
+-- Configuring incomplete, errors occurred!
