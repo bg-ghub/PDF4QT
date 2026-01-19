@@ -1,6 +1,7 @@
 // MIT License
 //
 // Copyright (c) 2018-2025 Jakub Melka and Contributors
+// Optimizations by Opus (Claude AI) - January 2026
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,11 +28,23 @@
 #include "pdfdocumentwriter.h"
 
 #include <QFileInfo>
+#include <QtConcurrent>
+#include <QElapsedTimer>
 
 namespace pdftool
 {
 
 static PDFToolUnite s_toolUniteApplication;
+
+// Structure to hold pre-loaded document data for parallel loading
+struct LoadedDocumentData
+{
+    QString fileName;
+    pdf::PDFDocument document;
+    pdf::PDFDocumentReader::Result result = pdf::PDFDocumentReader::Result::OK;
+    QString errorMessage;
+    bool permissionOk = true;
+};
 
 QString PDFToolUnite::getStandardString(PDFToolAbstractApplication::StandardString standardString) const
 {
@@ -44,7 +57,7 @@ QString PDFToolUnite::getStandardString(PDFToolAbstractApplication::StandardStri
             return PDFToolTranslationContext::tr("Merge documents");
 
         case Description:
-            return PDFToolTranslationContext::tr("Merge multiple documents to a single document.");
+            return PDFToolTranslationContext::tr("Merge multiple documents to a single document (optimized with parallel loading).");
 
         default:
             Q_ASSERT(false);
@@ -56,6 +69,9 @@ QString PDFToolUnite::getStandardString(PDFToolAbstractApplication::StandardStri
 
 int PDFToolUnite::execute(const PDFToolOptions& options)
 {
+    QElapsedTimer totalTimer;
+    totalTimer.start();
+
     if (options.uniteFiles.size() < 3)
     {
         PDFConsole::writeError(PDFToolTranslationContext::tr("At least two documents and target (merged) document must be specified."), options.outputCodec);
@@ -74,6 +90,65 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
 
     try
     {
+        // ============================================================
+        // OPTIMIZATION 1: Parallel Document Loading
+        // Load all documents concurrently using QtConcurrent
+        // ============================================================
+        QElapsedTimer loadTimer;
+        loadTimer.start();
+
+        const bool permissiveReading = options.permissiveReading;
+        
+        // Lambda to load a single document (thread-safe)
+        auto loadDocument = [permissiveReading](const QString& fileName) -> LoadedDocumentData
+        {
+            LoadedDocumentData data;
+            data.fileName = fileName;
+            
+            pdf::PDFDocumentReader reader(nullptr, [](bool* ok) { *ok = false; return QString(); }, permissiveReading, false);
+            data.document = reader.readFromFile(fileName);
+            data.result = reader.getReadingResult();
+            data.errorMessage = reader.getErrorMessage();
+            
+            if (data.result == pdf::PDFDocumentReader::Result::OK)
+            {
+                data.permissionOk = data.document.getStorage().getSecurityHandler()->isAllowed(pdf::PDFSecurityHandler::Permission::Assemble);
+            }
+            
+            return data;
+        };
+
+        // Load all documents in parallel
+        QFuture<LoadedDocumentData> future = QtConcurrent::mapped(files, loadDocument);
+        future.waitForFinished();
+        
+        QList<LoadedDocumentData> loadedDocuments = future.results();
+        
+        qint64 loadTimeMs = loadTimer.elapsed();
+        PDFConsole::writeText(PDFToolTranslationContext::tr("Loaded %1 documents in %2 ms (parallel)").arg(files.size()).arg(loadTimeMs), options.outputCodec);
+
+        // Check for any loading errors
+        for (const LoadedDocumentData& loaded : loadedDocuments)
+        {
+            if (loaded.result != pdf::PDFDocumentReader::Result::OK)
+            {
+                PDFConsole::writeError(PDFToolTranslationContext::tr("Cannot open document '%1'.").arg(loaded.fileName), options.outputCodec);
+                return ErrorDocumentReading;
+            }
+            
+            if (!loaded.permissionOk)
+            {
+                PDFConsole::writeError(PDFToolTranslationContext::tr("Document '%1' doesn't allow to assemble pages.").arg(loaded.fileName), options.outputCodec);
+                return ErrorPermissions;
+            }
+        }
+
+        // ============================================================
+        // PHASE 2: Merge documents (sequential, but documents pre-loaded)
+        // ============================================================
+        QElapsedTimer mergeTimer;
+        mergeTimer.start();
+
         pdf::PDFDocumentBuilder documentBuilder;
         documentBuilder.createDocument();
 
@@ -84,22 +159,11 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
         pdf::PDFObjectReference namesMerged = documentBuilder.addObject(pdf::PDFObject());
 
         std::vector<pdf::PDFObjectReference> pages;
-        for (const QString& fileName : files)
+        
+        for (LoadedDocumentData& loaded : loadedDocuments)
         {
-            pdf::PDFDocumentReader reader(nullptr, [](bool* ok) { *ok = false; return QString(); }, options.permissiveReading, false);
-            pdf::PDFDocument document = reader.readFromFile(fileName);
-            if (reader.getReadingResult() != pdf::PDFDocumentReader::Result::OK)
-            {
-                PDFConsole::writeError(PDFToolTranslationContext::tr("Cannot open document '%1'.").arg(fileName), options.outputCodec);
-                return ErrorDocumentReading;
-            }
-
-            if (!document.getStorage().getSecurityHandler()->isAllowed(pdf::PDFSecurityHandler::Permission::Assemble))
-            {
-                PDFConsole::writeError(PDFToolTranslationContext::tr("Document doesn't allow to assemble pages."), options.outputCodec);
-                return ErrorPermissions;
-            }
-
+            pdf::PDFDocument& document = loaded.document;
+            
             pdf::PDFDocumentBuilder temporaryBuilder(&document);
             temporaryBuilder.flattenPageTree();
 
@@ -186,7 +250,15 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
         documentBuilder.createDocumentParts(documentPartPageCounts);
         pdf::PDFDocument mergedDocument = documentBuilder.build();
 
-        // Optimize document - remove unused objects and shrink object storage
+        qint64 mergeTimeMs = mergeTimer.elapsed();
+        PDFConsole::writeText(PDFToolTranslationContext::tr("Merged documents in %1 ms").arg(mergeTimeMs), options.outputCodec);
+
+        // ============================================================
+        // PHASE 3: Optimize document
+        // ============================================================
+        QElapsedTimer optimizeTimer;
+        optimizeTimer.start();
+
         pdf::PDFOptimizer optimizer(pdf::PDFOptimizer::RemoveUnusedObjects | pdf::PDFOptimizer::ShrinkObjectStorage | pdf::PDFOptimizer::DereferenceSimpleObjects | pdf::PDFOptimizer::MergeIdenticalObjects, nullptr);
         optimizer.setDocument(&mergedDocument);
         optimizer.optimize();
@@ -210,6 +282,15 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
         }
         mergedDocument = finalBuilder.build();
 
+        qint64 optimizeTimeMs = optimizeTimer.elapsed();
+        PDFConsole::writeText(PDFToolTranslationContext::tr("Optimized document in %1 ms").arg(optimizeTimeMs), options.outputCodec);
+
+        // ============================================================
+        // PHASE 4: Write output
+        // ============================================================
+        QElapsedTimer writeTimer;
+        writeTimer.start();
+
         pdf::PDFDocumentWriter writer(nullptr);
         pdf::PDFOperationResult result = writer.write(targetFile, &mergedDocument, false);
         if (!result)
@@ -217,6 +298,13 @@ int PDFToolUnite::execute(const PDFToolOptions& options)
             PDFConsole::writeError(result.getErrorMessage(), options.outputCodec);
             return ErrorFailedWriteToFile;
         }
+
+        qint64 writeTimeMs = writeTimer.elapsed();
+        qint64 totalTimeMs = totalTimer.elapsed();
+        
+        PDFConsole::writeText(PDFToolTranslationContext::tr("Wrote output in %1 ms").arg(writeTimeMs), options.outputCodec);
+        PDFConsole::writeText(PDFToolTranslationContext::tr("Total time: %1 ms | Load: %2 ms | Merge: %3 ms | Optimize: %4 ms | Write: %5 ms")
+            .arg(totalTimeMs).arg(loadTimeMs).arg(mergeTimeMs).arg(optimizeTimeMs).arg(writeTimeMs), options.outputCodec);
     }
     catch (const pdf::PDFException &exception)
     {
