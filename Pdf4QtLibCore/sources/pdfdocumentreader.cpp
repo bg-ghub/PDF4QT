@@ -61,6 +61,28 @@ PDFDocument PDFDocumentReader::readFromFile(const QString& fileName)
     {
         if (file.open(QFile::ReadOnly))
         {
+            // OPTIMIZATION: Use memory mapping for large files (>10MB)
+            // This reduces memory allocation overhead and allows the OS to manage paging
+            constexpr qint64 MEMORY_MAP_THRESHOLD = 10 * 1024 * 1024; // 10 MB
+            
+            QByteArray fileData;
+            if (file.size() >= MEMORY_MAP_THRESHOLD)
+            {
+                // Try memory mapping for large files
+                uchar* mappedData = file.map(0, file.size());
+                if (mappedData)
+                {
+                    // Create a QByteArray that references the mapped memory without copying
+                    fileData = QByteArray::fromRawData(reinterpret_cast<const char*>(mappedData), file.size());
+                    PDFDocument document = readFromBuffer(fileData);
+                    file.unmap(mappedData);
+                    file.close();
+                    return document;
+                }
+                // Fall through to standard read if mapping failed
+            }
+            
+            // Standard read for small files or if mapping failed
             PDFDocument document = readFromDevice(&file);
             file.close();
             return document;
