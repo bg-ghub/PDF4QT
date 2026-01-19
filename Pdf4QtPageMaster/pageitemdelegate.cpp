@@ -178,6 +178,8 @@ QSize PageItemDelegate::getPageImageSize() const { return m_pageImageSize; }
 void PageItemDelegate::setPageImageSize(QSize pageImageSize) {
   if (m_pageImageSize != pageImageSize) {
     m_pageImageSize = pageImageSize;
+    // PDF4QT-Opus: Clear pending renders since they are for old size
+    m_pendingRenders.clear();
     Q_EMIT sizeHintChanged(QModelIndex());
   }
 }

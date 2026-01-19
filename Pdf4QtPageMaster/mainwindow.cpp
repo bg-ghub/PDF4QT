@@ -253,7 +253,10 @@ MainWindow::MainWindow(QWidget *parent)
   sizeSlider->setValue(getDefaultPageImageSize().width());
   sizeSlider->setFixedWidth(100);
   sizeSlider->setToolTip(tr("Thumbnail Size"));
-  connect(sizeSlider, &QSlider::valueChanged, this, [this](int value) {
+  // PDF4QT-Opus: Use sliderReleased for debouncing - only resize when user
+  // releases
+  connect(sizeSlider, &QSlider::sliderReleased, this, [this, sizeSlider]() {
+    int value = sizeSlider->value();
     QSize newSize(value, value * 3 / 2); // 2:3 aspect ratio
     m_delegate->setPageImageSize(newSize);
   });
