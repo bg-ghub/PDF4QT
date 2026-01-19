@@ -152,6 +152,7 @@ struct PDFToolOptions
     // For option 'Unite'
     QStringList uniteFiles;
     bool fastMerge = false;  // Skip optimization for faster merge
+    bool namespaceFields = false;  // Prefix form field names with document index to prevent conflicts
 
     // For option 'Diff'
     QStringList diffFiles;

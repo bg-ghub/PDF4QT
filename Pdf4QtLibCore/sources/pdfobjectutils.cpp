@@ -26,6 +26,8 @@
 #include "pdfdocumentwriter.h"
 #include "pdfdbgheap.h"
 
+#include <unordered_set>
+
 namespace pdf
 {
 
@@ -187,7 +189,17 @@ PDFObject PDFReplaceReferencesVisitor::getObject()
 
 std::set<PDFObjectReference> PDFObjectUtils::getReferences(const std::vector<PDFObject>& objects, const PDFObjectStorage& storage)
 {
+    // OPTIMIZATION: Use unordered_set for O(1) lookups during the iterative phase
+    // Then convert to std::set at the end for compatibility
+    std::unordered_set<uint64_t> visitedHashes;
     std::set<PDFObjectReference> references;
+    
+    // Helper to create a hash for PDFObjectReference (combines objectNumber and generation)
+    auto hashRef = [](const PDFObjectReference& ref) -> uint64_t {
+        return (static_cast<uint64_t>(ref.objectNumber) << 32) | static_cast<uint64_t>(ref.generation);
+    };
+    
+    // First pass: collect references from the initial objects
     {
         PDFCollectReferencesVisitor collectReferencesVisitor(references);
         for (const PDFObject& object : objects)
@@ -195,23 +207,40 @@ std::set<PDFObjectReference> PDFObjectUtils::getReferences(const std::vector<PDF
             object.accept(&collectReferencesVisitor);
         }
     }
-
-    // Iterative algorihm, which adds additional references from referenced objects.
-    // If new reference is added, then we must also check, that all referenced objects
-    // from this object are added.
-    std::set<PDFObjectReference> workSet = references;
-    while (!workSet.empty())
+    
+    // Mark initial references as visited
+    for (const PDFObjectReference& ref : references)
     {
-        std::set<PDFObjectReference> addedReferences;
-        PDFCollectReferencesVisitor collectReferencesVisitor(addedReferences);
-        for (const PDFObjectReference& objectReference : workSet)
+        visitedHashes.insert(hashRef(ref));
+    }
+
+    // Iterative algorithm using a work queue for better cache locality
+    std::vector<PDFObjectReference> workQueue(references.begin(), references.end());
+    
+    while (!workQueue.empty())
+    {
+        std::set<PDFObjectReference> newReferences;
+        PDFCollectReferencesVisitor collectReferencesVisitor(newReferences);
+        
+        // Process current batch
+        for (const PDFObjectReference& objectReference : workQueue)
         {
             storage.getObject(objectReference).accept(&collectReferencesVisitor);
         }
-
-        workSet.clear();
-        std::set_difference(addedReferences.cbegin(), addedReferences.cend(), references.cbegin(), references.cend(), std::inserter(workSet, workSet.cend()));
-        references.merge(addedReferences);
+        
+        workQueue.clear();
+        
+        // Only add references we haven't seen before
+        for (const PDFObjectReference& ref : newReferences)
+        {
+            uint64_t hash = hashRef(ref);
+            if (visitedHashes.find(hash) == visitedHashes.end())
+            {
+                visitedHashes.insert(hash);
+                references.insert(ref);
+                workQueue.push_back(ref);
+            }
+        }
     }
 
     return references;
