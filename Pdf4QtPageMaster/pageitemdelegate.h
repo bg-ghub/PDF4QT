@@ -27,11 +27,10 @@
 #include "pdfcms.h"
 #include "pdfrenderer.h"
 
-
 #include <QAbstractItemDelegate>
 #include <QImage>
 #include <QSet>
-
+#include <QTimer>
 
 namespace pdfpagemaster {
 
@@ -87,6 +86,10 @@ private:
 
   // PDF4QT-Opus: Track pending background renders to avoid duplicate work
   mutable QSet<QString> m_pendingRenders;
+
+  // PDF4QT-Opus: Update coalescing for better performance
+  QTimer *m_updateTimer = nullptr;
+  mutable bool m_updatePending = false;
 };
 
 } // namespace pdfpagemaster

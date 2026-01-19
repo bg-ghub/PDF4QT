@@ -32,14 +32,39 @@
 #include <QFutureWatcher>
 #include <QPainter>
 #include <QPixmapCache>
+#include <QThreadPool>
+#include <QTimer>
 #include <QtConcurrent>
 
 namespace pdfpagemaster {
 
+// PDF4QT-Opus: Global thread pool for thumbnail rendering, limited to ideal
+// thread count
+static QThreadPool *getThumbnailThreadPool() {
+  static QThreadPool pool;
+  static bool initialized = false;
+  if (!initialized) {
+    // Limit to ideal thread count to prevent thrashing
+    pool.setMaxThreadCount(QThread::idealThreadCount());
+    initialized = true;
+  }
+  return &pool;
+}
+
 PageItemDelegate::PageItemDelegate(PageItemModel *model, QObject *parent)
-    : BaseClass(parent), m_model(model), m_rasterizer(nullptr) {
+    : BaseClass(parent), m_model(model), m_rasterizer(nullptr),
+      m_updatePending(false) {
   m_rasterizer = new pdf::PDFRasterizer(this);
   m_rasterizer->reset(pdf::RendererEngine::Blend2D_SingleThread);
+
+  // PDF4QT-Opus: Setup update coalescing timer - batches repaint requests
+  m_updateTimer = new QTimer(this);
+  m_updateTimer->setSingleShot(true);
+  m_updateTimer->setInterval(50); // 50ms coalescing window
+  connect(m_updateTimer, &QTimer::timeout, this, [this]() {
+    m_updatePending = false;
+    Q_EMIT sizeHintChanged(QModelIndex());
+  });
 }
 
 PageItemDelegate::~PageItemDelegate() {}
@@ -217,31 +242,33 @@ QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
       }
     }
 
-    // Launch in background thread
-    QFuture<QImage> future = QtConcurrent::run(
-        [this, request]() { return renderInBackground(request); });
+    // PDF4QT-Opus: Launch in limited thread pool for better CPU utilization
+    QFuture<QImage> future =
+        QtConcurrent::run(getThumbnailThreadPool(), [this, request]() {
+          return renderInBackground(request);
+        });
 
     // Create watcher to handle result on main thread
     auto *watcher =
         new QFutureWatcher<QImage>(const_cast<PageItemDelegate *>(this));
-    connect(
-        watcher, &QFutureWatcher<QImage>::finished,
-        const_cast<PageItemDelegate *>(this), [this, watcher, key]() {
-          QImage image = watcher->result();
-          if (!image.isNull()) {
-            QPixmapCache::insert(key, QPixmap::fromImage(image));
-          }
-          const_cast<PageItemDelegate *>(this)->m_pendingRenders.remove(key);
-          // Trigger repaint via non-const invocation
-          QMetaObject::invokeMethod(
-              const_cast<PageItemDelegate *>(this),
-              [this]() {
-                Q_EMIT const_cast<PageItemDelegate *>(this)->sizeHintChanged(
-                    QModelIndex());
-              },
-              Qt::QueuedConnection);
-          watcher->deleteLater();
-        });
+    connect(watcher, &QFutureWatcher<QImage>::finished,
+            const_cast<PageItemDelegate *>(this), [this, watcher, key]() {
+              QImage image = watcher->result();
+              if (!image.isNull()) {
+                QPixmapCache::insert(key, QPixmap::fromImage(image));
+              }
+              const_cast<PageItemDelegate *>(this)->m_pendingRenders.remove(
+                  key);
+
+              // PDF4QT-Opus: Use coalesced updates - start timer if not already
+              // pending This batches multiple thumbnail completions into a
+              // single repaint
+              if (!m_updatePending) {
+                m_updatePending = true;
+                m_updateTimer->start();
+              }
+              watcher->deleteLater();
+            });
     watcher->setFuture(future);
 
     // Return empty for now - placeholder will be shown
