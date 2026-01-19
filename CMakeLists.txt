@@ -258,7 +258,7 @@ if(PDF4QT_INSTALL_DEPENDENCIES AND NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
         install(DIRECTORY ${PDF4QT_QT_ROOT}/bin/
             DESTINATION ${PDF4QT_INSTALL_LIB_DIR}/
             FILES_MATCHING
-            REGEX "(Qt6Concurrent|Qt6Core|Qt6Gui|Qt6PrintSupport|Qt6Svg|Qt6TextToSpeech|Qt6Widgets|Qt6Xml|Qt6Multimedia|Qt6Network)\\..*"
+            REGEX "(Qt6Concurrent|Qt6Core|Qt6Gui|Qt6Multimedia|Qt6Network|Qt6OpenGL|Qt6OpenGLWidgets|Qt6PrintSupport|Qt6Svg|Qt6SvgWidgets|Qt6TextToSpeech|Qt6Widgets|Qt6Xml)\\..*"
             PATTERN "Debug" EXCLUDE
             PATTERN "*.pdb" EXCLUDE
         )
