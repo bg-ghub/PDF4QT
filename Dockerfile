@@ -105,11 +105,19 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder_pdf4qt /opt/Qt /opt/Qt
 COPY --from=builder_pdf4qt /install /
 
-# Persist env variables to root shell
-RUN echo 'export PATH=/opt/Qt/6.9.1/gcc_64/bin:$PATH' >> /root/.bashrc && \
-    echo 'export LD_LIBRARY_PATH=/opt/Qt/6.9.1/gcc_64/lib:$LD_LIBRARY_PATH' >> /root/.bashrc && \
-    echo 'export QT_QPA_PLATFORM=offscreen' >> /root/.bashrc  
+# Create non-root user for security
+RUN groupadd -r pdf4qt && useradd -r -g pdf4qt -d /home/pdf4qt -s /sbin/nologin -c "PDF4QT User" pdf4qt \
+    && mkdir -p /home/pdf4qt \
+    && chown -R pdf4qt:pdf4qt /home/pdf4qt
 
-WORKDIR /root
+# Set environment variables for all users
+ENV PATH=/opt/Qt/6.9.1/gcc_64/bin:$PATH
+ENV LD_LIBRARY_PATH=/opt/Qt/6.9.1/gcc_64/lib:$LD_LIBRARY_PATH
+ENV QT_QPA_PLATFORM=offscreen
+
+WORKDIR /home/pdf4qt
+
+# Switch to non-root user
+USER pdf4qt
 
 CMD ["bash"]
