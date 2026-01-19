@@ -69,11 +69,12 @@ public:
   QSize getPageImageSize() const;
   void setPageImageSize(QSize pageImageSize);
 
+  // PDF4QT-Opus: Public access for preview dialog
+  QPixmap getPageImagePixmap(const PageGroupItem *item, QRect rect) const;
+
 private:
   static constexpr int getVerticalSpacing() { return 5; }
   static constexpr int getHorizontalSpacing() { return 5; }
-
-  QPixmap getPageImagePixmap(const PageGroupItem *item, QRect rect) const;
 
   /// PDF4QT-Opus: Render thumbnail in background thread (returns QImage,
   /// thread-safe)

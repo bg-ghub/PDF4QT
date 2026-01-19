@@ -28,7 +28,6 @@
 #include "pageitemdelegate.h"
 #include "pageitemmodel.h"
 
-
 #include <QMainWindow>
 #include <QSignalMapper>
 
@@ -115,6 +114,7 @@ private slots:
   void onMappedActionTriggered(int actionId);
   void onWorkspaceCustomContextMenuRequested(const QPoint &point);
   void updateActions();
+  void onPageDoubleClicked(const QModelIndex &index); // PDF4QT-Opus: Preview
 
 private:
   void loadSettings();

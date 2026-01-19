@@ -35,19 +35,24 @@
 
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QDialog>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
 #include <QGuiApplication>
 #include <QImageReader>
 #include <QInputDialog>
+#include <QLabel>
 #include <QMessageBox>
 #include <QMimeData>
 #include <QPixmapCache>
 #include <QProgressDialog>
 #include <QScreen>
+#include <QScrollArea>
 #include <QSettings>
+#include <QSlider>
 #include <QToolBar>
+#include <QVBoxLayout>
 #include <QtConcurrent>
 
 namespace pdfpagemaster {
@@ -65,6 +70,10 @@ MainWindow::MainWindow(QWidget *parent)
   ui->documentItemsView->setItemDelegate(m_delegate);
   connect(ui->documentItemsView, &QListView::customContextMenuRequested, this,
           &MainWindow::onWorkspaceCustomContextMenuRequested);
+
+  // PDF4QT-Opus: Preview on double-click
+  connect(ui->documentItemsView, &QListView::doubleClicked, this,
+          &MainWindow::onPageDoubleClicked);
 
   setMinimumSize(pdf::PDFWidgetUtils::scaleDPI(this, QSize(800, 600)));
 
@@ -236,6 +245,20 @@ MainWindow::MainWindow(QWidget *parent)
   QToolBar *zoomToolbar = addToolBar(tr("&Zoom"));
   zoomToolbar->setObjectName("zoom_toolbar");
   zoomToolbar->addActions({ui->actionZoom_In, ui->actionZoom_Out});
+
+  // PDF4QT-Opus: Add size slider for quick thumbnail size adjustment
+  QSlider *sizeSlider = new QSlider(Qt::Horizontal, zoomToolbar);
+  sizeSlider->setMinimum(getMinPageImageSize().width());
+  sizeSlider->setMaximum(getMaxPageImageSize().width());
+  sizeSlider->setValue(getDefaultPageImageSize().width());
+  sizeSlider->setFixedWidth(100);
+  sizeSlider->setToolTip(tr("Thumbnail Size"));
+  connect(sizeSlider, &QSlider::valueChanged, this, [this](int value) {
+    QSize newSize(value, value * 3 / 2); // 2:3 aspect ratio
+    m_delegate->setPageImageSize(newSize);
+  });
+  zoomToolbar->addWidget(sizeSlider);
+
   QToolBar *makeToolbar = addToolBar(tr("Ma&ke"));
   makeToolbar->setObjectName("make_toolbar");
   makeToolbar->addActions({ui->actionUnited_Document,
@@ -1293,6 +1316,52 @@ void MainWindow::dropEvent(QDropEvent *event) {
       insertDocumentsBatch(pdfFiles, insertIndex);
     }
   }
+}
+
+// PDF4QT-Opus: Preview dialog on double-click
+void MainWindow::onPageDoubleClicked(const QModelIndex &index) {
+  if (!index.isValid()) {
+    return;
+  }
+
+  const PageGroupItem *item = m_model->getItem(index);
+  if (!item || item->groups.empty()) {
+    return;
+  }
+
+  // Get pixmap from delegate (uses cached version if available)
+  QPixmap pixmap = m_delegate->getPageImagePixmap(
+      item, QRect(QPoint(0, 0), getMaxPageImageSize() * 2));
+
+  if (pixmap.isNull()) {
+    return;
+  }
+
+  // Create preview dialog
+  QDialog *dialog = new QDialog(this);
+  dialog->setWindowTitle(
+      tr("Page Preview - %1").arg(m_model->getItemDisplayText(item)));
+  dialog->setAttribute(Qt::WA_DeleteOnClose);
+  dialog->setMinimumSize(600, 400);
+
+  QVBoxLayout *layout = new QVBoxLayout(dialog);
+
+  QScrollArea *scrollArea = new QScrollArea(dialog);
+  scrollArea->setWidgetResizable(true);
+  scrollArea->setAlignment(Qt::AlignCenter);
+
+  QLabel *label = new QLabel(scrollArea);
+  label->setPixmap(pixmap.scaled(pixmap.size() * 2, Qt::KeepAspectRatio,
+                                 Qt::SmoothTransformation));
+  label->setAlignment(Qt::AlignCenter);
+  label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+  scrollArea->setWidget(label);
+  layout->addWidget(scrollArea);
+
+  dialog->resize(qMin(pixmap.width() * 2 + 50, 1200),
+                 qMin(pixmap.height() * 2 + 50, 800));
+  dialog->show();
 }
 
 } // namespace pdfpagemaster
