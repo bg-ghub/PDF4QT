@@ -346,10 +346,11 @@ PageItemDelegate::renderInBackground(const RenderRequest &request) const {
                                 pdf::PDFMeshQualitySettings());
       renderer.compile(&compiledPage, pageIndex);
 
-      // Use reduced resolution for faster rendering
+      // PDF4QT-Opus: Use 1/4 resolution for faster rendering (still looks good
+      // for thumbnails)
       QSize imageSize = request.rect.size() * request.dpiScaleRatio;
-      QSize previewSize = imageSize / 2; // Half resolution for speed
-      previewSize = previewSize.expandedTo(QSize(100, 100));
+      QSize previewSize = imageSize / 4; // Quarter resolution for speed
+      previewSize = previewSize.expandedTo(QSize(80, 80));
 
       // Create thread-local rasterizer
       pdf::PDFRasterizer rasterizer(nullptr);
@@ -360,10 +361,10 @@ PageItemDelegate::renderInBackground(const RenderRequest &request) const {
                                  nullptr, cms.data(),
                                  request.groupItem.pageAdditionalRotation);
 
-      // Scale up to target size
+      // Scale up to target size (fast bilinear is fine for thumbnails)
       if (!result.isNull() && result.size() != imageSize) {
         result = result.scaled(imageSize, Qt::IgnoreAspectRatio,
-                               Qt::SmoothTransformation);
+                               Qt::FastTransformation);
       }
     }
   } else if (request.groupItem.pageType == PT_Image && request.hasImage) {
