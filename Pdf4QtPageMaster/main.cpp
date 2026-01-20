@@ -23,9 +23,9 @@
 #include "mainwindow.h"
 #include "pdfapplicationtranslator.h"
 #include "pdfconstants.h"
+#include "pdfiumthumbnail.h"
 #include "pdfsecurityhandler.h"
 #include "pdfwidgetutils.h"
-
 
 #include <QApplication>
 #include <QCommandLineParser>
@@ -64,11 +64,19 @@ int main(int argc, char *argv[]) {
   pdf::PDFApplicationTranslator translator;
   translator.installTranslator();
 
+  // PDF4QT-Opus: Initialize PDFium for fast thumbnail rendering
+  pdfpagemaster::PdfiumThumbnail::initialize();
+
   QIcon appIcon(":/app-icon.svg");
   QApplication::setWindowIcon(appIcon);
 
   pdfpagemaster::MainWindow mainWindow(nullptr);
   mainWindow.show();
 
-  return application.exec();
+  int result = application.exec();
+
+  // PDF4QT-Opus: Shutdown PDFium
+  pdfpagemaster::PdfiumThumbnail::shutdown();
+
+  return result;
 }

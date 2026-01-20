@@ -1,0 +1,25 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  main.cpp
+  mainwindow.cpp
+  pageitemdelegate.cpp
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(236,22): error C2662: 'void QAbstractItemDelegate::sizeHintChanged(const QModelIndex &)': cannot convert 'this' pointer from 'const pdfpagemaster::PageItemDelegate' to 'QAbstractItemDelegate &' [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(236,22):
+      Conversion loses qualifiers
+      C:\Qt\6.9.0\msvc2022_64\include\QtWidgets\qabstractitemdelegate.h(80,10):
+      see declaration of 'QAbstractItemDelegate::sizeHintChanged'
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(236,22):
+      while trying to match the argument list '(QModelIndex)'
+  
+  mocs_compilation_Release.cpp
+  Generating Code...

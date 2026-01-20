@@ -1,0 +1,19 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  mainwindow.cpp
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2248: 'pdfpagemaster::PageItemDelegate::getPageImagePixmap': cannot access private member declared in class 'pdfpagemaster::PageItemDelegate' [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.h(76,11):
+      see declaration of 'pdfpagemaster::PageItemDelegate::getPageImagePixmap'
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.h(54,7):
+      see declaration of 'pdfpagemaster::PageItemDelegate'
+  

@@ -20,6 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# PDF4QT-Opus: PDFium integration for fast thumbnails
+set(PDFIUM_DIR "${CMAKE_SOURCE_DIR}/external/pdfium")
+
 add_executable(Pdf4QtPageMaster
     aboutdialog.cpp
     aboutdialog.h
@@ -32,6 +35,8 @@ add_executable(Pdf4QtPageMaster
     pageitemdelegate.h
     pageitemmodel.cpp
     pageitemmodel.h
+    pdfiumthumbnail.cpp
+    pdfiumthumbnail.h
     selectoutlinetoregroupdialog.cpp
     selectoutlinetoregroupdialog.h
     aboutdialog.ui
@@ -43,7 +48,22 @@ add_executable(Pdf4QtPageMaster
     app.qrc
 )
 
-target_link_libraries(Pdf4QtPageMaster PRIVATE Pdf4QtLibCore Pdf4QtLibWidgets Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Concurrent)
+# PDF4QT-Opus: Add PDFium include path
+target_include_directories(Pdf4QtPageMaster PRIVATE "${PDFIUM_DIR}/include")
+
+# PDF4QT-Opus: Link PDFium library
+if(WIN32)
+    target_link_libraries(Pdf4QtPageMaster PRIVATE 
+        Pdf4QtLibCore Pdf4QtLibWidgets 
+        Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Concurrent
+        "${PDFIUM_DIR}/lib/pdfium.dll.lib"
+    )
+else()
+    target_link_libraries(Pdf4QtPageMaster PRIVATE 
+        Pdf4QtLibCore Pdf4QtLibWidgets 
+        Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Concurrent
+    )
+endif()
 
 set_target_properties(Pdf4QtPageMaster PROPERTIES
     WIN32_EXECUTABLE ON
@@ -51,5 +71,15 @@ set_target_properties(Pdf4QtPageMaster PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PDF4QT_INSTALL_LIB_DIR}
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PDF4QT_INSTALL_BIN_DIR}
 )
+
+# PDF4QT-Opus: Copy pdfium.dll to output directory
+if(WIN32)
+    add_custom_command(TARGET Pdf4QtPageMaster POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PDFIUM_DIR}/bin/pdfium.dll"
+        $<TARGET_FILE_DIR:Pdf4QtPageMaster>
+        COMMENT "Copying pdfium.dll"
+    )
+endif()
 
 install(TARGETS Pdf4QtPageMaster RUNTIME DESTINATION ${PDF4QT_INSTALL_BIN_DIR} LIBRARY DESTINATION ${PDF4QT_INSTALL_LIB_DIR})

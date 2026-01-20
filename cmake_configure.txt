@@ -1,0 +1,603 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+-- PDF4QT-Opus version: 1.5.3.0-Opus-1.0
+-- Build type - CMAKE_BUILD_TYPE: Release
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+The following packages will be built and installed:
+  * asmjit:x64-windows@2025-12-13 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\asmjit
+    blend2d[core,jit]:x64-windows@2025-11-29 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\blend2d
+  * brotli:x64-windows@1.2.0
+  * bzip2[core,tool]:x64-windows@1.0.8#6
+    freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3
+  * hwloc:x64-windows@2.11.2
+    lcms:x64-windows@2.18
+    libjpeg-turbo:x64-windows@3.1.3
+    libpng:x64-windows@1.6.53
+    openjpeg:x64-windows@2.5.4
+    openssl:x64-windows@3.6.0#3
+    tbb[core,hwloc]:x64-windows@2022.3.0
+  * vcpkg-cmake:x64-windows@2024-04-23
+  * vcpkg-cmake-config:x64-windows@2024-05-23
+  * vcpkg-cmake-get-vars:x64-windows@2025-05-29
+  * vcpkg-tool-meson:x64-windows@1.9.0#3
+    zlib:x64-windows@1.3.1
+Additional packages (*) will be modified to complete this operation.
+Restored 0 package(s) from C:\Users\Nobody\AppData\Local\vcpkg\archives in 357 us. Use --debug to see more details.
+Installing 1/17 vcpkg-cmake-config:x64-windows@2024-05-23...
+Building vcpkg-cmake-config:x64-windows@2024-05-23...
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-config_x64-windows/share/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-config_x64-windows/share/vcpkg-cmake-config/vcpkg-port-config.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-config_x64-windows/share/vcpkg-cmake-config/copyright
+-- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+Starting submission of vcpkg-cmake-config:x64-windows@2024-05-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 112 ms
+vcpkg-cmake-config:x64-windows package ABI: 43067825c5419f5465b832f158f920cd31f9b73848b571323b25cb5eea694d8b
+Installing 2/17 vcpkg-cmake:x64-windows@2024-04-23...
+Building vcpkg-cmake:x64-windows@2024-04-23...
+-- Installing: C:/vcpkg/packages/vcpkg-cmake_x64-windows/share/vcpkg-cmake/vcpkg_cmake_configure.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake_x64-windows/share/vcpkg-cmake/vcpkg_cmake_build.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake_x64-windows/share/vcpkg-cmake/vcpkg_cmake_install.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake_x64-windows/share/vcpkg-cmake/vcpkg-port-config.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake_x64-windows/share/vcpkg-cmake/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake:x64-windows@2024-04-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake:x64-windows: 128 ms
+vcpkg-cmake:x64-windows package ABI: b3fc26b1ca60a58e9e758dd1cab1e2a7fc7c63559b9f8a3cedb643a11ce17f80
+Completed submission of vcpkg-cmake-config:x64-windows@2024-05-23 to 1 binary cache(s) in 127 ms
+Installing 3/17 asmjit:x64-windows@2025-12-13...
+Building asmjit:x64-windows@2025-12-13...
+C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\asmjit: info: installing overlay port from here
+-- Using cached asmjit-asmjit-c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz
+-- Extracting source C:/vcpkg/downloads/asmjit-asmjit-c87860217e43e2a06060fcaae5b468f6a55b9963.tar.gz
+-- Using source at C:/vcpkg/buildtrees/asmjit/src/f6a55b9963-dc6f9a90e5.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing: C:/vcpkg/packages/asmjit_x64-windows/share/asmjit/copyright
+-- Performing post-build validation
+Starting submission of asmjit:x64-windows@2025-12-13 to 1 binary cache(s) in the background
+Elapsed time to handle asmjit:x64-windows: 23 s
+asmjit:x64-windows package ABI: 04236d113a7582b5809a696a9bb66c00532ea81a4835db78cb7cd8434fc1caa0
+Completed submission of vcpkg-cmake:x64-windows@2024-04-23 to 1 binary cache(s) in 60.2 ms
+Installing 4/17 blend2d[core,jit]:x64-windows@2025-11-29...
+Building blend2d[core,jit]:x64-windows@2025-11-29...
+C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\blend2d: info: installing overlay port from here
+-- Using cached blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+-- Extracting source C:/vcpkg/downloads/blend2d-blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+-- Using source at C:/vcpkg/buildtrees/blend2d/src/40b49b15d7-f6e425c598.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing: C:/vcpkg/packages/blend2d_x64-windows/share/blend2d/usage
+-- Installing: C:/vcpkg/packages/blend2d_x64-windows/share/blend2d/copyright
+-- Performing post-build validation
+Starting submission of blend2d[core,jit]:x64-windows@2025-11-29 to 1 binary cache(s) in the background
+Elapsed time to handle blend2d:x64-windows: 1.5 min
+blend2d:x64-windows package ABI: 0fc4b487734c1f32ea5c5e7d1121ab49e0072d5fb58ede8dbfa5e788dd4072b6
+Completed submission of asmjit:x64-windows@2025-12-13 to 1 binary cache(s) in 1.2 s
+Installing 5/17 zlib:x64-windows@1.3.1...
+Building zlib:x64-windows@1.3.1...
+Downloading https://github.com/madler/zlib/archive/v1.3.1.tar.gz -> madler-zlib-v1.3.1.tar.gz
+Successfully downloaded madler-zlib-v1.3.1.tar.gz
+-- Extracting source C:/vcpkg/downloads/madler-zlib-v1.3.1.tar.gz
+-- Applying patch 0001-Prevent-invalid-inclusions-when-HAVE_-is-set-to-0.patch
+-- Applying patch 0002-build-static-or-shared-not-both.patch
+-- Applying patch 0003-android-and-mingw-fixes.patch
+-- Using source at C:/vcpkg/buildtrees/zlib/src/v1.3.1-2e5db616bf.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing: C:/vcpkg/packages/zlib_x64-windows/share/zlib/vcpkg-cmake-wrapper.cmake
+-- Fixing pkgconfig file: C:/vcpkg/packages/zlib_x64-windows/lib/pkgconfig/zlib.pc
+Downloading msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst, trying https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+Successfully downloaded msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+Downloading msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/zlib_x64-windows/debug/lib/pkgconfig/zlib.pc
+-- Installing: C:/vcpkg/packages/zlib_x64-windows/share/zlib/copyright
+-- Performing post-build validation
+Starting submission of zlib:x64-windows@1.3.1 to 1 binary cache(s) in the background
+Elapsed time to handle zlib:x64-windows: 9.4 s
+zlib:x64-windows package ABI: 7a9c0b188411eea79e27a0ca90db6b557b0d1e03f95415c8a742725c54a8c358
+Completed submission of blend2d[core,jit]:x64-windows@2025-11-29 to 1 binary cache(s) in 2 s
+Installing 6/17 libpng:x64-windows@1.6.53...
+Building libpng:x64-windows@1.6.53...
+Downloading https://github.com/pnggroup/libpng/archive/v1.6.53.tar.gz -> pnggroup-libpng-v1.6.53.tar.gz
+Successfully downloaded pnggroup-libpng-v1.6.53.tar.gz
+-- Extracting source C:/vcpkg/downloads/pnggroup-libpng-v1.6.53.tar.gz
+-- Applying patch cmake.patch
+-- Using source at C:/vcpkg/buildtrees/libpng/src/v1.6.53-b98b476139.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/share/png/vcpkg-cmake-wrapper.cmake
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/share/libpng/libpng-config.cmake
+-- Fixing pkgconfig file: C:/vcpkg/packages/libpng_x64-windows/lib/pkgconfig/libpng16.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/libpng_x64-windows/debug/lib/pkgconfig/libpng16.pc
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/debug/lib/pkgconfig/libpng.pc
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/lib/pkgconfig/libpng.pc
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/share/libpng/usage
+-- Installing: C:/vcpkg/packages/libpng_x64-windows/share/libpng/copyright
+-- Performing post-build validation
+Starting submission of libpng:x64-windows@1.6.53 to 1 binary cache(s) in the background
+Elapsed time to handle libpng:x64-windows: 7.7 s
+libpng:x64-windows package ABI: eaec890119003a2708a8c2970790708d3be7fd0b880515a35c3e5020567b52bf
+Completed submission of zlib:x64-windows@1.3.1 to 1 binary cache(s) in 161 ms
+Installing 7/17 bzip2[core,tool]:x64-windows@1.0.8#6...
+Building bzip2[core,tool]:x64-windows@1.0.8#6...
+Downloading bzip2-1.0.8.tar.gz, trying https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
+Successfully downloaded bzip2-1.0.8.tar.gz
+-- Extracting source C:/vcpkg/downloads/bzip2-1.0.8.tar.gz
+-- Applying patch fix-import-export-macros.patch
+-- Using source at C:/vcpkg/buildtrees/bzip2/src/bzip2-1-336d4794a3.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/bzip2_x64-windows/lib/pkgconfig/bzip2.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/bzip2_x64-windows/debug/lib/pkgconfig/bzip2.pc
+-- Installing: C:/vcpkg/packages/bzip2_x64-windows/share/bzip2/copyright
+-- Performing post-build validation
+Starting submission of bzip2[core,tool]:x64-windows@1.0.8#6 to 1 binary cache(s) in the background
+Elapsed time to handle bzip2:x64-windows: 7.6 s
+bzip2:x64-windows package ABI: fcea386ddb7947c21973576b9230f0feb92404330aad8fa322af7d97a1cec922
+Completed submission of libpng:x64-windows@1.6.53 to 1 binary cache(s) in 206 ms
+Installing 8/17 brotli:x64-windows@1.2.0...
+Building brotli:x64-windows@1.2.0...
+Downloading https://github.com/google/brotli/archive/v1.2.0.tar.gz -> google-brotli-v1.2.0.tar.gz
+Successfully downloaded google-brotli-v1.2.0.tar.gz
+-- Extracting source C:/vcpkg/downloads/google-brotli-v1.2.0.tar.gz
+-- Applying patch install.patch
+-- Applying patch pkgconfig.patch
+-- Using source at C:/vcpkg/buildtrees/brotli/src/v1.2.0-7af7ca71ad.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/lib/pkgconfig/libbrotlicommon.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/lib/pkgconfig/libbrotlidec.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/lib/pkgconfig/libbrotlienc.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/debug/lib/pkgconfig/libbrotlicommon.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/debug/lib/pkgconfig/libbrotlidec.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/brotli_x64-windows/debug/lib/pkgconfig/libbrotlienc.pc
+-- Installing: C:/vcpkg/packages/brotli_x64-windows/share/brotli/usage
+-- Installing: C:/vcpkg/packages/brotli_x64-windows/share/brotli/copyright
+-- Performing post-build validation
+Starting submission of brotli:x64-windows@1.2.0 to 1 binary cache(s) in the background
+Elapsed time to handle brotli:x64-windows: 16 s
+brotli:x64-windows package ABI: c80d6b3c03af8458018f0a11b94a034d181d409f5cdddf06c60afc995f3b4c6c
+Completed submission of bzip2[core,tool]:x64-windows@1.0.8#6 to 1 binary cache(s) in 142 ms
+Installing 9/17 freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3...
+Building freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3...
+Downloading https://gitlab.freedesktop.org//freetype/freetype/-/archive/VER-2-13-3/freetype-VER-2-13-3.tar.gz -> freetype-freetype-VER-2-13-3.tar.gz
+Successfully downloaded freetype-freetype-VER-2-13-3.tar.gz
+-- Extracting source C:/vcpkg/downloads/freetype-freetype-VER-2-13-3.tar.gz
+-- Applying patch 0003-Fix-UWP.patch
+-- Applying patch brotli-static.patch
+-- Applying patch bzip2.patch
+-- Applying patch fix-exports.patch
+-- Using source at C:/vcpkg/buildtrees/freetype/src/VER-2-13-3-8b423a038b.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/freetype_x64-windows/lib/pkgconfig/freetype2.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/freetype_x64-windows/debug/lib/pkgconfig/freetype2.pc
+-- Installing: C:/vcpkg/packages/freetype_x64-windows/share/freetype/usage
+-- Performing post-build validation
+Starting submission of freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3 to 1 binary cache(s) in the background
+Elapsed time to handle freetype:x64-windows: 21 s
+freetype:x64-windows package ABI: 3309e08c889ed50de4cfe15c159a233e9db46ee32ad11b310cca65a3f123f9e6
+Completed submission of brotli:x64-windows@1.2.0 to 1 binary cache(s) in 272 ms
+Installing 10/17 vcpkg-cmake-get-vars:x64-windows@2025-05-29...
+Building vcpkg-cmake-get-vars:x64-windows@2025-05-29...
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/vcpkg_cmake_get_vars.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/cmake_get_vars
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/cmake_get_vars/CMakeLists.txt
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/cmake-get-vars.cmake.in
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/vcpkg-port-config.cmake
+-- Installing: C:/vcpkg/packages/vcpkg-cmake-get-vars_x64-windows/share/vcpkg-cmake-get-vars/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake-get-vars:x64-windows@2025-05-29 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-get-vars:x64-windows: 166 ms
+vcpkg-cmake-get-vars:x64-windows package ABI: 36265b86f506231f815ae3626b42dcb498a125223c5e438bf3f406faf7e93226
+Installing 11/17 vcpkg-tool-meson:x64-windows@1.9.0#3...
+Building vcpkg-tool-meson:x64-windows@1.9.0#3...
+-- Installing: C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/copyright
+Downloading https://github.com/mesonbuild/meson/archive/1.9.0.tar.gz -> meson-1.9.0.tar.gz
+Successfully downloaded meson-1.9.0.tar.gz
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/boost_python-vc142-mt-gd-x32-0_3.lib" -> "../Cellar/boost-python/0.3.0/lib/boost_python-vc142-mt-gd-x32-0_3.lib".
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/boost_python-vc142-mt-gd-x64-0_3.lib" -> "../Cellar/boost-python/0.3.0/lib/boost_python-vc142-mt-gd-x64-0_3.lib".
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/boost_regex-vc142-mt-gd-x32-0_3.lib" -> "../Cellar/boost/0.3.0/lib/boost_regex-vc142-mt-gd-x32-0_3.lib".
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/boost_regex-vc142-mt-gd-x64-0_3.lib" -> "../Cellar/boost/0.3.0/lib/boost_regex-vc142-mt-gd-x64-0_3.lib".
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/libboost_python.so.0.3.0" -> "../Cellar/boost-python/0.3.0/lib/libboost_python.so.0.3.0".
+cmake -E tar: warning: skipping symbolic link "meson-1.9.0/test cases/frameworks/35 boost symlinks/boost/lib/libboost_regex.so.0.3.0" -> "../Cellar/boost/0.3.0/lib/libboost_regex.so.0.3.0".
+-- Applying patch C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/meson-intl.patch
+-- Applying patch C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/adjust-python-dep.patch
+-- Applying patch C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/adjust-args.patch
+-- Applying patch C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/remove-pkgconfig-specialization.patch
+-- Applying patch C:/vcpkg/packages/vcpkg-tool-meson_x64-windows/share/vcpkg-tool-meson/meson-56879d5.diff
+Downloading https://www.python.org/ftp/python/3.14.2/python-3.14.2-embed-amd64.zip -> python-3.14.2-embed-amd64.zip
+Successfully downloaded python-3.14.2-embed-amd64.zip
+-- Found Python version '3.14.2 at C:/vcpkg/downloads/tools/python/python-3.14.2-x64-1/python.exe'
+-- Using meson: C:/vcpkg/downloads/tools/meson-1.9.0-d1fcc2/meson.py
+-- Performing post-build validation
+Starting submission of vcpkg-tool-meson:x64-windows@1.9.0#3 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-tool-meson:x64-windows: 7.1 s
+vcpkg-tool-meson:x64-windows package ABI: 15a1bca9fa2375116763cfe17ffdf4878a6512074bdf5637ad24e4bb307838ad
+Completed submission of freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3 to 1 binary cache(s) in 532 ms
+Completed submission of vcpkg-cmake-get-vars:x64-windows@2025-05-29 to 1 binary cache(s) in 57.2 ms
+Installing 12/17 lcms:x64-windows@2.18...
+Building lcms:x64-windows@2.18...
+-- Found Python version '3.14.2 at C:/vcpkg/downloads/tools/python/python-3.14.2-x64-1/python.exe'
+-- Using meson: C:/vcpkg/downloads/tools/meson-1.9.0-d1fcc2/meson.py
+Downloading https://github.com/mm2/Little-CMS/archive/lcms2.18.tar.gz -> mm2-Little-CMS-lcms2.18.tar.gz
+Successfully downloaded mm2-Little-CMS-lcms2.18.tar.gz
+-- Extracting source C:/vcpkg/downloads/mm2-Little-CMS-lcms2.18.tar.gz
+-- Applying patch fix-shared-library.patch
+-- Using source at C:/vcpkg/buildtrees/lcms/src/lcms2.18-7ff99f2f06.clean
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Configuring x64-windows-dbg
+-- Getting CMake variables for x64-windows
+-- Loading CMake variables from C:/vcpkg/buildtrees/lcms/cmake-get-vars_C_CXX-x64-windows.cmake.log
+-- Configuring x64-windows-dbg done
+-- Configuring x64-windows-rel
+-- Configuring x64-windows-rel done
+-- Package x64-windows-dbg
+-- Package x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/lcms_x64-windows/lib/pkgconfig/lcms2.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/lcms_x64-windows/debug/lib/pkgconfig/lcms2.pc
+-- Installing: C:/vcpkg/packages/lcms_x64-windows/share/lcms/lcms-config.cmake
+-- Installing: C:/vcpkg/packages/lcms_x64-windows/share/lcms2/lcms2-config.cmake
+-- Installing: C:/vcpkg/packages/lcms_x64-windows/share/lcms/usage
+-- Installing: C:/vcpkg/packages/lcms_x64-windows/share/lcms/copyright
+-- Performing post-build validation
+Starting submission of lcms:x64-windows@2.18 to 1 binary cache(s) in the background
+Elapsed time to handle lcms:x64-windows: 26 s
+lcms:x64-windows package ABI: 96f61c4cea6a7b4276197890abe4d0c05fa2dc2cb3025cb993d404a7f13e0f5a
+Completed submission of vcpkg-tool-meson:x64-windows@1.9.0#3 to 1 binary cache(s) in 63.5 ms
+Installing 13/17 libjpeg-turbo:x64-windows@3.1.3...
+Building libjpeg-turbo:x64-windows@3.1.3...
+Downloading https://github.com/libjpeg-turbo/libjpeg-turbo/archive/3.1.3.tar.gz -> libjpeg-turbo-libjpeg-turbo-3.1.3.tar.gz
+Successfully downloaded libjpeg-turbo-libjpeg-turbo-3.1.3.tar.gz
+-- Extracting source C:/vcpkg/downloads/libjpeg-turbo-libjpeg-turbo-3.1.3.tar.gz
+-- Applying patch add-options-for-docs-headers.patch
+-- Applying patch workaround_cmake_system_processor.patch
+-- Using source at C:/vcpkg/buildtrees/libjpeg-turbo/src/3.1.3-03a6b1dd07.clean
+Downloading nasm-3.01-win64.zip, trying https://www.nasm.us/pub/nasm/releasebuilds/3.01/win64/nasm-3.01-win64.zip
+Successfully downloaded nasm-3.01-win64.zip
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/libjpeg-turbo_x64-windows/lib/pkgconfig/libjpeg.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/libjpeg-turbo_x64-windows/lib/pkgconfig/libturbojpeg.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/libjpeg-turbo_x64-windows/debug/lib/pkgconfig/libjpeg.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/libjpeg-turbo_x64-windows/debug/lib/pkgconfig/libturbojpeg.pc
+-- Installing: C:/vcpkg/packages/libjpeg-turbo_x64-windows/share/libjpeg-turbo/copyright
+-- Performing post-build validation
+Starting submission of libjpeg-turbo:x64-windows@3.1.3 to 1 binary cache(s) in the background
+Elapsed time to handle libjpeg-turbo:x64-windows: 33 s
+libjpeg-turbo:x64-windows package ABI: 2847db7b935ca724f8102e41ee5ec07c0b4af1c511138a2398c7ea098beb37a2
+Completed submission of lcms:x64-windows@2.18 to 1 binary cache(s) in 240 ms
+Installing 14/17 openjpeg:x64-windows@2.5.4...
+Building openjpeg:x64-windows@2.5.4...
+Downloading https://github.com/uclouvain/openjpeg/archive/v2.5.4.tar.gz -> uclouvain-openjpeg-v2.5.4.tar.gz
+Successfully downloaded uclouvain-openjpeg-v2.5.4.tar.gz
+-- Extracting source C:/vcpkg/downloads/uclouvain-openjpeg-v2.5.4.tar.gz
+-- Applying patch pkgconfig.diff
+-- Applying patch third-party.diff
+-- Using source at C:/vcpkg/buildtrees/openjpeg/src/v2.5.4-eb11fd487f.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/openjpeg_x64-windows/lib/pkgconfig/libopenjp2.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/openjpeg_x64-windows/debug/lib/pkgconfig/libopenjp2.pc
+-- Installing: C:/vcpkg/packages/openjpeg_x64-windows/share/openjpeg/usage
+-- Installing: C:/vcpkg/packages/openjpeg_x64-windows/share/openjpeg/copyright
+-- Performing post-build validation
+Starting submission of openjpeg:x64-windows@2.5.4 to 1 binary cache(s) in the background
+Elapsed time to handle openjpeg:x64-windows: 38 s
+openjpeg:x64-windows package ABI: 483c9e935909fa1c11a4c27de8b39842acbdf33f8efdb36cf10280ac5585de0b
+Completed submission of libjpeg-turbo:x64-windows@3.1.3 to 1 binary cache(s) in 394 ms
+Installing 15/17 openssl:x64-windows@3.6.0#3...
+Building openssl:x64-windows@3.6.0#3...
+Downloading https://github.com/openssl/openssl/archive/openssl-3.6.0.tar.gz -> openssl-openssl-openssl-3.6.0.tar.gz
+Successfully downloaded openssl-openssl-openssl-3.6.0.tar.gz
+-- Extracting source C:/vcpkg/downloads/openssl-openssl-openssl-3.6.0.tar.gz
+-- Applying patch cmake-config.patch
+-- Applying patch command-line-length.patch
+-- Applying patch script-prefix.patch
+-- Applying patch aes_cfb128_vaes_encdec_wrapper.diff
+-- Applying patch windows/install-layout.patch
+-- Applying patch windows/install-pdbs.patch
+-- Applying patch windows/install-programs.diff
+-- Applying patch unix/android-cc.patch
+-- Applying patch unix/move-openssldir.patch
+-- Applying patch unix/no-empty-dirs.patch
+-- Applying patch unix/no-static-libs-for-shared.patch
+-- Using source at C:/vcpkg/buildtrees/openssl/src/nssl-3.6.0-a2eab2a5bb.clean
+-- Getting CMake variables for x64-windows
+-- Loading CMake variables from C:/vcpkg/buildtrees/openssl/cmake-get-vars_C_CXX-x64-windows.cmake.log
+Downloading https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54201_64bit/strawberry-perl-5.42.0.1-64bit-portable.zip -> strawberry-perl-5.42.0.1-64bit-portable.zip
+Successfully downloaded strawberry-perl-5.42.0.1-64bit-portable.zip
+-- Getting CMake variables for x64-windows
+Downloading jom_1_1_4.zip, trying https://download.qt.io/official_releases/jom/jom_1_1_4.zip
+Successfully downloaded jom_1_1_4.zip
+-- Prerunning x64-windows-dbg
+-- Building x64-windows-dbg
+-- Prerunning x64-windows-rel
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/lib/pkgconfig/libcrypto.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/lib/pkgconfig/libssl.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/lib/pkgconfig/openssl.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/debug/lib/pkgconfig/libcrypto.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/debug/lib/pkgconfig/libssl.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/openssl_x64-windows/debug/lib/pkgconfig/openssl.pc
+-- Installing: C:/vcpkg/packages/openssl_x64-windows/share/openssl/usage
+-- Installing: C:/vcpkg/packages/openssl_x64-windows/share/openssl/copyright
+-- Performing post-build validation
+Starting submission of openssl:x64-windows@3.6.0#3 to 1 binary cache(s) in the background
+Elapsed time to handle openssl:x64-windows: 7.1 min
+openssl:x64-windows package ABI: 55e133d77a0214dfa47d064b5273f276b7e030c79ff2173044c9215238cbf037
+Completed submission of openjpeg:x64-windows@2.5.4 to 1 binary cache(s) in 286 ms
+Installing 16/17 hwloc:x64-windows@2.11.2...
+Building hwloc:x64-windows@2.11.2...
+Downloading https://github.com/open-mpi/hwloc/archive/hwloc-2.11.2.tar.gz -> open-mpi-hwloc-hwloc-2.11.2.tar.gz
+Successfully downloaded open-mpi-hwloc-hwloc-2.11.2.tar.gz
+-- Extracting source C:/vcpkg/downloads/open-mpi-hwloc-hwloc-2.11.2.tar.gz
+-- Applying patch fix_shared_win_build.patch
+-- Applying patch stdout_fileno.patch
+-- Using source at C:/vcpkg/buildtrees/hwloc/src/loc-2.11.2-a8fd08dd1a.clean
+-- Getting CMake variables for x64-windows
+Downloading msys2-autoconf-wrapper-20250528-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/autoconf-wrapper-20250528-1-any.pkg.tar.zst
+Successfully downloaded msys2-autoconf-wrapper-20250528-1-any.pkg.tar.zst
+Downloading msys2-automake-wrapper-20250528-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake-wrapper-20250528-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake-wrapper-20250528-1-any.pkg.tar.zst
+Downloading msys2-binutils-2.45.1-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/binutils-2.45.1-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-binutils-2.45.1-1-x86_64.pkg.tar.zst
+Downloading msys2-libtool-2.5.4-4-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libtool-2.5.4-4-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libtool-2.5.4-4-x86_64.pkg.tar.zst
+Downloading msys2-make-4.4.1-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/make-4.4.1-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-make-4.4.1-2-x86_64.pkg.tar.zst
+Downloading msys2-pkgconf-2.5.1-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/pkgconf-2.5.1-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-pkgconf-2.5.1-1-x86_64.pkg.tar.zst
+Downloading msys2-which-2.23-4-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/which-2.23-4-x86_64.pkg.tar.zst
+Successfully downloaded msys2-which-2.23-4-x86_64.pkg.tar.zst
+Downloading msys2-bash-5.3.009-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/bash-5.3.009-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-bash-5.3.009-1-x86_64.pkg.tar.zst
+Downloading msys2-coreutils-8.32-5-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/coreutils-8.32-5-x86_64.pkg.tar.zst
+Successfully downloaded msys2-coreutils-8.32-5-x86_64.pkg.tar.zst
+Downloading msys2-file-5.46-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/file-5.46-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-file-5.46-2-x86_64.pkg.tar.zst
+Downloading msys2-gawk-5.3.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gawk-5.3.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gawk-5.3.2-1-x86_64.pkg.tar.zst
+Downloading msys2-grep-1~3.0-7-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/grep-1~3.0-7-x86_64.pkg.tar.zst
+Successfully downloaded msys2-grep-1~3.0-7-x86_64.pkg.tar.zst
+Downloading msys2-gzip-1.14-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gzip-1.14-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gzip-1.14-1-x86_64.pkg.tar.zst
+Downloading msys2-diffutils-3.12-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/diffutils-3.12-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-diffutils-3.12-1-x86_64.pkg.tar.zst
+Downloading msys2-sed-4.9-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/sed-4.9-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-sed-4.9-1-x86_64.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+Downloading msys2-autoconf2.72-2.72-3-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/autoconf2.72-2.72-3-any.pkg.tar.zst
+Successfully downloaded msys2-autoconf2.72-2.72-3-any.pkg.tar.zst
+Downloading msys2-automake1.16-1.16.5-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake1.16-1.16.5-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake1.16-1.16.5-1-any.pkg.tar.zst
+Downloading msys2-automake1.17-1.17-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake1.17-1.17-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake1.17-1.17-1-any.pkg.tar.zst
+Downloading msys2-automake1.18-1.18.1-1-any.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/automake1.18-1.18.1-1-any.pkg.tar.zst
+Successfully downloaded msys2-automake1.18-1.18.1-1-any.pkg.tar.zst
+Downloading msys2-libiconv-1.18-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libiconv-1.18-1-x86_64.pkg.tar.zst
+Downloading msys2-libintl-0.22.5-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libintl-0.22.5-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libintl-0.22.5-1-x86_64.pkg.tar.zst
+Downloading msys2-zlib-1.3.1-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/zlib-1.3.1-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-zlib-1.3.1-1-x86_64.pkg.tar.zst
+Downloading msys2-findutils-4.10.0-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/findutils-4.10.0-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-findutils-4.10.0-2-x86_64.pkg.tar.zst
+Downloading msys2-tar-1.35-3-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/tar-1.35-3-x86_64.pkg.tar.zst
+Successfully downloaded msys2-tar-1.35-3-x86_64.pkg.tar.zst
+Downloading msys2-gmp-6.3.0-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gmp-6.3.0-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gmp-6.3.0-2-x86_64.pkg.tar.zst
+Downloading msys2-gcc-libs-15.2.0-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/gcc-libs-15.2.0-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-gcc-libs-15.2.0-1-x86_64.pkg.tar.zst
+Downloading msys2-libbz2-1.0.8-4-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libbz2-1.0.8-4-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libbz2-1.0.8-4-x86_64.pkg.tar.zst
+Downloading msys2-liblzma-5.8.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/liblzma-5.8.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-liblzma-5.8.2-1-x86_64.pkg.tar.zst
+Downloading msys2-libzstd-1.5.7-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libzstd-1.5.7-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libzstd-1.5.7-1-x86_64.pkg.tar.zst
+Downloading msys2-libreadline-8.3.003-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libreadline-8.3.003-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libreadline-8.3.003-1-x86_64.pkg.tar.zst
+Downloading msys2-mpfr-4.2.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/mpfr-4.2.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-mpfr-4.2.2-1-x86_64.pkg.tar.zst
+Downloading msys2-libpcre-8.45-5-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libpcre-8.45-5-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libpcre-8.45-5-x86_64.pkg.tar.zst
+Downloading msys2-m4-1.4.19-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/m4-1.4.19-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-m4-1.4.19-2-x86_64.pkg.tar.zst
+Downloading msys2-perl-5.40.3-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/perl-5.40.3-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-perl-5.40.3-1-x86_64.pkg.tar.zst
+Downloading msys2-ncurses-6.5.20240831-2-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+Successfully downloaded msys2-ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+Downloading msys2-libxcrypt-4.5.2-1-x86_64.pkg.tar.zst, trying https://mirror.msys2.org/msys/x86_64/libxcrypt-4.5.2-1-x86_64.pkg.tar.zst
+Successfully downloaded msys2-libxcrypt-4.5.2-1-x86_64.pkg.tar.zst
+-- Applying patch C:/vcpkg/scripts/cmake/compile_wrapper_consider_clang-cl.patch
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/fe50d45a6f168d59
+-- Generating configure for x64-windows
+-- Finished generating configure for x64-windows
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Configuring x64-windows-dbg
+-- Configuring x64-windows-rel
+-- Building x64-windows-dbg
+-- Installing x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/hwloc_x64-windows/lib/pkgconfig/hwloc.pc
+-- Fixing pkgconfig file: C:/vcpkg/packages/hwloc_x64-windows/debug/lib/pkgconfig/hwloc.pc
+-- Installing: C:/vcpkg/packages/hwloc_x64-windows/share/hwloc/copyright
+-- Performing post-build validation
+Starting submission of hwloc:x64-windows@2.11.2 to 1 binary cache(s) in the background
+Elapsed time to handle hwloc:x64-windows: 16 min
+hwloc:x64-windows package ABI: d08ed4970c9352f64dfe55c2e736c3f3a6e40bd44a990ea2b5102faf8a42cf7d
+Completed submission of openssl:x64-windows@3.6.0#3 to 1 binary cache(s) in 2.6 s
+Installing 17/17 tbb[core,hwloc]:x64-windows@2022.3.0...
+Building tbb[core,hwloc]:x64-windows@2022.3.0...
+Downloading https://github.com/oneapi-src/oneTBB/archive/v2022.3.0.tar.gz -> oneapi-src-oneTBB-v2022.3.0.tar.gz
+Successfully downloaded oneapi-src-oneTBB-v2022.3.0.tar.gz
+-- Extracting source C:/vcpkg/downloads/oneapi-src-oneTBB-v2022.3.0.tar.gz
+-- Using source at C:/vcpkg/buildtrees/tbb/src/v2022.3.0-5254eca8db.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/vcpkg/packages/tbb_x64-windows/lib/pkgconfig/tbb.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.5.1-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.5-1-x86_64.pkg.tar.zst
+-- Using msys root at C:/vcpkg/downloads/tools/msys2/3e71d1f8e22ab23f
+-- Fixing pkgconfig file: C:/vcpkg/packages/tbb_x64-windows/debug/lib/pkgconfig/tbb.pc
+-- Installing: C:/vcpkg/packages/tbb_x64-windows/share/tbb/copyright
+-- Performing post-build validation
+Starting submission of tbb[core,hwloc]:x64-windows@2022.3.0 to 1 binary cache(s) in the background
+Elapsed time to handle tbb:x64-windows: 23 s
+tbb:x64-windows package ABI: af8ff8d9a04990c6be9c4eb35fa7e540ac6eb96a36a1f36850d53137fb8b90d3
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+(FTL OR GPL-2.0-or-later)
+Apache-2.0
+BSD-2-Clause
+BSD-3-Clause
+MIT
+Zlib
+bzip2-1.0.6
+libpng-2.0
+blend2d provides CMake targets:
+
+    find_package(blend2d CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE blend2d::blend2d)
+
+The package zlib is compatible with built-in CMake targets:
+
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(main PRIVATE ZLIB::ZLIB)
+
+libpng provides CMake targets:
+
+  find_package(PNG REQUIRED)
+  target_link_libraries(main PRIVATE PNG::PNG)
+
+freetype is compatible with built-in CMake targets:
+
+    find_package(Freetype REQUIRED)
+    target_link_libraries(main PRIVATE Freetype::Freetype) # since CMake 3.10
+
+The package lcms provides CMake targets:
+
+    find_package(lcms2 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE lcms2::lcms2)
+
+libjpeg-turbo is compatible with built-in implementation-agnostic CMake targets:
+
+    find_package(JPEG REQUIRED)
+    target_link_libraries(main PRIVATE JPEG::JPEG)
+
+libjpeg-turbo provides CMake targets for the TurboJPEG C API:
+
+    find_package(libjpeg-turbo CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:libjpeg-turbo::turbojpeg>,libjpeg-turbo::turbojpeg,libjpeg-turbo::turbojpeg-static>)
+
+openjpeg provides CMake targets:
+
+  find_package(OpenJPEG CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE openjp2)
+
+openjpeg provides pkg-config modules:
+
+  # JPEG2000 library
+  libopenjp2
+
+openssl is compatible with built-in CMake targets:
+
+  find_package(OpenSSL REQUIRED)
+  target_link_libraries(main PRIVATE OpenSSL::SSL)
+  target_link_libraries(main PRIVATE OpenSSL::Crypto)
+
+tbb provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(TBB CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE TBB::tbb TBB::tbbmalloc TBB::tbbmalloc_proxy)
+
+tbb provides pkg-config modules:
+
+  # C++ library for parallel programming on multi-core processors.
+  tbb
+
+Completed submission of hwloc:x64-windows@2.11.2 to 1 binary cache(s) in 135 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of tbb[core,hwloc]:x64-windows@2022.3.0 to 1 binary cache(s) in 846 ms (1/1)
+All requested installations completed successfully in: 28 min
+-- Running vcpkg install - done
+-- Selecting Windows SDK version 10.0.19041.0 to target Windows 10.0.26200.
+-- The CXX compiler identification is MSVC 19.44.35222.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+VCPKG Enabled: ON
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Found OpenSSL: optimized;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/lib/libcrypto.lib;debug;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug/lib/libcrypto.lib (found version "3.6.0")
+-- Found ZLIB: optimized;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/lib/zlib.lib;debug;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug/lib/zlibd.lib (found version "1.3.1")
+-- Found JPEG: optimized;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/lib/jpeg.lib;debug;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug/lib/jpeg.lib (found version "62")
+-- Found PNG: optimized;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/lib/libpng16.lib;debug;C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug/lib/libpng16d.lib (found version "1.6.53")
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Failed
+-- Performing Test COMPILER_HAS_DEPRECATED
+-- Performing Test COMPILER_HAS_DEPRECATED - Success
+CMAKE_TRANSLATION_TARGETS = Pdf4QtLibCorePdf4QtLibWidgetsCodeGeneratorJBIG2_VIEWERPdfExampleGeneratorPdfToolUnitTestsPdf4QtLibGuiAudioBookPluginDimensionsPluginObjectInspectorPluginOutputPreviewPluginRedactPluginSignaturePluginSoftProofingPluginEditorPluginPdf4QtEditorPdf4QtViewerPdf4QtPageMasterPdf4QtDiffPdf4QtLaunchPad
+PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORYC:/Users/Nobody/Documents/PDF4QT-Opus/translations
+PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORYC:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations
+CMAKE_PREFIX_PATH = C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windowsC:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug
+CMAKE_TOOLCHAIN_FILE = C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+-- MSVC Redistributable Package Path = C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Redist/MSVC/14.44.35112/x64/Microsoft.VC143.CRT
+-- Configuring done (1684.3s)
+-- Generating done (4.7s)
+-- Build files have been written to: C:/Users/Nobody/Documents/PDF4QT-Opus/build

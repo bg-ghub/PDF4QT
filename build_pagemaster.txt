@@ -1,0 +1,121 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+CMake is re-running because C:/Users/Nobody/Documents/PDF4QT-Opus/build/CMakeFiles/generate.stamp is out-of-date.
+  the file 'C:/Users/Nobody/Documents/PDF4QT-Opus/CMakeLists.txt'
+  is newer than 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/CMakeFiles/generate.stamp.depend'
+  result='-1'
+-- PDF4QT-Opus version: 1.5.3.0-Opus-1.0
+-- Build type - CMAKE_BUILD_TYPE: Release
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+The following packages are already installed:
+  * asmjit:x64-windows@2025-12-13 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\asmjit
+    blend2d[core,jit]:x64-windows@2025-11-29 -- C:\Users\Nobody\Documents\PDF4QT-Opus\vcpkg/overlays/general\blend2d
+  * brotli:x64-windows@1.2.0
+  * bzip2[core,tool]:x64-windows@1.0.8#6
+    freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3
+  * hwloc:x64-windows@2.11.2
+    lcms:x64-windows@2.18
+    libjpeg-turbo:x64-windows@3.1.3
+    libpng:x64-windows@1.6.53
+    openjpeg:x64-windows@2.5.4
+    openssl:x64-windows@3.6.0#3
+    tbb[core,hwloc]:x64-windows@2022.3.0
+  * vcpkg-cmake:x64-windows@2024-04-23
+  * vcpkg-cmake-config:x64-windows@2024-05-23
+  * vcpkg-cmake-get-vars:x64-windows@2025-05-29
+  * vcpkg-tool-meson:x64-windows@1.9.0#3
+    zlib:x64-windows@1.3.1
+blend2d provides CMake targets:
+
+    find_package(blend2d CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE blend2d::blend2d)
+
+The package zlib is compatible with built-in CMake targets:
+
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(main PRIVATE ZLIB::ZLIB)
+
+libpng provides CMake targets:
+
+  find_package(PNG REQUIRED)
+  target_link_libraries(main PRIVATE PNG::PNG)
+
+freetype is compatible with built-in CMake targets:
+
+    find_package(Freetype REQUIRED)
+    target_link_libraries(main PRIVATE Freetype::Freetype) # since CMake 3.10
+
+The package lcms provides CMake targets:
+
+    find_package(lcms2 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE lcms2::lcms2)
+
+libjpeg-turbo is compatible with built-in implementation-agnostic CMake targets:
+
+    find_package(JPEG REQUIRED)
+    target_link_libraries(main PRIVATE JPEG::JPEG)
+
+libjpeg-turbo provides CMake targets for the TurboJPEG C API:
+
+    find_package(libjpeg-turbo CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:libjpeg-turbo::turbojpeg>,libjpeg-turbo::turbojpeg,libjpeg-turbo::turbojpeg-static>)
+
+openjpeg provides CMake targets:
+
+  find_package(OpenJPEG CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE openjp2)
+
+openjpeg provides pkg-config modules:
+
+  # JPEG2000 library
+  libopenjp2
+
+openssl is compatible with built-in CMake targets:
+
+  find_package(OpenSSL REQUIRED)
+  target_link_libraries(main PRIVATE OpenSSL::SSL)
+  target_link_libraries(main PRIVATE OpenSSL::Crypto)
+
+tbb provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(TBB CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE TBB::tbb TBB::tbbmalloc TBB::tbbmalloc_proxy)
+
+tbb provides pkg-config modules:
+
+  # C++ library for parallel programming on multi-core processors.
+  tbb
+
+All requested installations completed successfully in: 1.66 ms
+-- Running vcpkg install - done
+-- Selecting Windows SDK version 10.0.19041.0 to target Windows 10.0.26200.
+VCPKG Enabled: ON
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+CMAKE_TRANSLATION_TARGETS = Pdf4QtLibCorePdf4QtLibWidgetsCodeGeneratorJBIG2_VIEWERPdfExampleGeneratorPdfToolUnitTestsPdf4QtLibGuiAudioBookPluginDimensionsPluginObjectInspectorPluginOutputPreviewPluginRedactPluginSignaturePluginSoftProofingPluginEditorPluginPdf4QtEditorPdf4QtViewerPdf4QtPageMasterPdf4QtDiffPdf4QtLaunchPad
+PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORYC:/Users/Nobody/Documents/PDF4QT-Opus/translations
+PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORYC:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations
+CMAKE_PREFIX_PATH = C:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windowsC:/Users/Nobody/Documents/PDF4QT-Opus/build/vcpkg_installed/x64-windows/debug
+CMAKE_TOOLCHAIN_FILE = C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+-- MSVC Redistributable Package Path = C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Redist/MSVC/14.44.35112/x64/Microsoft.VC143.CRT
+-- Configuring done (4.9s)
+-- Generating done (6.6s)
+-- Build files have been written to: C:/Users/Nobody/Documents/PDF4QT-Opus/build
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  1>Checking Build System
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  main.cpp
+  mainwindow.cpp
+  pageitemdelegate.cpp
+  Generating Code...
+  Pdf4QtPageMaster.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtPageMaster.exe

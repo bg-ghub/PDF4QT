@@ -1,0 +1,29 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  mainwindow.cpp
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2664: 'QPixmap pdfpagemaster::PageItemDelegate::getPageImagePixmap(const pdfpagemaster::PageGroupItem *,QRect) const': cannot convert argument 1 from 'const _Ty' to 'const pdfpagemaster::PageGroupItem *' [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2664:         with [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2664:         [ [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2664:             _Ty=pdfpagemaster::PageGroupItem::GroupItem [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32): error C2664:         ] [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1334,25):
+      No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.h(76,11):
+      see declaration of 'pdfpagemaster::PageItemDelegate::getPageImagePixmap'
+      C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\mainwindow.cpp(1333,32):
+      while trying to match the argument list '(const _Ty, QRect)'
+          with
+          [
+              _Ty=pdfpagemaster::PageGroupItem::GroupItem
+          ]
+  

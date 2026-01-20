@@ -47,6 +47,7 @@ struct RenderRequest {
   bool hasImage = false;
   const pdf::PDFDocument *documentPtr = nullptr;
   QImage image;
+  QString pdfPath; // PDF4QT-Opus: Path for PDFium rendering
 };
 
 /// PDF4QT-Opus: Enhanced delegate with true background thumbnail rendering

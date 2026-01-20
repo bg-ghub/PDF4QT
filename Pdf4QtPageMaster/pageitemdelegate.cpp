@@ -25,6 +25,7 @@
 #include "pdfcompiler.h"
 #include "pdfconstants.h"
 #include "pdfimage.h"
+#include "pdfiumthumbnail.h"
 #include "pdfpainterutils.h"
 #include "pdfrenderer.h"
 #include "pdfwidgetutils.h"
@@ -235,6 +236,8 @@ QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
         request.hasDocument = true;
         // Store a copy of document pointer for thread-safe access
         request.documentPtr = &it->second.document;
+        // PDF4QT-Opus: Store file path for PDFium rendering
+        request.pdfPath = it->second.fileName;
       }
     } else if (groupItem.pageType == PT_Image) {
       const auto &images = m_model->getImages();
@@ -296,10 +299,20 @@ PageItemDelegate::renderInBackground(const RenderRequest &request) const {
       if (!page)
         return result;
 
-      // PDF4QT-Opus: FAST PATH - Try embedded thumbnail first (instant)
-      // Many PDFs contain pre-rendered thumbnails, extracting these is much
-      // faster than rendering the full page
       QSize targetSize = request.rect.size() * request.dpiScaleRatio;
+
+      // PDF4QT-Opus: FAST PATH - Use PDFium for thumbnail rendering
+      // (NAPS2-level speed)
+      if (PdfiumThumbnail::isAvailable() && !request.pdfPath.isEmpty()) {
+        // Try PDFium first - it's much faster than PDF4QT's renderer
+        result =
+            PdfiumThumbnail::renderPage(request.pdfPath, pageIndex, targetSize);
+        if (!result.isNull()) {
+          return result;
+        }
+      }
+
+      // SLOW PATH: Fall back to PDF4QT renderer if PDFium fails
       pdf::PDFObject thumbnailObj = page->getThumbnail(&document.getStorage());
       if (thumbnailObj.isStream()) {
         try {

@@ -1,0 +1,4 @@
+=== PDF4QT-Opus Local Build ===
+'C:\Program' is not recognized as an internal or external command,
+operable program or batch file.
+ERROR: Visual Studio 2022 not found.

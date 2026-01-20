@@ -1,0 +1,412 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  1>Checking Build System
+  Generating usr/bin/translations/PDF4QT-Opus_cs.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_cs.qm'...
+      Generated 1761 translation(s) (1761 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_de.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_de.qm'...
+      Generated 1917 translation(s) (1917 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_en.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_en.qm'...
+      Generated 0 translation(s) (0 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_es.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_es.qm'...
+      Generated 1647 translation(s) (1647 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_fr.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_fr.qm'...
+      Generated 1598 translation(s) (1598 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_ko.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_ko.qm'...
+      Generated 1884 translation(s) (1884 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_ru.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_ru.qm'...
+      Generated 1885 translation(s) (1885 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_tr.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_tr.qm'...
+      Generated 1846 translation(s) (1846 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_zh_CN.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_zh_CN.qm'...
+      Generated 1795 translation(s) (1795 finished and 0 unfinished)
+  Generating usr/bin/translations/PDF4QT-Opus_zh_TW.qm
+  Updating 'C:/Users/Nobody/Documents/PDF4QT-Opus/build/usr/bin/translations/PDF4QT-Opus_zh_TW.qm'...
+      Generated 1723 translation(s) (1723 finished and 0 unfinished)
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/CMakeLists.txt
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  3>Automatic RCC for fonts.qrc
+  2>Automatic RCC for aatl.qrc
+  1>Automatic RCC for cmaps.qrc
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtLibCore/CMakeLists.txt
+  pdfaction.cpp
+  pdfalgorithmlcs.cpp
+  pdfannotation.cpp
+  pdfblendfunction.cpp
+  pdfccittfaxdecoder.cpp
+  pdfcertificatemanager.cpp
+  pdfcms.cpp
+  pdfdiff.cpp
+  pdfdocumentbuilder.cpp
+  pdfdocumentmanipulator.cpp
+  pdfdocumenttextflow.cpp
+  pdfdocumenttextfloweditormodel.cpp
+  pdfdocumentwriter.cpp
+  pdfexecutionpolicy.cpp
+  pdffile.cpp
+  pdfform.cpp
+  pdficontheme.cpp
+  pdfjavascriptscanner.cpp
+  pdfjbig2decoder.cpp
+  pdfmultimedia.cpp
+  Generating Code...
+  Compiling...
+  pdfobject.cpp
+  pdfobjecteditormodel.cpp
+  pdfobjectutils.cpp
+  pdfoptimizer.cpp
+  pdfoptionalcontent.cpp
+  pdfoutline.cpp
+  pdfpagenavigation.cpp
+  pdfpagetransition.cpp
+  pdfpainterutils.cpp
+  pdfparser.cpp
+  pdfdocument.cpp
+  pdfdocumentreader.cpp
+  pdfpattern.cpp
+  pdfplugin.cpp
+  pdfprogress.cpp
+  pdfredact.cpp
+  pdfsecurityhandler.cpp
+  pdfsignaturehandler.cpp
+  pdfsnapper.cpp
+  pdfstructuretree.cpp
+  Generating Code...
+  Compiling...
+  pdftextlayout.cpp
+  pdftransparencyrenderer.cpp
+  pdfutils.cpp
+  pdfxfaengine.cpp
+  pdfxreftable.cpp
+  pdfvisitor.cpp
+  pdfencoding.cpp
+  pdfcatalog.cpp
+  pdfpage.cpp
+  pdfstreamfilters.cpp
+  pdfcolorspaces.cpp
+  pdfrenderer.cpp
+  pdfpagecontentprocessor.cpp
+  pdfpainter.cpp
+  pdffunction.cpp
+  pdfnametounicode.cpp
+  pdffont.cpp
+  pdfimage.cpp
+  pdfdocumentsanitizer.cpp
+  pdfimageconversion.cpp
+  Generating Code...
+  Compiling...
+  pdfcolorconvertor.cpp
+  pdftextlayoutgenerator.cpp
+  pdfwidgetsnapshot.cpp
+  pdfcertificatestore.cpp
+  pdfblpainter.cpp
+  pdfpagecontenteditorprocessor.cpp
+  pdfpagecontenteditorcontentstreambuilder.cpp
+  pdfapplicationtranslator.cpp
+  pdfstreamingdocumentwriter.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_cmaps.cpp
+  qrc_aatl.cpp
+  qrc_fonts.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibCore/Release/Pdf4QtLibCore.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibCore/Release/Pdf4QtLibCore.exp
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target CodeGenerator
+  Automatic MOC and UIC for target JBIG2_VIEWER
+  Automatic MOC and UIC for target PdfExampleGenerator
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Automatic MOC and UIC for target Pdf4QtLaunchPad
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/PdfExampleGenerator/CMakeLists.txt
+  pdfexamplesgenerator.cpp
+  2>Automatic RCC for app.qrc
+  1>
+  1>
+  1>
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/JBIG2_Viewer/CMakeLists.txt
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/CodeGenerator/CMakeLists.txt
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtLaunchPad/CMakeLists.txt
+  mainwindow.cpp
+  Automatic MOC and UIC for target UnitTests
+  codegenerator.cpp
+  main.cpp
+  1>
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtLibWidgets/CMakeLists.txt
+  pdfadvancedtools.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/UnitTests/CMakeLists.txt
+  Automatic MOC and UIC for target PdfTool
+  tst_lexicalanalyzertest.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/PdfTool/CMakeLists.txt
+  main.cpp
+  launchapplicationwidget.cpp
+  main.cpp
+  main.cpp
+  main.cpp
+  launchdialog.cpp
+  pdfwidgettool.cpp
+  mocs_compilation_Release.cpp
+  pdfoutputformatter.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  generatormainwindow.cpp
+  PdfExampleGenerator.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\PdfExampleGenerator.exe
+  mocs_compilation_Release.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  Generating Code...
+  pdftoolabstractapplication.cpp
+  JBIG2_VIEWER.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\JBIG2_VIEWER.exe
+  UnitTests.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\UnitTests.exe
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_app.cpp
+  Pdf4QtLaunchPad.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLaunchPad.exe
+  pdfwidgetutils.cpp
+  pdftoolattachments.cpp
+  Generating Code...
+  pdfcertificatemanagerdialog.cpp
+  CodeGenerator.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\CodeGenerator.exe
+  pdftoolaudiobook.cpp
+  pdfcreatecertificatedialog.cpp
+  pdfdrawwidget.cpp
+  pdftoolcertstore.cpp
+  pdftoolcolorprofiles.cpp
+  pdfobjecteditorwidget.cpp
+  pdftooldecrypt.cpp
+  pdfpagecontenteditorstylesettings.cpp
+  pdftooldiff.cpp
+  pdfpagecontenteditortools.cpp
+  pdftoolencrypt.cpp
+  pdfpagecontenteditorwidget.cpp
+  pdfrenderingerrorswidget.cpp
+  pdftoolfetchimages.cpp
+  pdfselectpagesdialog.cpp
+  pdftoolfetchtext.cpp
+  pdfwidgetannotation.cpp
+  pdftoolinfo.cpp
+  pdfpagecontentelements.cpp
+  pdftoolinfofonts.cpp
+  pdfitemmodels.cpp
+  pdftoolinfoinks.cpp
+  pdfwidgetformmanager.cpp
+  pdftoolinfojavascript.cpp
+  pdftoolinfometadata.cpp
+  pdftexteditpseudowidget.cpp
+  pdftoolinfonameddestinations.cpp
+  pdfdrawspacecontroller.cpp
+  pdftoolinfopageboxes.cpp
+  pdfcompiler.cpp
+  pdftoolinfostructuretree.cpp
+  Generating Code...
+  pdfcertificatelisthelper.cpp
+  Generating Code...
+  Compiling...
+  pdftoolinkcoverage.cpp
+  pdftooloptimize.cpp
+  Compiling...
+  pdfpagecontenteditorediteditemsettings.cpp
+  pdftoolrender.cpp
+  mocs_compilation_Release.cpp
+  pdftoolremoveexternallinks.cpp
+  pdftoolseparate.cpp
+  Generating Code...
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibWidgets/Release/Pdf4QtLibWidgets.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibWidgets/Release/Pdf4QtLibWidgets.exp
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target SoftProofingPlugin
+  Automatic MOC and UIC for target RedactPlugin
+  Automatic MOC and UIC for target Pdf4QtLibGui
+  Automatic MOC and UIC for target OutputPreviewPlugin
+  Automatic MOC and UIC for target EditorPlugin
+  Automatic MOC and UIC for target ObjectInspectorPlugin
+  Automatic MOC and UIC for target DimensionsPlugin
+  Automatic MOC and UIC for target Pdf4QtDiff
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  pdftoolstatistics.cpp
+  1>Automatic RCC for icons.qrc
+  2>Automatic RCC for icons.qrc
+  1>
+  1>
+  2>Automatic RCC for icons.qrc
+  1>
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/SoftProofingPlugin/CMakeLists.txt
+  2>Automatic RCC for icons.qrc
+  2>Automatic RCC for icons.qrc
+  2>Automatic RCC for resources.qrc
+  1>
+  1>
+  2>Automatic RCC for icons.qrc
+  1>
+  1>
+  3>Automatic RCC for app.qrc
+  2>Automatic RCC for resources.qrc
+  3>Automatic RCC for app.qrc
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/RedactPlugin/CMakeLists.txt
+  softproofingplugin.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/EditorPlugin/CMakeLists.txt
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/OutputPreviewPlugin/CMakeLists.txt
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/ObjectInspectorPlugin/CMakeLists.txt
+  Automatic MOC and UIC for target SignaturePlugin
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/DimensionsPlugin/CMakeLists.txt
+  createredacteddocumentdialog.cpp
+  editorplugin.cpp
+  inkcoveragedialog.cpp
+  objectinspectordialog.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtDiff/CMakeLists.txt
+  dimensionsplugin.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtPageMaster/CMakeLists.txt
+  aboutdialog.cpp
+  2>Automatic RCC for pdf4qtlibgui.qrc
+  1>
+  aboutdialog.cpp
+  1>
+  2>Automatic RCC for icons.qrc
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/SignaturePlugin/CMakeLists.txt
+  Automatic MOC and UIC for target AudioBookPlugin
+  signatureplugin.cpp
+  1>
+  2>Automatic RCC for icons.qrc
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditorPlugins/AudioBookPlugin/CMakeLists.txt
+  audiobookcreator.cpp
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtLibGui/CMakeLists.txt
+  pdfaboutdialog.cpp
+  pdftoolunite.cpp
+  redactplugin.cpp
+  differencesdockwidget.cpp
+  assembleoutputsettingsdialog.cpp
+  settingsdialog.cpp
+  objectinspectorplugin.cpp
+  dimensiontool.cpp
+  audiobookplugin.cpp
+  pdfadvancedfindwidget.cpp
+  mocs_compilation_Release.cpp
+  signdialog.cpp
+  outputpreviewdialog.cpp
+  mocs_compilation_Release.cpp
+  main.cpp
+  main.cpp
+  objectstatisticsdialog.cpp
+  mocs_compilation_Release.cpp
+  pdftoolverifysignatures.cpp
+  settingsdialog.cpp
+  mocs_compilation_Release.cpp
+  audiotextstreameditordockwidget.cpp
+  Generating Code...
+  pdfdocumentpropertiesdialog.cpp
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/EditorPlugin/Release/EditorPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/EditorPlugin/Release/EditorPlugin.exp
+  EditorPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\EditorPlugin.dll
+  Generating Code...
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/SoftProofingPlugin/Release/SoftProofingPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/SoftProofingPlugin/Release/SoftProofingPlugin.exp
+  SoftProofingPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\SoftProofingPlugin.dll
+  mainwindow.cpp
+  objectviewerwidget.cpp
+  Generating Code...
+  outputpreviewplugin.cpp
+  mocs_compilation_Release.cpp
+  qrc_icons.cpp
+  mainwindow.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/RedactPlugin/Release/RedactPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/RedactPlugin/Release/RedactPlugin.exp
+  RedactPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\RedactPlugin.dll
+  pdftoolxml.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/SignaturePlugin/Release/SignaturePlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/SignaturePlugin/Release/SignaturePlugin.exp
+  SignaturePlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\SignaturePlugin.dll
+  pdfobjectinspectortreeitemmodel.cpp
+  pdfencryptionsettingsdialog.cpp
+  Generating Code...
+  pdftoolredact.cpp
+  outputpreviewwidget.cpp
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/AudioBookPlugin/Release/AudioBookPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/AudioBookPlugin/Release/AudioBookPlugin.exp
+  AudioBookPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\AudioBookPlugin.dll
+  Generating Code...
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/DimensionsPlugin/Release/DimensionsPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/DimensionsPlugin/Release/DimensionsPlugin.exp
+  pageitemdelegate.cpp
+  DimensionsPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\DimensionsPlugin.dll
+  settingsdockwidget.cpp
+  pdfencryptionstrengthhintwidget.cpp
+  statisticsgraphwidget.cpp
+  mocs_compilation_Release.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  utils.cpp
+  pdfoptimizedocumentdialog.cpp
+  mocs_compilation_Release.cpp
+  pageitemmodel.cpp
+  PdfTool.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\PdfTool.exe
+  Generating Code...
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/OutputPreviewPlugin/Release/OutputPreviewPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/OutputPreviewPlugin/Release/OutputPreviewPlugin.exp
+  OutputPreviewPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\OutputPreviewPlugin.dll
+  pdfprogramcontroller.cpp
+  qrc_icons.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/ObjectInspectorPlugin/Release/ObjectInspectorPlugin.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtEditorPlugins/ObjectInspectorPlugin/Release/ObjectInspectorPlugin.exp
+  ObjectInspectorPlugin.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\pdfplugins\Release\ObjectInspectorPlugin.dll
+  selectoutlinetoregroupdialog.cpp
+  Generating Code...
+  mocs_compilation_Release.cpp
+  qrc_resources.cpp
+  qrc_app.cpp
+  Pdf4QtDiff.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtDiff.exe
+  pdfrecentfilemanager.cpp
+  Generating Code...
+  pdfrendertoimagesdialog.cpp
+  qrc_resources.cpp
+  qrc_app.cpp
+  Pdf4QtPageMaster.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtPageMaster.exe
+  pdfsendmail.cpp
+  pdfsidebarwidget.cpp
+  pdftexttospeech.cpp
+  pdfundoredomanager.cpp
+  pdfeditormainwindow.cpp
+  pdfviewermainwindow.cpp
+  pdfviewersettings.cpp
+  pdfviewersettingsdialog.cpp
+  pdfwintaskbarprogress.cpp
+  pdfsanitizedocumentdialog.cpp
+  pdfcreatebitonaldocumentdialog.cpp
+  Generating Code...
+  Compiling...
+  pdfbookmarkmanager.cpp
+  pdfbookmarkui.cpp
+  pdfactioncombobox.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_pdf4qtlibgui.cpp
+     Creating library C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibGui/Release/Pdf4QtLibGui.lib and object C:/Users/Nobody/Documents/PDF4QT-Opus/build/Pdf4QtLibGui/Release/Pdf4QtLibGui.exp
+  Pdf4QtLibGui.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibGui.dll
+  Automatic MOC and UIC for target Pdf4QtEditor
+  Automatic MOC and UIC for target Pdf4QtViewer
+  1>Automatic RCC for app.qrc
+  1>Automatic RCC for app.qrc
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtEditor/CMakeLists.txt
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/Pdf4QtViewer/CMakeLists.txt
+  main.cpp
+  main.cpp
+  mocs_compilation_Release.cpp
+  Generating Code...
+  mocs_compilation_Release.cpp
+  Generating Code...
+  qrc_app.cpp
+  qrc_app.cpp
+  Pdf4QtEditor.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtEditor.exe
+  Pdf4QtViewer.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtViewer.exe
+  Building Custom Rule C:/Users/Nobody/Documents/PDF4QT-Opus/CMakeLists.txt

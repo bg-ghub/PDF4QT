@@ -1,0 +1,21 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.24
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+MSBuild version 17.14.40+3e7442088 for .NET Framework
+
+  Automatic MOC and UIC for target Pdf4QtLibCore
+  Pdf4QtLibCore.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibCore.dll
+  Automatic MOC and UIC for target Pdf4QtLibWidgets
+  Pdf4QtLibWidgets.vcxproj -> C:\Users\Nobody\Documents\PDF4QT-Opus\build\usr\bin\Release\Pdf4QtLibWidgets.dll
+  Automatic MOC and UIC for target Pdf4QtPageMaster
+  main.cpp
+  mainwindow.cpp
+  pageitemdelegate.cpp
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(54,3): error C2065: 'emit': undeclared identifier [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(54,8): error C2146: syntax error: missing ';' before identifier 'sizeHintChanged' [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(315,3): error C2065: 'emit': undeclared identifier [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+C:\Users\Nobody\Documents\PDF4QT-Opus\Pdf4QtPageMaster\pageitemdelegate.cpp(315,8): error C2146: syntax error: missing ';' before identifier 'thumbnailReady' [C:\Users\Nobody\Documents\PDF4QT-Opus\build\Pdf4QtPageMaster\Pdf4QtPageMaster.vcxproj]
+  mocs_compilation_Release.cpp
+  Generating Code...
