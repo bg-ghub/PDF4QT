@@ -19,7 +19,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListView" name="documentItemsView">
+     <widget class="pdfpagemaster::DropIndicatorListView" name="documentItemsView">
       <property name="contextMenuPolicy">
        <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
       </property>
@@ -644,4 +644,11 @@
   <include location="resources.qrc"/>
  </resources>
  <connections/>
+ <customwidgets>
+  <customwidget>
+   <class>pdfpagemaster::DropIndicatorListView</class>
+   <extends>QListView</extends>
+   <header>dropindicatorlistview.h</header>
+  </customwidget>
+ </customwidgets>
 </ui>

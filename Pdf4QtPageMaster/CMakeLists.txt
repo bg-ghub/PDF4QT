@@ -39,6 +39,7 @@ add_executable(Pdf4QtPageMaster
     pdfiumthumbnail.h
     selectoutlinetoregroupdialog.cpp
     selectoutlinetoregroupdialog.h
+    dropindicatorlistview.h
     aboutdialog.ui
     assembleoutputsettingsdialog.ui
     mainwindow.ui
