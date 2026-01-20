@@ -29,6 +29,22 @@ PdfTool unite --namespace-fields form1.pdf form2.pdf merged.pdf
 - Form field name conflicts when merging PDFs with forms
 - Improved reference collision handling
 
+## 📄 PageMaster GUI Enhancements
+
+### Performance Optimizations
+| Feature | Speedup | Description |
+|---------|---------|-------------|
+| **Embedded Thumbnails** | Instant | Extract pre-rendered thumbnails from PDFs |
+| **1/4 Resolution Render** | 4x | Faster fallback when no embedded thumbnail |
+| **Background Threading** | ∞ | Non-blocking UI during thumbnail generation |
+| **Thread Pool Limit** | Stable | Controlled CPU utilization |
+| **Update Coalescing** | Smooth | Batched repaints reduce flickering |
+
+### New UI Features
+- **Interleave Halves** - Regroup menu item for scanned documents (odd/even page merging)
+- **Preview Dialog** - Double-click any thumbnail for larger view
+- **Size Slider** - Zoom toolbar slider for quick thumbnail resize
+
 > **Original project**: [JakubMelka/PDF4QT](https://github.com/JakubMelka/PDF4QT)
 
 ---
