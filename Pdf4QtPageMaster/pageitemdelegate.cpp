@@ -186,6 +186,25 @@ void PageItemDelegate::setPageImageSize(QSize pageImageSize) {
   }
 }
 
+void PageItemDelegate::preRenderAllPages() {
+  // PDF4QT-Opus: NAPS2-style - pre-render all thumbnails upfront
+  // This makes import slower but display instant (like NAPS2)
+  int rowCount = m_model->rowCount(QModelIndex());
+
+  for (int row = 0; row < rowCount; ++row) {
+    QModelIndex index = m_model->index(row, 0, QModelIndex());
+    const PageGroupItem *item = m_model->getItem(index);
+    if (item) {
+      // Calculate rect for this item
+      QRect rect(QPoint(0, 0), m_pageImageSize);
+      // This triggers background rendering and caching
+      getPageImagePixmap(item, rect);
+    }
+  }
+
+  qDebug() << "PDF4QT-Opus: Pre-rendering" << rowCount << "thumbnails upfront";
+}
+
 QPixmap PageItemDelegate::getPageImagePixmap(const PageGroupItem *item,
                                              QRect rect) const {
   QPixmap pixmap;

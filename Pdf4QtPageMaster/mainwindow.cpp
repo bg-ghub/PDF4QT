@@ -322,11 +322,12 @@ QSize MainWindow::getMinPageImageSize() const {
 }
 
 QSize MainWindow::getDefaultPageImageSize() const {
-  return pdf::PDFWidgetUtils::scaleDPI(this, QSize(100, 100));
+  // PDF4QT-Opus: Larger default to match NAPS2 style
+  return pdf::PDFWidgetUtils::scaleDPI(this, QSize(150, 150));
 }
 
 QSize MainWindow::getMaxPageImageSize() const {
-  return pdf::PDFWidgetUtils::scaleDPI(this, QSize(250, 250));
+  return pdf::PDFWidgetUtils::scaleDPI(this, QSize(350, 350));
 }
 
 void MainWindow::resizeEvent(QResizeEvent *resizeEvent) {
@@ -347,6 +348,8 @@ void MainWindow::on_actionAddDocuments_triggered() {
         break;
       }
     }
+    // PDF4QT-Opus: Pre-render all thumbnails upfront (NAPS2-style)
+    m_delegate->preRenderAllPages();
   }
 }
 

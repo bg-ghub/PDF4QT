@@ -73,6 +73,11 @@ public:
   // PDF4QT-Opus: Public access for preview dialog
   QPixmap getPageImagePixmap(const PageGroupItem *item, QRect rect) const;
 
+  /// PDF4QT-Opus: Pre-render all thumbnails upfront (NAPS2-style instant
+  /// display) Call this after loading documents to generate all thumbnails
+  /// immediately
+  void preRenderAllPages();
+
 private:
   static constexpr int getVerticalSpacing() { return 5; }
   static constexpr int getHorizontalSpacing() { return 5; }
