@@ -75,6 +75,17 @@ MainWindow::MainWindow(QWidget *parent)
   connect(ui->documentItemsView, &QListView::doubleClicked, this,
           &MainWindow::onPageDoubleClicked);
 
+  // PDF4QT-Opus: Enable clearer drop indicators (NAPS2-style)
+  ui->documentItemsView->setDropIndicatorShown(true);
+  ui->documentItemsView->setDragDropMode(QAbstractItemView::InternalMove);
+  ui->documentItemsView->setDefaultDropAction(Qt::MoveAction);
+  // Bold blue drop indicator line for clear visibility
+  ui->documentItemsView->setStyleSheet("QListView::item:drop-indicator { "
+                                       "  background: #3399ff; "
+                                       "  height: 4px; "
+                                       "  margin: 2px; "
+                                       "}");
+
   setMinimumSize(pdf::PDFWidgetUtils::scaleDPI(this, QSize(800, 600)));
 
   ui->actionClear->setData(int(Operation::Clear));
