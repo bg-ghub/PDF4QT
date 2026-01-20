@@ -79,12 +79,13 @@ MainWindow::MainWindow(QWidget *parent)
   ui->documentItemsView->setDropIndicatorShown(true);
   ui->documentItemsView->setDragDropMode(QAbstractItemView::InternalMove);
   ui->documentItemsView->setDefaultDropAction(Qt::MoveAction);
-  // Bold blue drop indicator line for clear visibility
-  ui->documentItemsView->setStyleSheet("QListView::item:drop-indicator { "
-                                       "  background: #3399ff; "
-                                       "  height: 4px; "
-                                       "  margin: 2px; "
-                                       "}");
+  // Bright orange drop indicator line - visible in both light and dark modes
+  ui->documentItemsView->setStyleSheet(
+      "QListView { show-decoration-selected: 1; }"
+      "QListView::indicator:drop { "
+      "  background: #ff6600; "
+      "  border: 2px solid #ff0000; "
+      "}");
 
   setMinimumSize(pdf::PDFWidgetUtils::scaleDPI(this, QSize(800, 600)));
 
